@@ -28,78 +28,83 @@ public class ResetPassword extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        EnterEmail = new javax.swing.JTextField();
+        ResetCancel = new javax.swing.JButton();
+        Password = new javax.swing.JButton();
+        instruction = new javax.swing.JLabel();
+        Reset = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTextField1.setText("Email");
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        EnterEmail.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        EnterEmail.setText("Email");
+        EnterEmail.addActionListener(this::EnterEmailActionPerformed);
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 0));
-        jButton1.setText("Cancel");
+        ResetCancel.setBackground(new java.awt.Color(255, 153, 0));
+        ResetCancel.setText("Cancel");
+        ResetCancel.addActionListener(this::ResetCancelActionPerformed);
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 51));
-        jButton2.setText("Reset Password");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        Password.setBackground(new java.awt.Color(0, 153, 51));
+        Password.setText("Reset Password");
+        Password.addActionListener(this::PasswordActionPerformed);
 
-        jLabel1.setText("Enter your email to receive instruction");
+        instruction.setText("Enter your email to receive instruction");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setText("Reset Password");
+        Reset.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Reset.setText("Reset Password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(215, 215, 215)
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton2))
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(202, 202, 202))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(ResetCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(instruction, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(EnterEmail))))
+                .addGap(200, 200, 200))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(93, 93, 93)
-                .addComponent(jLabel2)
+                .addComponent(Reset)
+                .addGap(6, 6, 6)
+                .addComponent(instruction)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EnterEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(193, Short.MAX_VALUE))
+                    .addComponent(Password)
+                    .addComponent(ResetCancel)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void EnterEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_EnterEmailActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_PasswordActionPerformed
+
+    private void ResetCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ResetCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,10 +132,10 @@ public class ResetPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField EnterEmail;
+    private javax.swing.JButton Password;
+    private javax.swing.JLabel Reset;
+    private javax.swing.JButton ResetCancel;
+    private javax.swing.JLabel instruction;
     // End of variables declaration//GEN-END:variables
 }
