@@ -6,7 +6,7 @@ package images;
 
 /**
  *
- * @author Asus
+ * @author ASUS
  */
 public class demo {
     
