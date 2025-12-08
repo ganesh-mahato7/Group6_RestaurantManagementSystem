@@ -4,10 +4,80 @@
  */
 package database;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.*;
 /**
  *
  * @author ACER
  */
-public class MySqlConnection {
+public class MySqlConnection implements Database {
+
+    @Override
+    public Connection openConnection() {
+        try{
+            String password = "king@123"; 
+            String username = "root";
+            String database = "rmsrestaurant";
+            Connection connection;
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + database,username,password);
+            
+            if(connection == null){
+                System.out.println("Unsuccessfull connection");
+            }else{
+                System.out.println("Connection Successfull");
+            }
+            System.out.println(database);
+            return connection;
+            
+        }catch(SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+   
+    @Override
+    public ResultSet runQuery(Connection conn, String query) {
+        
+        try{
+            Statement stmp = conn.createStatement();
+            ResultSet result = stmp.executeQuery(query);
+            return result;
+        
+        }catch(SQLException e){
+            System.out.println(e);
+            return null;
+         }
+    }
     
+
+    @Override
+    public int executeUpdate(Connection conn, String query) {
+        
+         try{
+            Statement stmp = conn.createStatement();
+            int result = stmp.executeUpdate(query);
+            return result;
+        
+        }catch(SQLException e){
+            System.out.println(e);
+            return -1;
+         }
+    }
+
+    @Override
+    public void closeCoonection(Connection conn) {
+try{
+            if(conn != null && !conn.isClosed()){
+                conn.close();
+            }
+           
+        }catch(SQLException e){
+            System.out.println(e);
+        }    }
+
+    
+    
+   
 }
