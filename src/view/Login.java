@@ -44,9 +44,11 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         panel.setBackground(new java.awt.Color(26, 26, 31));
+        panel.setPreferredSize(new java.awt.Dimension(1197, 664));
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -133,7 +135,7 @@ public class Login extends javax.swing.JFrame {
         panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         getContentPane().add(panel);
-        panel.setBounds(0, 0, 550, 400);
+        panel.setBounds(0, 0, 660, 430);
 
         setBounds(0, 0, 564, 403);
     }// </editor-fold>//GEN-END:initComponents
