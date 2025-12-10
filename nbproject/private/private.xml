@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Verification.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Registration.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/userDao.java</file>
@@ -14,6 +15,11 @@
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/utils/EmailSender.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/OTPStore.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/loginDao.java</file>
+=======
+            <file>file:/C:/Users/A%20S%20U%20S/Documents/GitHub/Java-Void/Group6_RestaurantManagementSystem/src/view/Registration.java</file>
+            <file>file:/C:/Users/A%20S%20U%20S/Documents/GitHub/Java-Void/Group6_RestaurantManagementSystem/src/view/ResetPassword.java</file>
+            <file>file:/C:/Users/A%20S%20U%20S/Documents/GitHub/Java-Void/Group6_RestaurantManagementSystem/src/view/Verification.java</file>
+>>>>>>> 15499b7bb1f84093b637cca12020a06cead8fed2
         </group>
     </open-files>
 </project-private>
