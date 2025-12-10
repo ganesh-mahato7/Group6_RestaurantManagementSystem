@@ -52,7 +52,6 @@ public class Registration extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(720, 1280));
 
@@ -81,7 +80,7 @@ public class Registration extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
         jLabel6.setText("Select Role");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Waiter", "Scrum Master", "Ganne ka Juice" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Waiter", "Scrum Master", " " }));
         jComboBox1.setAutoscrolls(true);
         jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
 
