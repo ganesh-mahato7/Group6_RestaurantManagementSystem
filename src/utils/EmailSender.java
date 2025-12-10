@@ -24,8 +24,8 @@ import java.util.Properties;
 public class EmailSender {
     public static void sendEmail(String toEmail, String subject, String body) throws MessagingException {
 
-        final String fromEmail = "shah.deepak6969@gmail.com"; // your email
-        final String appPassword = "hviycxbdkycrmjkn"; // Gmail App Password ONLY
+        final String fromEmail = "ganeshmahato1412@gmail.com"; // your email
+        final String appPassword = ""; // Gmail App Password ONLY
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");

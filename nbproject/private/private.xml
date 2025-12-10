@@ -11,6 +11,9 @@
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/database/Database.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/database/MySqlConnection.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/group6_restaurantmanagementsystem/Group6_RestaurantManagementSystem.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/utils/EmailSender.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/OTPStore.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/loginDao.java</file>
         </group>
     </open-files>
 </project-private>

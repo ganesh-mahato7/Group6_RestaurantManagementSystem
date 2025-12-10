@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import utils.EmailSender;
+
 /**
  *
  * @author Asus
@@ -29,20 +32,19 @@ public class ResetPassword extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Email = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         Cancel = new javax.swing.JButton();
-        Reset = new javax.swing.JButton();
+        btnSendCode = new javax.swing.JButton();
         EnterEmail = new javax.swing.JLabel();
         Title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        Email.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        Email.setText("Email");
-        Email.addActionListener(this::EmailActionPerformed);
+        txtEmail.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtEmail.setText("Email");
+        txtEmail.addActionListener(this::txtEmailActionPerformed);
 
         Cancel.setBackground(new java.awt.Color(255, 153, 0));
         Cancel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
@@ -50,9 +52,10 @@ public class ResetPassword extends javax.swing.JFrame {
         Cancel.setToolTipText("");
         Cancel.addActionListener(this::CancelActionPerformed);
 
-        Reset.setBackground(new java.awt.Color(0, 204, 102));
-        Reset.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
-        Reset.setText("Reset Password");
+        btnSendCode.setBackground(new java.awt.Color(0, 204, 102));
+        btnSendCode.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        btnSendCode.setText("Reset Password");
+        btnSendCode.addActionListener(this::btnSendCodeActionPerformed);
 
         EnterEmail.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         EnterEmail.setText("Enter you email to receive instruction");
@@ -70,8 +73,8 @@ public class ResetPassword extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(Reset))
-                    .addComponent(Email)
+                        .addComponent(btnSendCode))
+                    .addComponent(txtEmail)
                     .addComponent(EnterEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -87,11 +90,11 @@ public class ResetPassword extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(EnterEmail)
                 .addGap(18, 18, 18)
-                .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancel)
-                    .addComponent(Reset))
+                    .addComponent(btnSendCode))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
 
@@ -115,13 +118,52 @@ public class ResetPassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EmailActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CancelActionPerformed
+
+    private void btnSendCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendCodeActionPerformed
+
+        // TODO add your handling code here:
+        String email = txtEmail.getText().trim();
+
+    if(email.isEmpty()){
+        JOptionPane.showMessageDialog(this, "Enter your email.");
+        return;
+    }
+
+    // STEP 1 — Generate 6-digit OTP
+    int otp = (int)(Math.random() * 900000) + 100000;
+
+    // STEP 2 — Store OTP in database or temporary static variable
+//    OTPStore.currentOTP = otp;
+//    OTPStore.email = email;
+
+    // STEP 3 — Create reset link (for Swing app)
+    String resetLink = "http://localhost/reset?email=" + email;
+
+    // STEP 4 — Email content
+    String message = "Your OTP is: " + otp 
+            + "\nReset your password here: " + resetLink;
+
+    // STEP 5 — Send email
+    boolean status = EmailSender.sendEmail(email, 
+                    "Password Reset Code", 
+                    message);
+
+    if(status){
+        JOptionPane.showMessageDialog(this, "OTP sent to your email!");
+        new Verification().setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Failed to send email.");
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSendCodeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,10 +192,10 @@ public class ResetPassword extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel;
-    private javax.swing.JTextField Email;
     private javax.swing.JLabel EnterEmail;
-    private javax.swing.JButton Reset;
     private javax.swing.JLabel Title;
+    private javax.swing.JButton btnSendCode;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
 }
