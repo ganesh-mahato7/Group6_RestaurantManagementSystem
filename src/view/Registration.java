@@ -99,6 +99,7 @@ public class Registration extends javax.swing.JFrame {
         password.setText("jPasswordField2");
 
         jButton2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 204, 51));
         jButton2.setText("Log in Here");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 

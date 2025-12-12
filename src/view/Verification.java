@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import model.OTPStore;
+
 /**
  *
  * @author Asus
@@ -31,12 +34,11 @@ public class Verification extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Verification = new javax.swing.JLabel();
         enterVerificationCode = new javax.swing.JLabel();
-        codeField = new javax.swing.JTextField();
+        txtOTP = new javax.swing.JTextField();
         Cancel = new javax.swing.JButton();
-        verify = new javax.swing.JButton();
+        btnVerify = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -45,15 +47,15 @@ public class Verification extends javax.swing.JFrame {
 
         enterVerificationCode.setText("Enter verification code");
 
-        codeField.addActionListener(this::codeFieldActionPerformed);
+        txtOTP.addActionListener(this::txtOTPActionPerformed);
 
         Cancel.setBackground(new java.awt.Color(255, 102, 0));
         Cancel.setText("Cancel");
         Cancel.addActionListener(this::CancelActionPerformed);
 
-        verify.setBackground(new java.awt.Color(0, 153, 51));
-        verify.setText("Verify");
-        verify.addActionListener(this::verifyActionPerformed);
+        btnVerify.setBackground(new java.awt.Color(0, 153, 51));
+        btnVerify.setText("Verify");
+        btnVerify.addActionListener(this::btnVerifyActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,11 +67,11 @@ public class Verification extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(enterVerificationCode)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(codeField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtOTP, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(verify, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnVerify, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
@@ -84,11 +86,11 @@ public class Verification extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(enterVerificationCode)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtOTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancel)
-                    .addComponent(verify))
+                    .addComponent(btnVerify))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -112,17 +114,21 @@ public class Verification extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void codeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeFieldActionPerformed
+    private void txtOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOTPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_codeFieldActionPerformed
+    }//GEN-LAST:event_txtOTPActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CancelActionPerformed
 
-    private void verifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_verifyActionPerformed
+    private void btnVerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyActionPerformed
+    if(Integer.parseInt(txtOTP.getText()) == OTPStore.currentOTP){
+        new ResetPassword().setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid OTP!");
+    }    }//GEN-LAST:event_btnVerifyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,9 +158,9 @@ public class Verification extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel;
     private javax.swing.JLabel Verification;
-    private javax.swing.JTextField codeField;
+    private javax.swing.JButton btnVerify;
     private javax.swing.JLabel enterVerificationCode;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton verify;
+    private javax.swing.JTextField txtOTP;
     // End of variables declaration//GEN-END:variables
 }

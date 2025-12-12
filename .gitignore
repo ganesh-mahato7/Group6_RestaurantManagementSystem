@@ -1,2 +1,15 @@
-/build/
-nbproject/private
+
+# NetBeans
+nbproject/private/
+
+# Build files
+build/
+dist/
+out/
+
+# Java class files
+*.class
+
+# Logs
+*.log
+
