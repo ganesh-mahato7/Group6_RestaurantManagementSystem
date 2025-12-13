@@ -3,14 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package group6_restaurantmanagementsystem;
-
 import database.Database;
 import database.MySqlConnection;
-import view.Login;
 
 /**
  *
- * @author Asus
+ * @author ACER
  */
 public class Group6_RestaurantManagementSystem {
 
@@ -19,7 +17,12 @@ public class Group6_RestaurantManagementSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-     
+        Database db = new MySqlConnection();
+        if (db.openConnection() != null) {
+            System.out.println("Connection successful");
+        }
+        else {
+            System.out.println("Not successful");
+        }
     }
-    
 }

@@ -19,10 +19,9 @@ public class loginDao {
     
     public boolean login(userdata user){
         Connection conn = mysql.openConnection();
-        String sql = "Select * From users where username=? and password=?";
+        String sql = "Select * From customers where email=? and password=?";
         try(PreparedStatement pstm = conn.prepareStatement(sql)){
-            pstm.setString(1, user.getUsername());
-           pstm.setString(2,user.getUsername());
+            pstm.setString(1, user.getEmail());
             ResultSet result = pstm.executeQuery();
             return result.next();
         }catch(SQLException e){

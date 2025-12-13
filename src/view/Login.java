@@ -195,7 +195,7 @@ public class Login extends javax.swing.JFrame {
     public javax.swing.JTextField getPasswordText(){
         return passwordfield;
     }
-    public javax.swing.JTextField getUsernameText(){
+    public javax.swing.JTextField getEmailText(){
         return emailfield;
     }
 }
