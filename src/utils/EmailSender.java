@@ -4,6 +4,9 @@
  */
 package utils;
 
+import com.mysql.cj.Session;
+import com.mysql.cj.protocol.Message;
+import com.sun.jdi.connect.Transport;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;

@@ -39,105 +39,101 @@ public class Login extends javax.swing.JFrame {
         passwordfield = new javax.swing.JTextField();
         signin = new javax.swing.JButton();
         forgotpassword = new javax.swing.JButton();
-        donthaveapassword = new javax.swing.JLabel();
         registerhere = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        panel.setBackground(new java.awt.Color(26, 26, 31));
+        panel.setBackground(new java.awt.Color(255, 255, 255));
         panel.setPreferredSize(new java.awt.Dimension(1197, 664));
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        title.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        title.setForeground(new java.awt.Color(204, 204, 0));
+        title.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         title.setText("NEPAL RESTAURANT MANAGEMENT SYSTEM");
-        panel.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 21, 330, 70));
+        panel.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 570, 80));
 
-        body.setBackground(new java.awt.Color(26, 26, 31));
-        body.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        body.setBackground(new java.awt.Color(255, 255, 255));
+        body.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        email.setForeground(new java.awt.Color(255, 255, 255));
+        email.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         email.setText("E-mail");
 
         emailfield.addActionListener(this::emailfieldActionPerformed);
 
-        password.setForeground(new java.awt.Color(255, 255, 255));
+        password.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         password.setText("Password");
 
         signin.setText("SIGN IN");
 
-        forgotpassword.setBackground(new java.awt.Color(0, 0, 0));
-        forgotpassword.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         forgotpassword.setForeground(new java.awt.Color(204, 204, 0));
         forgotpassword.setText("FORGOT PASSWORD?");
         forgotpassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 0)));
         forgotpassword.addActionListener(this::forgotpasswordActionPerformed);
 
-        donthaveapassword.setBackground(new java.awt.Color(0, 0, 0));
-        donthaveapassword.setForeground(new java.awt.Color(255, 255, 255));
-        donthaveapassword.setText("Don't have an account ?");
-
-        registerhere.setBackground(new java.awt.Color(0, 0, 0));
-        registerhere.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         registerhere.setForeground(new java.awt.Color(204, 204, 0));
         registerhere.setText("REGISTER HERE");
         registerhere.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 0)));
         registerhere.addActionListener(this::registerhereActionPerformed);
+
+        jLabel3.setText("Don't have an account?");
 
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
         body.setLayout(bodyLayout);
         bodyLayout.setHorizontalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(116, 116, 116)
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(forgotpassword)
-                    .addComponent(passwordfield, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailfield, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailfield, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(bodyLayout.createSequentialGroup()
-                            .addComponent(donthaveapassword)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(registerhere, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(signin, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addComponent(passwordfield, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(forgotpassword)
+                    .addComponent(signin, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(bodyLayout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(registerhere, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         bodyLayout.setVerticalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(email)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bodyLayout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(emailfield, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 6, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(email)
+                        .addGap(52, 52, 52)))
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(emailfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordfield, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(signin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(signin, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(forgotpassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(donthaveapassword)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(registerhere))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(59, 59, 59))
         );
 
-        panel.add(body, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 330, 250));
+        panel.add(body, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 540, 420));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Adobe Express - file.png"))); // NOI18N
+        panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 250, 170));
 
         getContentPane().add(panel);
-        panel.setBounds(0, 0, 660, 430);
+        panel.setBounds(0, 0, 1280, 720);
 
-        setBounds(0, 0, 564, 403);
+        setBounds(0, 0, 1291, 729);
     }// </editor-fold>//GEN-END:initComponents
 
     private void emailfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailfieldActionPerformed
@@ -179,11 +175,11 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
-    private javax.swing.JLabel donthaveapassword;
     private javax.swing.JLabel email;
     private javax.swing.JTextField emailfield;
     private javax.swing.JButton forgotpassword;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel panel;
     private javax.swing.JLabel password;
     private javax.swing.JTextField passwordfield;
@@ -199,7 +195,7 @@ public class Login extends javax.swing.JFrame {
     public javax.swing.JTextField getPasswordText(){
         return passwordfield;
     }
-    public javax.swing.JTextField getUsernameText(){
+    public javax.swing.JTextField getEmailText(){
         return emailfield;
     }
 }

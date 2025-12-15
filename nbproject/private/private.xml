@@ -7,12 +7,16 @@
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/ResetPassword.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Verification.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/userDao.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/NewPassword.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/database/MySqlConnection.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/database/Database.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/group6_restaurantmanagementsystem/Group6_RestaurantManagementSystem.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/loginDao.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Registration.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/OTPStore.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/userdata.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/employee_management.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Login.java</file>
         </group>
     </open-files>
 </project-private>
