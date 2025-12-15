@@ -13,7 +13,7 @@ import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import java.net.Authenticator;
-import java.net.PasswordAuthentication;
+import java.util.Properties;
 
 import java.util.Properties;
 
@@ -24,12 +24,12 @@ import java.util.Properties;
 public class EmailSender {
     public static void sendEmail(String toEmail, String subject, String body) throws MessagingException {
 
-        final String fromEmail = "ganeshmahato1412@gmail.com"; // your email
-        final String appPassword = ""; // Gmail App Password ONLY
+        final String fromEmail = "ganeshmahato1412@gmail.com"; 
+        final String appPassword = "kxgdotlszodxhrhd"; 
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");   // TLS
+        props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
@@ -49,4 +49,3 @@ public class EmailSender {
         Transport.send(msg);
         System.out.println("Email Sent Successfully!");
     }
-}

@@ -3,47 +3,74 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
+
 import database.MySqlConnection;
 import model.userdata;
 import java.sql.*;
 
-/**
- *
- * @author ACER
- */
-public class userDao {
+public class UserDAO {
+
     MySqlConnection mysql = new MySqlConnection();
+
+    // SIGN UP
     public void signUp(userdata user){
         Connection conn = mysql.openConnection();
-        String sql = "insert into users(username, email, password) values(?, ?, ?)";
-        try(PreparedStatement pstm = conn.prepareStatement(sql)){
+        String sql = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
             pstm.setString(1, user.getUsername());
             pstm.setString(2, user.getEmail());
             pstm.setString(3, user.getPassword());
             pstm.executeUpdate();
-        }
-        catch(SQLException e){
-            System.out.print(e);
-        }
-        finally{
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+        } 
+        finally {
             mysql.closeConnection(conn);
         }
     }
+
+    // CHECK IF USER ALREADY EXISTS
     public boolean check(userdata user){
         Connection conn = mysql.openConnection();
-        String sql = "select * from users where username = ? or email = ?";
-        try(PreparedStatement pstm = conn.prepareStatement(sql)){
+        String sql = "SELECT * FROM users WHERE username = ? OR email = ?";
+
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
             pstm.setString(1, user.getUsername());
             pstm.setString(2, user.getEmail());
             ResultSet result = pstm.executeQuery();
             return result.next();
-        }
-        catch(SQLException e){
-            System.out.print(e);
-        }
-        finally{
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+        } 
+        finally {
             mysql.closeConnection(conn);
         }
         return false;
+    }
+
+    // RESET PASSWORD
+    public boolean updatePassword(String email, String newPassword) {
+
+        Connection conn = mysql.openConnection();
+        String sql = "UPDATE users SET password=? WHERE email=?";
+
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+
+            pst.setString(1, newPassword);
+            pst.setString(2, email);
+
+            return pst.executeUpdate() > 0;
+
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+            return false;
+        }
+        finally {
+            mysql.closeConnection(conn);
+        }
     }
 }

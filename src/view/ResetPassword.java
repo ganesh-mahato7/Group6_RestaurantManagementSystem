@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JOptionPane;
+import model.OTPStore;
 import utils.EmailSender;
 
 /**
@@ -140,8 +141,8 @@ public class ResetPassword extends javax.swing.JFrame {
     int otp = (int)(Math.random() * 900000) + 100000;
 
     // STEP 2 — Store OTP in database or temporary static variable
-//    OTPStore.currentOTP = otp;
-//    OTPStore.email = email;
+    OTPStore.currentOTP = otp;
+    OTPStore.email = email;
 
     // STEP 3 — Create reset link (for Swing app)
     String resetLink = "http://localhost/reset?email=" + email;

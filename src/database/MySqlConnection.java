@@ -77,6 +77,10 @@ try{
             System.out.println(e);
         }    }
 
+    public void closeConnection(Connection conn) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     
     
    
