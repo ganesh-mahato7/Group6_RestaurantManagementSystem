@@ -251,24 +251,15 @@ public class OrderPage extends javax.swing.JFrame {
         text3 = new javax.swing.JTextField();
         value3 = new javax.swing.JLabel();
         item3 = new javax.swing.JCheckBox();
-        text4 = new javax.swing.JTextField();
-        value4 = new javax.swing.JLabel();
-        item4 = new javax.swing.JCheckBox();
         text5 = new javax.swing.JTextField();
         item5 = new javax.swing.JCheckBox();
         value5 = new javax.swing.JLabel();
-        item6 = new javax.swing.JCheckBox();
-        value6 = new javax.swing.JLabel();
-        text6 = new javax.swing.JTextField();
         text7 = new javax.swing.JTextField();
         value7 = new javax.swing.JLabel();
         item7 = new javax.swing.JCheckBox();
         item8 = new javax.swing.JCheckBox();
         text8 = new javax.swing.JTextField();
         value8 = new javax.swing.JLabel();
-        item9 = new javax.swing.JCheckBox();
-        value9 = new javax.swing.JLabel();
-        text9 = new javax.swing.JTextField();
         text10 = new javax.swing.JTextField();
         item10 = new javax.swing.JCheckBox();
         value10 = new javax.swing.JLabel();
@@ -1172,6 +1163,9 @@ public class OrderPage extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable1);
 
+        printBill.setBackground(new java.awt.Color(255, 51, 51));
+        printBill.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        printBill.setForeground(new java.awt.Color(0, 0, 0));
         printBill.setText("Print Bill");
         printBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1179,6 +1173,9 @@ public class OrderPage extends javax.swing.JFrame {
             }
         });
 
+        sendOrders.setBackground(new java.awt.Color(255, 51, 51));
+        sendOrders.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        sendOrders.setForeground(new java.awt.Color(0, 0, 0));
         sendOrders.setText("Send");
         sendOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1186,36 +1183,10 @@ public class OrderPage extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout orderPageLayout = new javax.swing.GroupLayout(orderPage);
-        orderPage.setLayout(orderPageLayout);
-        orderPageLayout.setHorizontalGroup(
-            orderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, orderPageLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(sendOrders)
-                .addGap(85, 85, 85)
-                .addComponent(printBill)
-                .addContainerGap())
-        );
-        orderPageLayout.setVerticalGroup(
-            orderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(orderPageLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(orderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(printBill)
-                    .addComponent(sendOrders))
-                .addContainerGap())
-        );
-
-        menu.add(orderPage, java.awt.BorderLayout.CENTER);
-
         brkfastMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel9.setFont(new java.awt.Font("Ink Free", 1, 25)); // NOI18N
-        jLabel9.setText("BreakFast");
+        jLabel9.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 25)); // NOI18N
+        jLabel9.setText("Menu");
 
         jLabel10.setText("Name");
 
@@ -1223,22 +1194,22 @@ public class OrderPage extends javax.swing.JFrame {
 
         jLabel12.setText("Quantity");
 
-        item1.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
+        item1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
         item1.setText("Sausage");
 
-        value1.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        value1.setText("\tTk. 65/-");
+        value1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
+        value1.setText("\tRs. 65/-");
 
-        item2.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
+        item2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
         item2.setText("French Fries");
 
-        value2.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        value2.setText("\tTk. 50/-");
+        value2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
+        value2.setText("Rs. 30/-");
 
-        value3.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        value3.setText("Tk. 40/-");
+        value3.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
+        value3.setText("Rs. 40/-");
 
-        item3.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
+        item3.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
         item3.setText("Toast- 2 Slices");
         item3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1246,47 +1217,45 @@ public class OrderPage extends javax.swing.JFrame {
             }
         });
 
-        value4.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        value4.setText("Tk. 60/-");
+        text5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text5ActionPerformed(evt);
+            }
+        });
 
-        item4.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        item4.setText("Parata- 2 Pcs");
-
-        item5.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
+        item5.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
         item5.setText("Chapatti- 2 pcs");
 
-        value5.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        value5.setText("\tTk. 40/-");
+        value5.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
+        value5.setText("Rs. 50/-");
 
-        item6.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        item6.setText("Bhaji");
+        value7.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
+        value7.setText("Rs. 100/-");
 
-        value6.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        value6.setText("Tk. 50/-");
-
-        value7.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        value7.setText("\tTk. 50/-");
-
-        item7.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
+        item7.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
         item7.setText("Aloo dum");
+        item7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                item7ActionPerformed(evt);
+            }
+        });
 
-        item8.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        item8.setText("Sujir Halwa");
+        item8.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
+        item8.setText("Tea");
+        item8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                item8ActionPerformed(evt);
+            }
+        });
 
-        value8.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        value8.setText("Tk. 50/-");
-
-        item9.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        item9.setText("Bangladeshi Menu");
-
-        value9.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        value9.setText("Tk. 200/-");
+        value8.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
+        value8.setText("Rs. 50/-");
 
         item10.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
         item10.setText("English Breakfast");
 
-        value10.setFont(new java.awt.Font("Ink Free", 0, 20)); // NOI18N
-        value10.setText("Tk. 320/-");
+        value10.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
+        value10.setText("Rs. 320/-");
 
         javax.swing.GroupLayout brkfastMenuLayout = new javax.swing.GroupLayout(brkfastMenu);
         brkfastMenu.setLayout(brkfastMenuLayout);
@@ -1296,67 +1265,55 @@ public class OrderPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(216, 216, 216))
-            .addGroup(brkfastMenuLayout.createSequentialGroup()
-                .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, brkfastMenuLayout.createSequentialGroup()
+                .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(brkfastMenuLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel10))
+                        .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(brkfastMenuLayout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(jLabel10))
+                            .addGroup(brkfastMenuLayout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(item1))
+                            .addGroup(brkfastMenuLayout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(item2))
+                            .addGroup(brkfastMenuLayout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(item3))
+                            .addGroup(brkfastMenuLayout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(item8))
+                            .addGroup(brkfastMenuLayout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(item7))
+                            .addGroup(brkfastMenuLayout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(item5)))
+                        .addGap(73, 73, 73)
+                        .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(value1)
+                            .addComponent(value2)
+                            .addComponent(value3)
+                            .addComponent(value8)
+                            .addComponent(value7)
+                            .addComponent(value5)))
                     .addGroup(brkfastMenuLayout.createSequentialGroup()
                         .addGap(69, 69, 69)
-                        .addComponent(item1))
-                    .addGroup(brkfastMenuLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(item2))
-                    .addGroup(brkfastMenuLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(item3))
-                    .addGroup(brkfastMenuLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(item4))
-                    .addGroup(brkfastMenuLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(item5))
-                    .addGroup(brkfastMenuLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(item6))
-                    .addGroup(brkfastMenuLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(item7))
-                    .addGroup(brkfastMenuLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(item8))
-                    .addGroup(brkfastMenuLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(item9))
-                    .addGroup(brkfastMenuLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(item10)))
-                .addGap(53, 53, 53)
-                .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(value1)
-                    .addComponent(value2)
-                    .addComponent(value3)
-                    .addComponent(value4)
-                    .addComponent(value5)
-                    .addComponent(value6)
-                    .addComponent(value7)
-                    .addComponent(value8)
-                    .addComponent(value9)
-                    .addComponent(value10))
+                        .addComponent(item10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(value10)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(text10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(text1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(text2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(text4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(text5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(text6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(text7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(text8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(text9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(text10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(text7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(87, 87, 87))
         );
         brkfastMenuLayout.setVerticalGroup(
@@ -1384,51 +1341,66 @@ public class OrderPage extends javax.swing.JFrame {
                     .addComponent(item3)
                     .addComponent(value3)
                     .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(item4)
-                    .addComponent(value4)
-                    .addComponent(text4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(item5)
                     .addComponent(value5)
                     .addComponent(text5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(item6)
-                    .addComponent(value6)
-                    .addComponent(text6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(item7)
                     .addComponent(value7)
                     .addComponent(text7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(item8)
-                    .addComponent(value8)
-                    .addComponent(text8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(item9)
-                    .addComponent(value9)
-                    .addComponent(text9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(item10)
                     .addComponent(value10)
                     .addComponent(text10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(brkfastMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(item8)
+                    .addComponent(value8)
+                    .addComponent(text8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
-        menu.add(brkfastMenu, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout orderPageLayout = new javax.swing.GroupLayout(orderPage);
+        orderPage.setLayout(orderPageLayout);
+        orderPageLayout.setHorizontalGroup(
+            orderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, orderPageLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(sendOrders)
+                .addGap(85, 85, 85)
+                .addComponent(printBill)
+                .addContainerGap())
+            .addGroup(orderPageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(brkfastMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(402, Short.MAX_VALUE))
+        );
+        orderPageLayout.setVerticalGroup(
+            orderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(orderPageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(brkfastMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(200, 200, 200)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(orderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(printBill)
+                    .addComponent(sendOrders))
+                .addContainerGap())
+        );
+
+        menu.add(orderPage, java.awt.BorderLayout.CENTER);
 
         jScrollPane1.setViewportView(menu);
 
         jSplitPane1.setRightComponent(jScrollPane1);
 
-        jLabel2.setFont(new java.awt.Font("Ink Free", 1, 25)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 25)); // NOI18N
         jLabel2.setText("CUET CAFE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1451,7 +1423,7 @@ public class OrderPage extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(31, 31, 31)
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1677,6 +1649,18 @@ public class OrderPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_item3ActionPerformed
 
+    private void text5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text5ActionPerformed
+
+    private void item8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_item8ActionPerformed
+
+    private void item7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_item7ActionPerformed
+
     public void insertdata(String total) throws ClassNotFoundException, SQLException{
         DatabaseData data = new DatabaseData();
         
@@ -1729,7 +1713,6 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JCheckBox item37;
     private javax.swing.JCheckBox item38;
     private javax.swing.JCheckBox item39;
-    private javax.swing.JCheckBox item4;
     private javax.swing.JCheckBox item40;
     private javax.swing.JCheckBox item41;
     private javax.swing.JCheckBox item42;
@@ -1737,10 +1720,8 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JCheckBox item44;
     private javax.swing.JCheckBox item45;
     private javax.swing.JCheckBox item5;
-    private javax.swing.JCheckBox item6;
     private javax.swing.JCheckBox item7;
     private javax.swing.JCheckBox item8;
-    private javax.swing.JCheckBox item9;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1808,7 +1789,6 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JTextField text37;
     private javax.swing.JTextField text38;
     private javax.swing.JTextField text39;
-    private javax.swing.JTextField text4;
     private javax.swing.JTextField text40;
     private javax.swing.JTextField text41;
     private javax.swing.JTextField text42;
@@ -1816,10 +1796,8 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JTextField text44;
     private javax.swing.JTextField text45;
     private javax.swing.JTextField text5;
-    private javax.swing.JTextField text6;
     private javax.swing.JTextField text7;
     private javax.swing.JTextField text8;
-    private javax.swing.JTextField text9;
     private javax.swing.JLabel value1;
     private javax.swing.JLabel value10;
     private javax.swing.JLabel value11;
@@ -1853,7 +1831,6 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JLabel value37;
     private javax.swing.JLabel value38;
     private javax.swing.JLabel value39;
-    private javax.swing.JLabel value4;
     private javax.swing.JLabel value40;
     private javax.swing.JLabel value41;
     private javax.swing.JLabel value42;
@@ -1861,10 +1838,8 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JLabel value44;
     private javax.swing.JLabel value45;
     private javax.swing.JLabel value5;
-    private javax.swing.JLabel value6;
     private javax.swing.JLabel value7;
     private javax.swing.JLabel value8;
-    private javax.swing.JLabel value9;
     // End of variables declaration//GEN-END:variables
 
     private javax.swing.JCheckBox[] CheckBoxes;

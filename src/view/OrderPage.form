@@ -50,7 +50,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="jSplitPane1" min="-2" pref="451" max="-2" attributes="0"/>
@@ -1573,14 +1573,21 @@
                               <Component id="printBill" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="brkfastMenu" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="402" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="brkfastMenu" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="214" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="33" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="printBill" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="sendOrders" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1651,6 +1658,15 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="printBill">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="33" green="33" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Copperplate Gothic Light" size="14" style="0"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Print Bill"/>
                       </Properties>
                       <Events>
@@ -1659,398 +1675,326 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="sendOrders">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="33" green="33" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Copperplate Gothic Light" size="14" style="0"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Send"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sendOrdersActionPerformed"/>
                       </Events>
                     </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JPanel" name="brkfastMenu">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="Center"/>
-                    </Constraint>
-                  </Constraints>
+                    <Container class="javax.swing.JPanel" name="brkfastMenu">
+                      <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder/>
+                          </Border>
+                        </Property>
+                      </Properties>
 
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                                  <Component id="item1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                                  <Component id="item2" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                                  <Component id="item3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                                  <Component id="item8" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                                  <Component id="item7" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                                  <Component id="item5" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="value1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="value2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="value3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="value8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="value7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="value5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                          <Component id="item10" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="value10" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="text10" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text1" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="text2" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="text3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="text8" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="text7" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="text5" min="-2" pref="24" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="item1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="item1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="value1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="item2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="item2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="value2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="item3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="item3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="value3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="item4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="item5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="value5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text5" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="item5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="item7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="value7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text7" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="item6" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="item10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="value10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text10" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="item7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="item8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="value8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text8" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="item8" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="item9" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="item10" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace pref="161" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value10" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text1" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="text2" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="text3" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="text4" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="text5" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="text6" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="text7" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="text8" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="text9" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="text10" min="-2" pref="24" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="item1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="item2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="item3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="item4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="item5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="item6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="item7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="item8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="item9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="item10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="value10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel9">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="25" style="1"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="BreakFast"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel10">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Name"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel11">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Price"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel12">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Quantity"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="item1">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Sausage"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="value1">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="&#x9;Tk. 65/-"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="text1">
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="item2">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="French Fries"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="value2">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="&#x9;Tk. 50/-"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="text2">
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="text3">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="value3">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Tk. 40/-"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="item3">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Toast- 2 Slices"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item3ActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="text4">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="value4">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Tk. 60/-"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="item4">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Parata- 2 Pcs"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="text5">
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="item5">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Chapatti- 2 pcs"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="value5">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="&#x9;Tk. 40/-"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="item6">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Bhaji"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="value6">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Tk. 50/-"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="text6">
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="text7">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="value7">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="&#x9;Tk. 50/-"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="item7">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Aloo dum"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="item8">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Sujir Halwa"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="text8">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="value8">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Tk. 50/-"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="item9">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Bangladeshi Menu"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="value9">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Tk. 200/-"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="text9">
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="text10">
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="item10">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="English Breakfast"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="value10">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Ink Free" size="20" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Tk. 320/-"/>
-                      </Properties>
-                    </Component>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLabel9">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="25" style="1"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Menu"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel10">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Name"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel11">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Price"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel12">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Quantity"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="item1">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Sausage"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="value1">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="&#x9;Rs. 65/-"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="text1">
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="item2">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="French Fries"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="value2">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Rs. 30/-"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="text2">
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="text3">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="value3">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Rs. 40/-"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="item3">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Toast- 2 Slices"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item3ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="text5">
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text5ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="item5">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Chapatti- 2 pcs"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="value5">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Rs. 50/-"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="text7">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="value7">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Rs. 100/-"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="item7">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Aloo dum"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item7ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="item8">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Tea"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item8ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="text8">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="value8">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Rs. 50/-"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="text10">
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="item10">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Ink Free" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="English Breakfast"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="value10">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Copperplate Gothic Light" size="20" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Rs. 320/-"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -2062,7 +2006,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Ink Free" size="25" style="1"/>
+          <Font name="Copperplate Gothic Light" size="25" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="CUET CAFE"/>
       </Properties>
