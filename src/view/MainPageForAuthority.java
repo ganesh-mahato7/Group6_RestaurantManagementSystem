@@ -48,10 +48,14 @@ public class MainPageForAuthority extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home Page");
         setLocation(new java.awt.Point(350, 100));
+        setResizable(false);
 
-        jLabel2.setFont(new java.awt.Font("Ink Free", 1, 25)); // NOI18N
-        jLabel2.setText("CUET CAFE");
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 25)); // NOI18N
+        jLabel2.setText("Home Page");
 
+        staffButton.setBackground(new java.awt.Color(255, 51, 51));
+        staffButton.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        staffButton.setForeground(new java.awt.Color(0, 0, 0));
         staffButton.setText("Staff Details");
         staffButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +63,9 @@ public class MainPageForAuthority extends javax.swing.JFrame {
             }
         });
 
+        ownerButton.setBackground(new java.awt.Color(255, 51, 51));
+        ownerButton.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        ownerButton.setForeground(new java.awt.Color(0, 0, 0));
         ownerButton.setText("Owner");
         ownerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +73,9 @@ public class MainPageForAuthority extends javax.swing.JFrame {
             }
         });
 
+        orderButton.setBackground(new java.awt.Color(255, 51, 51));
+        orderButton.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        orderButton.setForeground(new java.awt.Color(0, 0, 0));
         orderButton.setText("Order");
         orderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +83,9 @@ public class MainPageForAuthority extends javax.swing.JFrame {
             }
         });
 
+        homeDelivery.setBackground(new java.awt.Color(255, 51, 51));
+        homeDelivery.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        homeDelivery.setForeground(new java.awt.Color(0, 0, 0));
         homeDelivery.setText("Home Delivery");
         homeDelivery.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,35 +97,35 @@ public class MainPageForAuthority extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(137, 137, 137))
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ownerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(staffButton, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
+                    .addComponent(staffButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(homeDelivery, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(orderButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(85, 85, 85))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel2)
-                .addGap(39, 39, 39)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ownerButton)
+                    .addComponent(ownerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(orderButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(staffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(staffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(homeDelivery))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
