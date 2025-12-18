@@ -4,10 +4,6 @@
  */
 package utils;
 
-import com.mysql.cj.Session;
-import com.mysql.cj.protocol.Message;
-import com.sun.jdi.connect.Transport;
-import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
 import jakarta.mail.PasswordAuthentication;
@@ -15,9 +11,6 @@ import jakarta.mail.Session;
 import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
-
 import java.util.Properties;
 
 /**
@@ -25,31 +18,36 @@ import java.util.Properties;
  * @author Asus
  */
 public class EmailSender {
-    public static void sendEmail(String toEmail, String subject, String body) throws MessagingException {
+    public static boolean sendEmail(String toEmail, String subject, String body) {
+        try {
+            final String fromEmail = ""; // your email
+            final String appPassword = ""; // Gmail App Password ONLY (App Password)
 
-        final String fromEmail = "ganeshmahato1412@gmail.com"; // your email
-        final String appPassword = ""; // Gmail App Password ONLY
+            Properties props = new Properties();
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");   // TLS
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.port", "587");
 
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");   // TLS
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
+            Session session = Session.getInstance(props, new jakarta.mail.Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(fromEmail, appPassword);
+                }
+            });
 
-        Session session = Session.getInstance(props, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(fromEmail, appPassword);
-            }
-        });
+            Message msg = new MimeMessage(session);
+            msg.setFrom(new InternetAddress(fromEmail));
+            msg.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            msg.setSubject(subject);
+            msg.setText(body);
 
-        Message msg = new MimeMessage(session);
-        msg.setFrom(new InternetAddress(fromEmail));
-        msg.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-        msg.setSubject(subject);
-        msg.setText(body);
-
-        Transport.send(msg);
-        System.out.println("Email Sent Successfully!");
+            Transport.send(msg);
+            System.out.println("Email Sent Successfully!");
+            return true;
+        } catch (MessagingException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 }

@@ -19,6 +19,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -36,7 +37,7 @@ public class Login extends javax.swing.JFrame {
         email = new javax.swing.JLabel();
         emailfield = new javax.swing.JTextField();
         password = new javax.swing.JLabel();
-        passwordfield = new javax.swing.JTextField();
+        passwordfield = new javax.swing.JPasswordField();
         signin = new javax.swing.JButton();
         forgotpassword = new javax.swing.JButton();
         registerhere = new javax.swing.JButton();
@@ -47,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        panel.setBackground(new java.awt.Color(255, 255, 255));
+        panel.setBackground(javax.swing.UIManager.getDefaults().getColor("Panel.background"));
         panel.setPreferredSize(new java.awt.Dimension(1197, 664));
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -55,7 +56,7 @@ public class Login extends javax.swing.JFrame {
         title.setText("NEPAL RESTAURANT MANAGEMENT SYSTEM");
         panel.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 570, 80));
 
-        body.setBackground(new java.awt.Color(255, 255, 255));
+        body.setBackground(javax.swing.UIManager.getDefaults().getColor("Panel.background"));
         body.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         email.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -141,11 +142,13 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_emailfieldActionPerformed
 
     private void forgotpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotpasswordActionPerformed
-        // TODO add your handling code here:
+        new ResetPassword().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_forgotpasswordActionPerformed
 
     private void registerhereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerhereActionPerformed
-        // TODO add your handling code here:
+        new Registration().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_registerhereActionPerformed
 
     /**
@@ -182,7 +185,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel panel;
     private javax.swing.JLabel password;
-    private javax.swing.JTextField passwordfield;
+    private javax.swing.JPasswordField passwordfield;
     private javax.swing.JButton registerhere;
     private javax.swing.JButton signin;
     private javax.swing.JLabel title;
@@ -197,5 +200,13 @@ public class Login extends javax.swing.JFrame {
     }
     public javax.swing.JTextField getEmailText(){
         return emailfield;
+    }
+
+    // Optional hooks to match controller usage
+    public void AddRegisterListner(ActionListener listener){
+        registerhere.addActionListener(listener);
+    }
+    public void AddForgotPasswordListener(ActionListener listener){
+        forgotpassword.addActionListener(listener);
     }
 }

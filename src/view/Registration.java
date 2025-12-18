@@ -48,6 +48,7 @@ public class Registration extends javax.swing.JFrame {
         fullname = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
+        jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -92,6 +93,7 @@ public class Registration extends javax.swing.JFrame {
         register.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
         register.setForeground(new java.awt.Color(255, 255, 255));
         register.setText("Create Account");
+        register.addActionListener(this::jButton1ActionPerformed);
 
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 15)); // NOI18N
         jLabel7.setText("Already Have An Account? ");
@@ -129,11 +131,12 @@ public class Registration extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(register, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(register, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -225,7 +228,7 @@ public class Registration extends javax.swing.JFrame {
     }//GEN-LAST:event_agreeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // register button action handler (mapped by .form)
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -263,6 +266,7 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JPasswordField confirmpassword;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fullname;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
