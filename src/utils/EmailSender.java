@@ -4,9 +4,7 @@
  */
 package utils;
 
-import com.mysql.cj.Session;
-import com.mysql.cj.protocol.Message;
-import com.sun.jdi.connect.Transport;
+
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -15,8 +13,6 @@ import jakarta.mail.Session;
 import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-import java.net.Authenticator;
-import java.util.Properties;
 
 import java.util.Properties;
 
@@ -25,7 +21,7 @@ import java.util.Properties;
  * @author Asus
  */
 public class EmailSender {
-    public static void sendEmail(String toEmail, String subject, String body) throws MessagingException {
+    public static boolean sendEmail(String toEmail, String subject, String body) throws MessagingException {
 
         final String fromEmail = "ganeshmahato1412@gmail.com"; 
         final String appPassword = "kxgdotlszodxhrhd"; 
@@ -51,4 +47,6 @@ public class EmailSender {
 
         Transport.send(msg);
         System.out.println("Email Sent Successfully!");
-    }
+        return false;
+  }
+}
