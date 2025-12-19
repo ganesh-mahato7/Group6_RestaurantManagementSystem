@@ -33,6 +33,8 @@ import javax.swing.JOptionPane;
 public class OrderPage extends javax.swing.JFrame {
 
     private javax.swing.JCheckBox[] checkBoxes;
+    private javax.swing.JTextField[] textFields;
+    private javax.swing.JLabel[] labels;
     private DefaultTableModel model;
 
     String emailOfUser, phoneNUmberOfUser, addressOfUser;
@@ -63,8 +65,9 @@ public class OrderPage extends javax.swing.JFrame {
 
     private void initCheckBoxes() {
 
-        CheckBoxes = new JCheckBox[]{
-            item1, item2, item3, item4, item5, item6, item7, item8, item9, item10,
+        checkBoxes = new JCheckBox[]{
+            // Breakfast group (no item4, item6, item9 defined in UI)
+            item1, item2, item3, /*item4,*/ item5, /*item6,*/ item7, item8, /*item9,*/ item10,
             item11, item12, item13, item14, item15, item16, item17, item18, item19, item20,
             item21, item22, item23, item24, item25, item26, item27, item28, item29, item30,
             item31, item32, item33, item34, item35, item36, item37, item38, item39, item40,
@@ -73,8 +76,9 @@ public class OrderPage extends javax.swing.JFrame {
     }
 
     private void initTextFields() {
-        TextFields = new JTextField[]{
-            text1, text2, text3, text4, text5, text6, text7, text8, text9, text10,
+        textFields = new JTextField[]{
+            // Breakfast group (matching missing checkBoxes)
+            text1, text2, text3, /*text4,*/ text5, /*text6,*/ text7, text8, /*text9,*/ text10,
             text11, text12, text13, text14, text15, text16, text17, text18, text19, text20,
             text21, text22, text23, text24, text25, text26, text27, text28, text29, text30,
             text31, text32, text33, text34, text35, text36, text37, text38, text39, text40,
@@ -83,8 +87,9 @@ public class OrderPage extends javax.swing.JFrame {
     }
 
     private void initLabels() {
-        Labels = new JLabel[]{
-            value1, value2, value3, value4, value5, value6, value7, value8, value9, value10,
+        labels = new JLabel[]{
+            // Breakfast group (matching missing checkBoxes)
+            value1, value2, value3, /*value4,*/ value5, /*value6,*/ value7, value8, /*value9,*/ value10,
             value11, value12, value13, value14, value15, value16, value17, value18, value19, value20,
             value21, value22, value23, value24, value25, value26, value27, value28, value29, value30,
             value31, value32, value33, value34, value35, value36, value37, value38, value39, value40,
@@ -1506,13 +1511,24 @@ public class OrderPage extends javax.swing.JFrame {
 
         model = (DefaultTableModel) jTable1.getModel();
 
-        for (int i = 0; i < CheckBoxes.length; i++) {
-            JCheckBox check = CheckBoxes[i];
-            JLabel label = Labels[i];
-            JTextField text = TextFields[i];
+        for (int i = 0; i < checkBoxes.length; i++) {
+            JCheckBox check = checkBoxes[i];
+            JLabel label = labels[i];
+            JTextField text = textFields[i];
             if (check.isSelected()) {
+                String qtyText = text.getText() == null ? "" : text.getText().trim();
+                if (qtyText.isEmpty()) {
+                    // skip items without a quantity to avoid NumberFormatException
+                    continue;
+                }
+                int quantity;
+                try {
+                    quantity = Integer.parseInt(qtyText);
+                } catch (NumberFormatException ex) {
+                    // ignore invalid numeric input
+                    continue;
+                }
                 Vector v = new Vector();
-                int quantity = Integer.parseInt(text.getText());
                 int price = stringToInteger(label.getText());
 
                 v.add(check.getText());
@@ -1842,9 +1858,7 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JLabel value8;
     // End of variables declaration//GEN-END:variables
 
-    private javax.swing.JCheckBox[] CheckBoxes;
-    private javax.swing.JTextField[] TextFields;
-    private javax.swing.JLabel[] Labels;
+    // unified, consistently-cased arrays used across methods
     private Set<String> hash_Set = new HashSet<String>();
 
 }
