@@ -33,77 +33,77 @@ public class Registration extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
+        register_main = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        confirmpassword = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        confirm_password_field = new javax.swing.JPasswordField();
+        full_name = new javax.swing.JLabel();
+        email_field = new javax.swing.JLabel();
+        confirm_password_text = new javax.swing.JLabel();
+        password_field = new javax.swing.JLabel();
+        select_role_field = new javax.swing.JLabel();
         selectrole = new javax.swing.JComboBox<>();
-        agree = new javax.swing.JCheckBox();
-        register = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        agree_terms = new javax.swing.JCheckBox();
+        register_btn = new javax.swing.JButton();
+        already_text = new javax.swing.JLabel();
         fullname = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
-        jButton2 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        login_button = new javax.swing.JButton();
+        create_new_account_text = new javax.swing.JLabel();
+        logo_image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(720, 1280));
 
-        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 179, 71));
-        jLabel1.setText("Register And Join With Us To Explore!");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        register_main.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 36)); // NOI18N
+        register_main.setForeground(new java.awt.Color(255, 179, 71));
+        register_main.setText("Register And Join With Us To Explore!");
+        register_main.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(201, 176, 55))); // NOI18N
 
-        confirmpassword.addActionListener(this::confirmpasswordActionPerformed);
+        confirm_password_field.addActionListener(this::confirm_password_fieldActionPerformed);
 
-        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
-        jLabel2.setText("Full Name");
+        full_name.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
+        full_name.setText("Full Name");
 
-        jLabel3.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
-        jLabel3.setText("Email");
+        email_field.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
+        email_field.setText("Email");
 
-        jLabel4.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
-        jLabel4.setText("Confirm Password");
+        confirm_password_text.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
+        confirm_password_text.setText("Confirm Password");
 
-        jLabel5.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
-        jLabel5.setText("Password");
+        password_field.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
+        password_field.setText("Password");
 
-        jLabel6.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
-        jLabel6.setText("Select Role");
+        select_role_field.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
+        select_role_field.setText("Select Role");
 
-        selectrole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Waiter", "Scrum Master", "Ganne ka Juice" }));
+        selectrole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Waiter", "Scrum Master" }));
         selectrole.setAutoscrolls(true);
         selectrole.addActionListener(this::selectroleActionPerformed);
 
-        agree.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 15)); // NOI18N
-        agree.setText("I agree with the Terms and Conditions");
-        agree.addActionListener(this::agreeActionPerformed);
+        agree_terms.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 15)); // NOI18N
+        agree_terms.setText("I agree with the Terms and Conditions");
+        agree_terms.addActionListener(this::agree_termsActionPerformed);
 
-        register.setBackground(new java.awt.Color(139, 0, 0));
-        register.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
-        register.setForeground(new java.awt.Color(255, 255, 255));
-        register.setText("Create Account");
-        register.addActionListener(this::jButton1ActionPerformed);
+        register_btn.setBackground(new java.awt.Color(139, 0, 0));
+        register_btn.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
+        register_btn.setForeground(new java.awt.Color(255, 255, 255));
+        register_btn.setText("Create Account");
+        register_btn.addActionListener(this::jButton1ActionPerformed);
 
-        jLabel7.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 15)); // NOI18N
-        jLabel7.setText("Already Have An Account? ");
+        already_text.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 15)); // NOI18N
+        already_text.setText("Already Have An Account? ");
 
         password.setText("jPasswordField2");
 
-        jButton2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 204, 51));
-        jButton2.setText("Log in Here");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        login_button.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        login_button.setForeground(new java.awt.Color(255, 204, 51));
+        login_button.setText("Log in Here");
+        login_button.addActionListener(this::login_buttonActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,67 +116,67 @@ public class Registration extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel4)
+                                .addComponent(password_field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(full_name, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(confirm_password_text)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(selectrole, javax.swing.GroupLayout.Alignment.LEADING, 0, 325, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(email_field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(select_role_field, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(password, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(confirmpassword, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(confirm_password_field, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(fullname, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(agree, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(agree_terms, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(register, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(register_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel7)
+                                .addComponent(already_text)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)))
+                                .addComponent(login_button)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLabel2)
+                .addComponent(full_name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fullname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(email_field)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(password_field)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(jLabel4)
+                .addComponent(confirm_password_text)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(confirmpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(confirm_password_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(select_role_field)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectrole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(agree, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(agree_terms, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(register)
+                .addComponent(register_btn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jButton2))
+                    .addComponent(already_text)
+                    .addComponent(login_button))
                 .addContainerGap())
         );
 
-        jLabel8.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
-        jLabel8.setText("Create New Account");
+        create_new_account_text.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        create_new_account_text.setText("Create New Account");
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        logo_image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,13 +184,13 @@ public class Registration extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel9)
+                .addComponent(logo_image)
                 .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(register_main, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(220, 220, 220)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(create_new_account_text, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(180, 180, 180)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -202,10 +202,10 @@ public class Registration extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(register_main, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel9))
+                        .addComponent(create_new_account_text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logo_image))
                 .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(643, Short.MAX_VALUE))
@@ -215,25 +215,25 @@ public class Registration extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void confirmpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmpasswordActionPerformed
+    private void confirm_password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_password_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_confirmpasswordActionPerformed
+    }//GEN-LAST:event_confirm_password_fieldActionPerformed
 
     private void selectroleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectroleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_selectroleActionPerformed
 
-    private void agreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agreeActionPerformed
+    private void agree_termsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agree_termsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_agreeActionPerformed
+    }//GEN-LAST:event_agree_termsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // register button action handler (mapped by .form)
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void login_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_login_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,28 +261,28 @@ public class Registration extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox agree;
+    private javax.swing.JCheckBox agree_terms;
+    private javax.swing.JLabel already_text;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JPasswordField confirmpassword;
+    private javax.swing.JPasswordField confirm_password_field;
+    private javax.swing.JLabel confirm_password_text;
+    private javax.swing.JLabel create_new_account_text;
     private javax.swing.JTextField email;
+    private javax.swing.JLabel email_field;
+    private javax.swing.JLabel full_name;
     private javax.swing.JTextField fullname;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton login_button;
+    private javax.swing.JLabel logo_image;
     private javax.swing.JPasswordField password;
-    private javax.swing.JButton register;
+    private javax.swing.JLabel password_field;
+    private javax.swing.JButton register_btn;
+    private javax.swing.JLabel register_main;
+    private javax.swing.JLabel select_role_field;
     private javax.swing.JComboBox<String> selectrole;
     // End of variables declaration//GEN-END:variables
     public void AddRegistrationListner(ActionListener listener){
-        register.addActionListener(listener);
+        register_btn.addActionListener(listener);
         
     }
     public javax.swing.JPasswordField getPasswordText(){
