@@ -47,6 +47,9 @@ public class OwnerOnly extends javax.swing.JFrame {
         incomeButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ownerPanel = new javax.swing.JPanel();
+        incomePanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         staffPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -64,9 +67,6 @@ public class OwnerOnly extends javax.swing.JFrame {
         addStaff = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         salary = new javax.swing.JTextField();
-        incomePanel = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Owner");
@@ -116,6 +116,58 @@ public class OwnerOnly extends javax.swing.JFrame {
         jSplitPane1.setLeftComponent(jPanel2);
 
         ownerPanel.setLayout(new java.awt.CardLayout());
+
+        jTable2.setFont(new java.awt.Font("Ink Free", 0, 11)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Email", "Phone No", "Address", "Joining Date"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+            jTable2.getColumnModel().getColumn(3).setResizable(false);
+            jTable2.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        javax.swing.GroupLayout incomePanelLayout = new javax.swing.GroupLayout(incomePanel);
+        incomePanel.setLayout(incomePanelLayout);
+        incomePanelLayout.setHorizontalGroup(
+            incomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(incomePanelLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        incomePanelLayout.setVerticalGroup(
+            incomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(incomePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(229, Short.MAX_VALUE))
+        );
+
+        ownerPanel.add(incomePanel, "card2");
 
         jTable1.setFont(new java.awt.Font("Ink Free", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -221,7 +273,7 @@ public class OwnerOnly extends javax.swing.JFrame {
                     .addGroup(staffPanelLayout.createSequentialGroup()
                         .addGap(241, 241, 241)
                         .addComponent(addStaff)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         staffPanelLayout.setVerticalGroup(
             staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,7 +308,7 @@ public class OwnerOnly extends javax.swing.JFrame {
                                 .addGroup(staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel7)
                                     .addComponent(salary, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 35, Short.MAX_VALUE))
+                        .addGap(0, 100, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, staffPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addStaff)))
@@ -264,58 +316,6 @@ public class OwnerOnly extends javax.swing.JFrame {
         );
 
         ownerPanel.add(staffPanel, "card2");
-
-        jTable2.setFont(new java.awt.Font("Ink Free", 0, 11)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Name", "Email", "Phone No", "Address", "Joining Date"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setResizable(false);
-            jTable2.getColumnModel().getColumn(1).setResizable(false);
-            jTable2.getColumnModel().getColumn(2).setResizable(false);
-            jTable2.getColumnModel().getColumn(3).setResizable(false);
-            jTable2.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-        javax.swing.GroupLayout incomePanelLayout = new javax.swing.GroupLayout(incomePanel);
-        incomePanel.setLayout(incomePanelLayout);
-        incomePanelLayout.setHorizontalGroup(
-            incomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(incomePanelLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        incomePanelLayout.setVerticalGroup(
-            incomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(incomePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(229, Short.MAX_VALUE))
-        );
-
-        ownerPanel.add(incomePanel, "card2");
 
         jScrollPane1.setViewportView(ownerPanel);
 

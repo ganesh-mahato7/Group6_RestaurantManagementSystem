@@ -11,7 +11,6 @@
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/database/Database.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/group6_restaurantmanagementsystem/Group6_RestaurantManagementSystem.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/loginDao.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Registration.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/OTPStore.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/userdata.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/controller/LoginController.java</file>
@@ -19,6 +18,14 @@
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Login.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Dashboard.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/DatabaseData.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/MainPageForAuthority.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/NewPassword.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/OrderPage.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/OwnerOnly.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/SignIN.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/ResturantManagement.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/SignUpFrom.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/StafDetails.java</file>
         </group>
     </open-files>
 </project-private>
