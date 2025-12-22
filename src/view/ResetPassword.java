@@ -19,6 +19,12 @@ public class ResetPassword extends javax.swing.JFrame {
     /**
      * Creates new form ResetPassword
      */
+    
+        public ResetPassword(String email) {
+        initComponents();
+        setLocationRelativeTo(null);
+    }
+    
     public ResetPassword() {
         initComponents();
         setLocationRelativeTo(null);
