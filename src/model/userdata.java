@@ -12,6 +12,7 @@ public class userdata {
     private int user_id;
     private String password;
     private String email;
+    private String Username;
     
     public userdata( String email, String password){
         this.email = email;
@@ -35,6 +36,12 @@ public class userdata {
     }
     public int user_id(){
         return user_id;
+    }
+    public void setUsername(String Username){
+        this.Username = Username;
+    }
+    public String getUsername(){
+        return Username;
     }
 }
 

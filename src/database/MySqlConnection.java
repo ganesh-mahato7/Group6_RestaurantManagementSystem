@@ -74,24 +74,4 @@ public class MySqlConnection implements Database{
             return -1;
         }
     }
-<<<<<<< HEAD
-
-    @Override
-    public void closeCoonection(Connection conn) {
-try{
-            if(conn != null && !conn.isClosed()){
-                conn.close();
-            }
-           
-        }catch(SQLException e){
-            System.out.println(e);
-        }    }
-
-    public void closeConnection(Connection conn) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-=======
->>>>>>> fd9551270dcb11fc5455b89d5f8611dbd36cb1c5
-    
 }
