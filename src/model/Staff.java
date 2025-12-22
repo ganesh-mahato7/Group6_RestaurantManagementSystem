@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
+
 import java.sql.Date;
 
-/**
- *
- * @author Bidhya
- */
 public class Staff {
-     private int id;
+    private int id;
     private String staffCode;
     private String firstName;
     private String lastName;
@@ -22,12 +15,11 @@ public class Staff {
     private Date hireDate;
     private Date birthDate;
     private String gender;
-    private String status; // Active / Inactive
-    private int userId; // optional link to users table
+    private String status;
+    private int userId; 
 
     public Staff() {}
 
-    // Constructor for basic info
     public Staff(String staffCode, String firstName, String lastName, String email, String mobile,
                  String position, double salary) {
         this.staffCode = staffCode;
@@ -40,7 +32,7 @@ public class Staff {
         this.status = "Active";
     }
 
-    // ID getter and setter
+    // Getters and setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -83,8 +75,5 @@ public class Staff {
     public int getUserId() { return userId; }
     public void setUserId(int userId) { this.userId = userId; }
 
-    // Helper methods
-    public String getFullName() {
-        return firstName + " " + lastName;
-    }
+    public String getFullName() { return firstName + " " + lastName; }
 }
