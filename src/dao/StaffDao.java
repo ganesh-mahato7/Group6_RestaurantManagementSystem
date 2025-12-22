@@ -142,5 +142,18 @@ public class StaffDao {
             mysql.closeConnection(conn);
         }
     }
-    
+    public boolean deleteStaff(int id) {
+        String sql = "DELETE FROM staff WHERE id=?";
+        Connection conn = mysql.openConnection();
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println("Delete staff error: " + e.getMessage());
+            return false;
+        } finally {
+            mysql.closeConnection(conn);
+        }
+    }
 }
