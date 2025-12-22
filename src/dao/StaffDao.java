@@ -113,7 +113,34 @@ public class StaffDao {
         }
         return null;
     }
-    
+     
+     public boolean updateStaff(Staff staff) {
+        String sql = "UPDATE staff SET staff_code=?, first_name=?, last_name=?, email=?, mobile=?, address=?, position=?, salary=?, hire_date=?, birth_date=?, gender=?, status=?, user_id=? WHERE id=?";
+        Connection conn = mysql.openConnection();
 
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, staff.getStaffCode());
+            ps.setString(2, staff.getFirstName());
+            ps.setString(3, staff.getLastName());
+            ps.setString(4, staff.getEmail());
+            ps.setString(5, staff.getMobile());
+            ps.setString(6, staff.getAddress());
+            ps.setString(7, staff.getPosition());
+            ps.setDouble(8, staff.getSalary());
+            ps.setDate(9, staff.getHireDate());
+            ps.setDate(10, staff.getBirthDate());
+            ps.setString(11, staff.getGender());
+            ps.setString(12, staff.getStatus());
+            ps.setInt(13, staff.getUserId());
+            ps.setInt(14, staff.getId());
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println("Update staff error: " + e.getMessage());
+            return false;
+        } finally {
+            mysql.closeConnection(conn);
+        }
+    }
     
 }
