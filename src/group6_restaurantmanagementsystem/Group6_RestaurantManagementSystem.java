@@ -4,10 +4,10 @@
  */
 package group6_restaurantmanagementsystem;
 
-import javax.swing.JFrame;
-import view.OrderPage;
-import view.SignIN;
-
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import controller.LoginController;
+import view.Login;
 
 /**
  *
@@ -19,28 +19,28 @@ public class Group6_RestaurantManagementSystem {
      * @param args the command line arguments
      */
        public static void main(String[] args) {
-        // TODO code application logic here
-            try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+        // Set the Nimbus look and feel
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException |
+                 IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            ex.printStackTrace();
+            // Continue with default look and feel if Nimbus is unavailable
         }
-        SignIN frame = new SignIN();
-        frame.setTitle("Resturant Management System");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        
+
+        // Create the Login view
+        Login loginView = new Login();
+
+        // Create the LoginController and pass the view
+        LoginController loginController = new LoginController(loginView);
+
+        // Open the login window
+        loginController.open();
     }
     
 }
