@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import model.userdata;
 import view.Login;
 import view.Registration;
+import view.ResetPassword;
 
 /**
  *
@@ -62,7 +63,7 @@ public class LoginController {
         @Override
         public void actionPerformed(ActionEvent e) {
             Registration registration = new Registration();
-            RegisterController signUpController = new RegisterController(signUpView);
+            RegistrationController signUpController = new RegistrationController(registration);
 
             close();
             signUpController.open();
@@ -79,7 +80,7 @@ public class LoginController {
                 return;
             }
 
-            Reset_Password resetView = new Reset_Password(email);
+            ResetPassword resetView = new ResetPassword(email);
             resetView.setVisible(true);
         }
     }
