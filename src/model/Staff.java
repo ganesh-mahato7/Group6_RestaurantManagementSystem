@@ -23,4 +23,16 @@ public class Staff {
     private String gender;
     private String status; 
     private int userId; 
+    public Staff() {}
+    
+    public Staff(String firstName, String lastName, String email, String phone, 
+                String position, double salary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.position = position;
+        this.salary = salary;
+        this.status = "Active";
+    }
 }
