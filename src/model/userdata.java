@@ -10,6 +10,8 @@ public class userdata {
     private String password;
     private String email;
     private String role;
+    private String mobileNumber; 
+    private String fullName;    
     
     public userdata() {
         // Default constructor
@@ -32,7 +34,15 @@ public class userdata {
         this.password = password;
         this.role = role;
     }
-    
+    public userdata(String username, String fullName, String email, String password, String role, String mobileNumber){
+        this.username = username;
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.mobileNumber = mobileNumber;
+    }
+
     // ID getter and setter
     public int getId() {
         return id;
@@ -77,6 +87,13 @@ public class userdata {
     public void setRole(String role) {
         this.role = role;
     }
+    // Full name getter and setter
+    public String getFullName() { return fullName; }
+    public void setFullName(String fullName) { this.fullName = fullName; }
+
+    // Mobile number getter and setter
+    public String getMobileNumber() { return mobileNumber; }
+    public void setMobileNumber(String mobileNumber) { this.mobileNumber = mobileNumber; }
     
     // Deprecated - use getId() instead
     @Deprecated
