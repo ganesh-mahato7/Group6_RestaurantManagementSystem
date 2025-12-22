@@ -6,6 +6,7 @@ nbproject/private/
 build/
 dist/
 out/
+build/classes/
 
 # Java class files
 *.class
