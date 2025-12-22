@@ -4,9 +4,13 @@
  */
 package view;
 
+import dao.PasswordResetDao;
+import dao.userDao;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
 import model.OTPStore;
-import utils.EmailSender;
+import utils.EmailService;
 
 /**
  *
@@ -138,46 +142,75 @@ public class ResetPassword extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
-        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "Are you sure you want to cancel password reset?", 
+            "Confirm Cancel", 
+            JOptionPane.YES_NO_OPTION);
+        
+        if(confirm == JOptionPane.YES_OPTION){
+            new Login().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_CancelActionPerformed
 
     private void btnSendCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendCodeActionPerformed
-
-        // TODO add your handling code here:
         String email = txtEmail.getText().trim();
 
-    if(email.isEmpty()){
-        JOptionPane.showMessageDialog(this, "Enter your email.");
-        return;
-    }
+        if(email.isEmpty() || email.equalsIgnoreCase("Email")){
+            JOptionPane.showMessageDialog(this, "Please enter your email address.");
+            return;
+        }
 
-    // STEP 1 — Generate 6-digit OTP
-    int otp = (int)(Math.random() * 900000) + 100000;
+        // Validate email format
+        if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email address.");
+            return;
+        }
 
-    // STEP 2 — Store OTP in database or temporary static variable
-    OTPStore.currentOTP = otp;
-    OTPStore.email = email;
+        try {
+            // Check if email exists in database
+            userDao userDao = new userDao();
+            if (!userDao.existsByEmail(email)) {
+                JOptionPane.showMessageDialog(this, "No account found with this email address.");
+                return;
+            }
 
-    // STEP 3 — Create reset link (for Swing app)
-    String resetLink = "http://localhost/reset?email=" + email;
+            // Generate 6-digit OTP
+            int otpCode = (int)(Math.random() * 900000) + 100000;
+            String otp = String.valueOf(otpCode);
 
-    // STEP 4 — Email content
-    String message = "Your OTP is: " + otp 
-            + "\nReset your password here: " + resetLink;
+            // Store OTP in both OTPStore (for backward compatibility) and database
+            OTPStore.currentOTP = otpCode;
+            OTPStore.email = email;
 
-    // STEP 5 — Send email
-    boolean status = EmailSender.sendEmail(email, 
-                    "Password Reset Code", 
-                    message);
+            // Save to database with expiration
+            PasswordResetDao resetDao = new PasswordResetDao();
+            Instant expiresAt = Instant.now().plus(10, ChronoUnit.MINUTES);
+            boolean saved = resetDao.createToken(email, otp, expiresAt);
 
-    if(status){
-        JOptionPane.showMessageDialog(this, "OTP sent to your email!");
-        new Verification().setVisible(true);
-        this.dispose();
-    } else {
-        JOptionPane.showMessageDialog(this, "Failed to send email.");
-    }
-        // TODO add your handling code here:
+            if (!saved) {
+                JOptionPane.showMessageDialog(this, "Could not initiate password reset. Please try again.");
+                return;
+            }
+
+            // Send OTP via email
+            boolean sent = EmailService.sendOTPEmail(email, otp);
+
+            if(sent){
+                JOptionPane.showMessageDialog(this, "OTP sent to your email! Please check your inbox.");
+                new Verification().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to send email. Please check your email configuration.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error sending OTP: " + e.getMessage());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, 
+                "An error occurred: " + e.getMessage(), 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSendCodeActionPerformed
 
     /**

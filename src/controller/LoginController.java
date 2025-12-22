@@ -4,7 +4,7 @@
  */
 package controller;
 
-import DAO.loginDao;
+import dao.loginDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -63,16 +63,21 @@ public class LoginController {
         @Override
         public void actionPerformed(ActionEvent e) {
             Registration registration = new Registration();
+<<<<<<< Updated upstream
             RegistrationController signUpController = new RegistrationController(registration);
+=======
+            RegistrationController registrationController = new RegistrationController(registration);
+>>>>>>> Stashed changes
 
             close();
-            signUpController.open();
+            registrationController.open();
         }
     }
 
     class ForgotPasswordListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+<<<<<<< Updated upstream
             String email = login.getEmailText().getText().trim();
 
             if (email.isEmpty()) {
@@ -82,6 +87,11 @@ public class LoginController {
 
             ResetPassword resetView = new ResetPassword(email);
             resetView.setVisible(true);
+=======
+            view.ResetPassword resetPasswordView = new view.ResetPassword();
+            resetPasswordView.setVisible(true);
+            close();
+>>>>>>> Stashed changes
         }
     }
 }

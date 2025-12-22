@@ -74,4 +74,13 @@ public class MySqlConnection implements Database{
             return -1;
         }
     }
+<<<<<<< Updated upstream
+=======
+    
+    // Alias for backward compatibility with PasswordResetDao
+    public Connection openconnection() {
+        return openConnection();
+    }
+    
+>>>>>>> Stashed changes
 }

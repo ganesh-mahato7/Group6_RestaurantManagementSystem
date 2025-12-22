@@ -73,4 +73,44 @@ public class userDao {
             mysql.closeConnection(conn);
         }
     }
+
+    // CHECK IF EMAIL EXISTS
+    public boolean existsByEmail(String email) {
+        Connection conn = mysql.openConnection();
+        String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
+        
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+            pstm.setString(1, email);
+            ResultSet result = pstm.executeQuery();
+            if (result.next()) {
+                return result.getInt(1) > 0;
+            }
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+        } 
+        finally {
+            mysql.closeConnection(conn);
+        }
+        return false;
+    }
+
+    // UPDATE PASSWORD BY EMAIL (for password recovery)
+    public boolean updatePasswordByEmail(String email, String newPassword) {
+        Connection conn = mysql.openConnection();
+        String sql = "UPDATE users SET password=? WHERE email=?";
+
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setString(1, newPassword);
+            pst.setString(2, email);
+            return pst.executeUpdate() > 0;
+        } 
+        catch (SQLException e) {
+            System.out.println(e);
+            return false;
+        }
+        finally {
+            mysql.closeConnection(conn);
+        }
+    }
 }

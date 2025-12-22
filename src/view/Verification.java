@@ -4,6 +4,7 @@
  */
 package view;
 
+import dao.PasswordResetDao;
 import javax.swing.JOptionPane;
 import model.OTPStore;
 
@@ -119,16 +120,60 @@ public class Verification extends javax.swing.JFrame {
     }//GEN-LAST:event_txtOTPActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
-        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "Are you sure you want to cancel password reset?", 
+            "Confirm Cancel", 
+            JOptionPane.YES_NO_OPTION);
+        
+        if(confirm == JOptionPane.YES_OPTION){
+            // Clear OTP
+            OTPStore.clearOTP(OTPStore.email);
+            OTPStore.currentOTP = 0;
+            OTPStore.email = null;
+            
+            new Login().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_CancelActionPerformed
 
     private void btnVerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyActionPerformed
-    if(Integer.parseInt(txtOTP.getText()) == OTPStore.currentOTP){
-        new ResetPassword().setVisible(true);
-        this.dispose();
-    } else {
-        JOptionPane.showMessageDialog(null, "Invalid OTP!");
-    }    }//GEN-LAST:event_btnVerifyActionPerformed
+        String otpInput = txtOTP.getText().trim();
+        
+        if(otpInput.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please enter the OTP code.");
+            return;
+        }
+        
+        try {
+            // Try to verify using database first
+            PasswordResetDao resetDao = new PasswordResetDao();
+            boolean verified = resetDao.verifyToken(OTPStore.email, otpInput);
+            
+            if(verified){
+                // OTP is valid, proceed to new password screen
+                new NewPassword().setVisible(true);
+                this.dispose();
+                return;
+            }
+            
+            // Fallback to OTPStore verification for backward compatibility
+            if(Integer.parseInt(otpInput) == OTPStore.currentOTP){
+                new NewPassword().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid or expired OTP! Please try again.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid numeric OTP.");
+        } catch (Exception e) {
+            System.err.println("Error verifying OTP: " + e.getMessage());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, 
+                "An error occurred during verification: " + e.getMessage(), 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnVerifyActionPerformed
 
     /**
      * @param args the command line arguments

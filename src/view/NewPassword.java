@@ -5,6 +5,11 @@
 
 package view;
 
+import dao.userDao;
+import javax.swing.JOptionPane;
+import model.OTPStore;
+import utils.PasswordService;
+
 /**
  *
  * @author Asus
@@ -16,6 +21,13 @@ public class NewPassword extends javax.swing.JFrame {
     /** Creates new form NewPassword */
     public NewPassword() {
         initComponents();
+        if (OTPStore.email == null || OTPStore.email.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Session expired. Please restart password reset.");
+            new ResetPassword().setVisible(true);
+            this.dispose();
+            return;
+        }
+        setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -27,21 +39,146 @@ public class NewPassword extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        btnResetPassword = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jLabel1.setText("New Password:");
+
+        jLabel2.setText("Confirm Password:");
+
+        jTextField1.setText("");
+
+        jTextField2.setText("");
+        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+
+        btnResetPassword.setText("Reset Password");
+        btnResetPassword.addActionListener(this::btnResetPasswordActionPerformed);
+
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(this::btnCancelActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnResetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPasswordActionPerformed
+        String newPassword = jTextField1.getText().trim();
+        String confirmPassword = jTextField2.getText().trim();
+        
+        // Validation
+        if(newPassword.isEmpty() || confirmPassword.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+            return;
+        }
+        
+        if(newPassword.length() < 6){
+            JOptionPane.showMessageDialog(this, "Password must be at least 6 characters long.");
+            return;
+        }
+        
+        if(!newPassword.equals(confirmPassword)){
+            JOptionPane.showMessageDialog(this, "Passwords do not match!");
+            return;
+        }
+        
+        try {
+            // Hash the password before storing
+            String hashedPassword = PasswordService.hashPassword(newPassword);
+            
+            // Update password in database
+            userDao userDao = new userDao();
+            boolean updated = userDao.updatePasswordByEmail(OTPStore.email, hashedPassword);
+            
+            if(updated){
+                JOptionPane.showMessageDialog(this, "Password reset successfully! You can now login with your new password.");
+                
+                // Clear OTP store
+                OTPStore.clearOTP(OTPStore.email);
+                OTPStore.currentOTP = 0;
+                OTPStore.email = null;
+                
+                // Navigate to login
+                new Login().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to reset password. Please try again.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error resetting password: " + e.getMessage());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, 
+                "An error occurred: " + e.getMessage(), 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnResetPasswordActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "Are you sure you want to cancel password reset?", 
+            "Confirm Cancel", 
+            JOptionPane.YES_NO_OPTION);
+        
+        if(confirm == JOptionPane.YES_OPTION){
+            // Clear any stored OTP/session state
+            if (OTPStore.email != null) {
+                OTPStore.clearOTP(OTPStore.email);
+            }
+            OTPStore.currentOTP = 0;
+            OTPStore.email = null;
+            new Login().setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -69,6 +206,12 @@ public class NewPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnResetPassword;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
 }
