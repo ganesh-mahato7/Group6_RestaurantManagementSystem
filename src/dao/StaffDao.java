@@ -81,6 +81,38 @@ public class StaffDao {
         }
         return staffList;
     }
+     public Staff getStaffById(int id) {
+        String sql = "SELECT * FROM staff WHERE id=?";
+        Connection conn = mysql.openConnection();
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Staff staff = new Staff();
+                staff.setId(rs.getInt("id"));
+                staff.setStaffCode(rs.getString("staff_code"));
+                staff.setFirstName(rs.getString("first_name"));
+                staff.setLastName(rs.getString("last_name"));
+                staff.setEmail(rs.getString("email"));
+                staff.setMobile(rs.getString("mobile"));
+                staff.setAddress(rs.getString("address"));
+                staff.setPosition(rs.getString("position"));
+                staff.setSalary(rs.getDouble("salary"));
+                staff.setHireDate(rs.getDate("hire_date"));
+                staff.setBirthDate(rs.getDate("birth_date"));
+                staff.setGender(rs.getString("gender"));
+                staff.setStatus(rs.getString("status"));
+                staff.setUserId(rs.getInt("user_id"));
+                return staff;
+            }
+        } catch (SQLException e) {
+            System.out.println("Get staff by ID error: " + e.getMessage());
+        } finally {
+            mysql.closeConnection(conn);
+        }
+        return null;
+    }
     
 
     
