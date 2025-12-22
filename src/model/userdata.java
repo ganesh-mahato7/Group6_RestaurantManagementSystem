@@ -11,7 +11,11 @@ public class userdata {
     private String email;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     private String Username;
+=======
+    private String role;
+>>>>>>> Stashed changes
 =======
     private String role;
 >>>>>>> Stashed changes
@@ -91,6 +95,7 @@ public class userdata {
     public int user_id(){
         return id;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     }
 <<<<<<< Updated upstream
     public void setUsername(String Username){
@@ -105,6 +110,9 @@ public class userdata {
 =======
     }
 >>>>>>> Stashed changes
+=======
+    }
+>>>>>>> Stashed changes
     
     // Deprecated - use setId() instead
     @Deprecated
@@ -112,6 +120,10 @@ public class userdata {
         this.id = user_id;
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes
 =======
