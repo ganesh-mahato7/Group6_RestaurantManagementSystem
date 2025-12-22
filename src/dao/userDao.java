@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAO;
+package dao;
 
 import database.MySqlConnection;
 import model.userdata;
 import java.sql.*;
 
-public class UserDAO {
+public class userDao {
 
     MySqlConnection mysql = new MySqlConnection();
 
