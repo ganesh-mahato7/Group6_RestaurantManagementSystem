@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -10,10 +11,16 @@ package controller;
 
 import dao.userDao;
 >>>>>>> Stashed changes
+=======
+package controller;
+
+import dao.userDao;
+>>>>>>> Stashed changes
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.userdata;
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 import view.Registration;
 import view.Login;
@@ -90,6 +97,8 @@ public class RegistrationController {
     }
  
 =======
+=======
+>>>>>>> Stashed changes
 import utils.PasswordService;
 import view.Login;
 import view.Registration;
@@ -183,5 +192,8 @@ public class RegistrationController {
         return true;
     }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

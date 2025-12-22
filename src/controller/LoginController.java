@@ -64,7 +64,11 @@ public class LoginController {
         public void actionPerformed(ActionEvent e) {
             Registration registration = new Registration();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             RegistrationController signUpController = new RegistrationController(registration);
+=======
+            RegistrationController registrationController = new RegistrationController(registration);
+>>>>>>> Stashed changes
 =======
             RegistrationController registrationController = new RegistrationController(registration);
 >>>>>>> Stashed changes
@@ -78,6 +82,7 @@ public class LoginController {
         @Override
         public void actionPerformed(ActionEvent e) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             String email = login.getEmailText().getText().trim();
 
             if (email.isEmpty()) {
@@ -87,6 +92,11 @@ public class LoginController {
 
             ResetPassword resetView = new ResetPassword(email);
             resetView.setVisible(true);
+=======
+            view.ResetPassword resetPasswordView = new view.ResetPassword();
+            resetPasswordView.setVisible(true);
+            close();
+>>>>>>> Stashed changes
 =======
             view.ResetPassword resetPasswordView = new view.ResetPassword();
             resetPasswordView.setVisible(true);
