@@ -306,12 +306,6 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_signUpActionPerformed
 
-    private void __gotoOrderPage() {
-        dispose();
-        MainPageForAuthority order = new MainPageForAuthority();
-        order.setVisible(true);
-        order.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 
     private void login() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");

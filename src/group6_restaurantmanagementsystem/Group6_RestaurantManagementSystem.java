@@ -7,7 +7,7 @@ package group6_restaurantmanagementsystem;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import controller.LoginController;
-import view.SignIN;
+import view.Login;
 
 /**
  *
