@@ -9,19 +9,10 @@ public class userdata {
     private String username;
     private String password;
     private String email;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     private String Username;
-=======
+
     private String role;
->>>>>>> Stashed changes
-=======
-    private String role;
->>>>>>> Stashed changes
-=======
-    private String role;
->>>>>>> Stashed changes
+
     
     public userdata() {
         // Default constructor
@@ -94,38 +85,20 @@ public class userdata {
     @Deprecated
     public int user_id(){
         return id;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
     }
-<<<<<<< Updated upstream
-    public void setUsername(String Username){
-        this.Username = Username;
-    }
-    public String getUsername(){
-        return Username;
-    }
+
+    
 }
 
-=======
-=======
-    }
->>>>>>> Stashed changes
-=======
-    }
->>>>>>> Stashed changes
+
     
     // Deprecated - use setId() instead
     @Deprecated
     public void setUser_id(int user_id){
         this.id = user_id;
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-}
->>>>>>> Stashed changes
-=======
-}
->>>>>>> Stashed changes
-=======
-}
->>>>>>> Stashed changes
+
+
+
+
