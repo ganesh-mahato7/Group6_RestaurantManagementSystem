@@ -138,16 +138,24 @@ public class Verification extends javax.swing.JFrame {
 
     private void btnVerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyActionPerformed
         String otpInput = txtOTP.getText().trim();
+        String email = OTPStore.email;
         
         if(otpInput.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please enter the OTP code.");
+            return;
+        }
+
+        if (email == null || email.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Session expired. Please restart the password reset process.");
+            new ResetPassword().setVisible(true);
+            this.dispose();
             return;
         }
         
         try {
             // Try to verify using database first
             PasswordResetDao resetDao = new PasswordResetDao();
-            boolean verified = resetDao.verifyToken(OTPStore.email, otpInput);
+            boolean verified = resetDao.verifyToken(email, otpInput);
             
             if(verified){
                 // OTP is valid, proceed to new password screen
@@ -157,7 +165,7 @@ public class Verification extends javax.swing.JFrame {
             }
             
             // Fallback to OTPStore verification for backward compatibility
-            if(Integer.parseInt(otpInput) == OTPStore.currentOTP){
+            if(OTPStore.verifyOTP(email, otpInput)){
                 new NewPassword().setVisible(true);
                 this.dispose();
             } else {
