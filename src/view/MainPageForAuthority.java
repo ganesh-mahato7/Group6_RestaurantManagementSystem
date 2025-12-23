@@ -151,9 +151,7 @@ public class MainPageForAuthority extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Owner Id doesnot match", "Status", JOptionPane.INFORMATION_MESSAGE);
 
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MainPageForAuthority.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(MainPageForAuthority.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -167,26 +165,14 @@ public class MainPageForAuthority extends javax.swing.JFrame {
             stf.setVisible(true);
             stf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             stf.showDetails();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MainPageForAuthority.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(MainPageForAuthority.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_staffButtonActionPerformed
 
     private void homeDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeDeliveryActionPerformed
-        // TODO add your handling code here:
-        HomeDelivary home = null;
-        try {
-            home = new HomeDelivary();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MainPageForAuthority.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(MainPageForAuthority.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        home.setVisible(true);
-        home.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
 
     }//GEN-LAST:event_homeDeliveryActionPerformed
 
@@ -218,10 +204,8 @@ public class MainPageForAuthority extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainPageForAuthority().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainPageForAuthority().setVisible(true);
         });
     }
 
