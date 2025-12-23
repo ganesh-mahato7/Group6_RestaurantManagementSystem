@@ -9,13 +9,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class SignIN extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     private final String username = "root";
     private final String password = "";
     private final String url = "jdbc:mysql://localhost:3306/ratulTest";
 
-    public SignIN() {
+    public Login() {
         initComponents();
         error.setVisible(false);
     }
@@ -44,6 +44,7 @@ public class SignIN extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         error = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(350, 100));
@@ -151,6 +152,11 @@ public class SignIN extends javax.swing.JFrame {
         logIN.setBackground(new java.awt.Color(0, 153, 51));
         logIN.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
         logIN.setText("Log IN");
+        logIN.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                logINStateChanged(evt);
+            }
+        });
         logIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logINActionPerformed(evt);
@@ -239,6 +245,8 @@ public class SignIN extends javax.swing.JFrame {
         error.setForeground(new java.awt.Color(204, 0, 0));
         error.setText("***Email Address or Phone Number Can not be Empty");
 
+        jButton1.setText("jButton1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -249,27 +257,38 @@ public class SignIN extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
                 .addGap(108, 108, 108)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(error)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(31, 31, 31)
-                            .addComponent(jLabel5))
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(error)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jLabel5)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(114, 114, 114))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(error)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(error)
+                        .addContainerGap(53, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(84, 84, 84))))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("orderNow");
@@ -317,9 +336,9 @@ public class SignIN extends javax.swing.JFrame {
         try {
             login();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SignIN.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(SignIN.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_logINActionPerformed
@@ -355,6 +374,10 @@ public class SignIN extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userIdActionPerformed
 
+    private void logINStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_logINStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logINStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -372,20 +395,21 @@ public class SignIN extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SignIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SignIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SignIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SignIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SignIN().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
@@ -395,6 +419,7 @@ public class SignIN extends javax.swing.JFrame {
     private javax.swing.JTextField addressField;
     private javax.swing.JTextField email;
     private javax.swing.JLabel error;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -412,4 +437,26 @@ public class SignIN extends javax.swing.JFrame {
     private javax.swing.JButton signUp;
     private javax.swing.JTextField userId;
     // End of variables declaration//GEN-END:variables
+    
+    // Getter methods for controller access
+    public javax.swing.JTextField getEmailText() {
+        return userId;
+    }
+    
+    public javax.swing.JPasswordField getPasswordText() {
+        return passwordField;
+    }
+    
+    public void AddLoginListner(java.awt.event.ActionListener listener) {
+        logIN.addActionListener(listener);
+    }
+    
+    public void AddRegisterListner(java.awt.event.ActionListener listener) {
+        signUp.addActionListener(listener);
+    }
+    
+    public void AddForgotPasswordListener(java.awt.event.ActionListener listener) {
+        // Note: If you add a "Forgot Password" button to your form, wire it here
+        // For now, this is a placeholder
+    }
 }

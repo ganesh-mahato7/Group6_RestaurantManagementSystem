@@ -68,7 +68,7 @@ public class RegistrationController {
         }
 
         // Check if user already exists
-        userdata tempUser = new userdata(fullName, email, password, mobileNumber);
+        userdata tempUser = new userdata(fullName, fullName, email, password, "user", mobileNumber);
         if (userDao.checkUser(tempUser)) {
             JOptionPane.showMessageDialog(registrationView, 
                 "An account with this email or mobile number already exists.", 
@@ -81,7 +81,7 @@ public class RegistrationController {
         String hashedPassword = PasswordService.hashPassword(password);
 
         // Create user object
-        userdata newUser = new userdata(fullName, email, hashedPassword, mobileNumber);
+        userdata newUser = new userdata(fullName, fullName, email, hashedPassword, "user", mobileNumber);
 
         // Save user
         userDao.signUp(newUser);

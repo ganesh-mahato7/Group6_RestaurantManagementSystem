@@ -175,17 +175,12 @@ public class ResetPassword extends javax.swing.JFrame {
                 return;
             }
 
-            // Generate 6-digit OTP
-            int otpCode = (int)(Math.random() * 900000) + 100000;
-            String otp = String.valueOf(otpCode);
-
-            // Store OTP in both OTPStore (for backward compatibility) and database
-            OTPStore.currentOTP = otpCode;
-            OTPStore.email = email;
+            // Generate and store OTP with expiry
+            Instant expiresAt = Instant.now().plus(10, ChronoUnit.MINUTES);
+            String otp = OTPStore.createAndStoreOTP(email, expiresAt);
 
             // Save to database with expiration
             PasswordResetDao resetDao = new PasswordResetDao();
-            Instant expiresAt = Instant.now().plus(10, ChronoUnit.MINUTES);
             boolean saved = resetDao.createToken(email, otp, expiresAt);
 
             if (!saved) {

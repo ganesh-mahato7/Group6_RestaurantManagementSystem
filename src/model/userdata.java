@@ -13,9 +13,6 @@ public class userdata {
     private String Username;
 
     private String role;
-
-
-    private String role;
     private String mobileNumber; 
     private String fullName;    
 
@@ -106,18 +103,13 @@ public class userdata {
     @Deprecated
     public int user_id(){
         return id;
-
-
     }
-
-    
-}
-
 
     // Deprecated - use setId() instead
     @Deprecated
     public void setUser_id(int user_id){
         this.id = user_id;
     }
+}
 
 

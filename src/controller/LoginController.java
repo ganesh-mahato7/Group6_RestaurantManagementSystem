@@ -44,7 +44,7 @@ public class LoginController {
         public void actionPerformed(ActionEvent e) {
             try {
                 String email = login.getEmailText().getText().trim();
-                String password = login.getPasswordText().getText().trim();
+                String password = new String(login.getPasswordText().getPassword()).trim();
 
                 if (email.isEmpty() || password.isEmpty()) {
                     JOptionPane.showMessageDialog(login, "Please enter email and password.");
@@ -72,18 +72,8 @@ public class LoginController {
     class RegisterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
-            Registration registration = new Registration();
-            RegistrationController signUpController = new RegistrationController(registration);
-
-            RegistrationController registrationController = new RegistrationController(registration);
-
-
-
             Registration registrationView = new Registration();
             RegistrationController registrationController = new RegistrationController(registrationView);
-
-
             close();
             registrationController.open();
         }
@@ -93,7 +83,6 @@ public class LoginController {
     class ForgotPasswordListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             String email = login.getEmailText().getText().trim();
 
             if (email.isEmpty()) {
@@ -101,10 +90,7 @@ public class LoginController {
                 return;
             }
 
-            ResetPassword resetView = new ResetPassword(email);
-            resetView.setVisible(true);
-
-            view.ResetPassword resetPasswordView = new view.ResetPassword();
+            ResetPassword resetPasswordView = new ResetPassword(email);
             resetPasswordView.setVisible(true);
             close();
         }

@@ -64,10 +64,8 @@ public class NewPassword extends javax.swing.JFrame {
         jLabel3.setMaximumSize(new java.awt.Dimension(77, 24));
         jLabel3.setMinimumSize(new java.awt.Dimension(77, 24));
         jLabel3.setPreferredSize(new java.awt.Dimension(77, 24));
-
-        jPasswordField1.setText("jPasswordField1");
-
-        jPasswordField2.setText("jPasswordField2");
+        jPasswordField1.setText("");
+        jPasswordField2.setText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,42 +130,43 @@ public class NewPassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnResetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPasswordActionPerformed
-        String newPassword = jTextField1.getText().trim();
-        String confirmPassword = jTextField2.getText().trim();
-        
-        // Validation
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String newPassword = new String(jPasswordField1.getPassword()).trim();
+        String confirmPassword = new String(jPasswordField2.getPassword()).trim();
+
         if(newPassword.isEmpty() || confirmPassword.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please fill in all fields.");
             return;
         }
-        
+
         if(newPassword.length() < 6){
             JOptionPane.showMessageDialog(this, "Password must be at least 6 characters long.");
             return;
         }
-        
+
         if(!newPassword.equals(confirmPassword)){
             JOptionPane.showMessageDialog(this, "Passwords do not match!");
             return;
         }
-        
+
         try {
             // Hash the password before storing
             String hashedPassword = PasswordService.hashPassword(newPassword);
-            
+
             // Update password in database
             userDao userDao = new userDao();
             boolean updated = userDao.updatePasswordByEmail(OTPStore.email, hashedPassword);
-            
+
             if(updated){
                 JOptionPane.showMessageDialog(this, "Password reset successfully! You can now login with your new password.");
-                
+
                 // Clear OTP store
-                OTPStore.clearOTP(OTPStore.email);
+                if (OTPStore.email != null) {
+                    OTPStore.clearOTP(OTPStore.email);
+                }
                 OTPStore.currentOTP = 0;
                 OTPStore.email = null;
-                
+
                 // Navigate to login
                 new Login().setVisible(true);
                 this.dispose();
@@ -182,28 +181,6 @@ public class NewPassword extends javax.swing.JFrame {
                 "Error", 
                 JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnResetPasswordActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        int confirm = JOptionPane.showConfirmDialog(this, 
-            "Are you sure you want to cancel password reset?", 
-            "Confirm Cancel", 
-            JOptionPane.YES_NO_OPTION);
-        
-        if(confirm == JOptionPane.YES_OPTION){
-            // Clear any stored OTP/session state
-            if (OTPStore.email != null) {
-                OTPStore.clearOTP(OTPStore.email);
-            }
-            OTPStore.currentOTP = 0;
-            OTPStore.email = null;
-            new Login().setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
