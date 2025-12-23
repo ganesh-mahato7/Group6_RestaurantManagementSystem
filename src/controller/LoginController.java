@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.userdata;
 import view.Login;
-import view.Registration;
+import view.SignUpForm;
 import view.ResetPassword;
 
 
@@ -73,14 +73,14 @@ public class LoginController {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            Registration registration = new Registration();
+            SignUpForm registration = new SignUpForm();
             RegistrationController signUpController = new RegistrationController(registration);
 
             RegistrationController registrationController = new RegistrationController(registration);
 
 
 
-            Registration registrationView = new Registration();
+            SignUpForm registrationView = new SignUpForm();
             RegistrationController registrationController = new RegistrationController(registrationView);
 
 

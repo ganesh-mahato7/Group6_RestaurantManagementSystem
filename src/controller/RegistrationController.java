@@ -9,16 +9,16 @@ import javax.swing.JOptionPane;
 import model.userdata;
 import utils.PasswordService;
 import view.Login;
-import view.Registration;
+import view.SignUpForm;
 
 /**
  * Controller for handling user registration
  */
 public class RegistrationController {
     private final RegistrationDao userDao = new RegistrationDao();
-    private final Registration registrationView;
+    private final SignUpForm registrationView;
 
-    public RegistrationController(Registration registrationView) {
+    public RegistrationController(SignUpForm registrationView) {
         this.registrationView = registrationView;
     }
 

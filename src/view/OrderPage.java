@@ -106,8 +106,8 @@ public class OrderPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         breakfastButton = new javax.swing.JButton();
         soupButton = new javax.swing.JButton();
-        dinnetButton = new javax.swing.JButton();
         dessertButton = new javax.swing.JButton();
+        dinnetButton = new javax.swing.JButton();
         beverageButton = new javax.swing.JButton();
         orderButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -295,17 +295,17 @@ public class OrderPage extends javax.swing.JFrame {
             }
         });
 
-        dinnetButton.setText(" Dinner & Lunch");
-        dinnetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dinnetButtonActionPerformed(evt);
-            }
-        });
-
         dessertButton.setText("Dessert");
         dessertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dessertButtonActionPerformed(evt);
+            }
+        });
+
+        dinnetButton.setText(" Dinner & Lunch");
+        dinnetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dinnetButtonActionPerformed(evt);
             }
         });
 
@@ -1170,7 +1170,6 @@ public class OrderPage extends javax.swing.JFrame {
 
         printBill.setBackground(new java.awt.Color(255, 51, 51));
         printBill.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        printBill.setForeground(new java.awt.Color(0, 0, 0));
         printBill.setText("Print Bill");
         printBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1180,7 +1179,6 @@ public class OrderPage extends javax.swing.JFrame {
 
         sendOrders.setBackground(new java.awt.Color(255, 51, 51));
         sendOrders.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        sendOrders.setForeground(new java.awt.Color(0, 0, 0));
         sendOrders.setText("Send");
         sendOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1406,31 +1404,31 @@ public class OrderPage extends javax.swing.JFrame {
         jSplitPane1.setRightComponent(jScrollPane1);
 
         jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 25)); // NOI18N
-        jLabel2.setText("CUET CAFE");
+        jLabel2.setText("Nepal restaurant management system");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(552, 552, 552))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(269, 269, 269)
+                .addGap(140, 140, 140)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel2)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

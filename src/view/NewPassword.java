@@ -133,8 +133,9 @@ public class NewPassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnResetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPasswordActionPerformed
-        String newPassword = jTextField1.getText().trim();
-        String confirmPassword = jTextField2.getText().trim();
+        String newPassword = new String(jPasswordField1.getPassword()).trim();
+        String confirmPassword = new String(jPasswordField2.getPassword()).trim();
+
         
         // Validation
         if(newPassword.isEmpty() || confirmPassword.isEmpty()){
@@ -169,7 +170,7 @@ public class NewPassword extends javax.swing.JFrame {
                 OTPStore.email = null;
                 
                 // Navigate to login
-                new Login().setVisible(true);
+                new SignIN().setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to reset password. Please try again.");
@@ -197,7 +198,7 @@ public class NewPassword extends javax.swing.JFrame {
             }
             OTPStore.currentOTP = 0;
             OTPStore.email = null;
-            new Login().setVisible(true);
+            new SignIN().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnCancelActionPerformed

@@ -6,6 +6,7 @@ package view;
 
 import dao.PasswordResetDao;
 import dao.userDao;
+import java.awt.HeadlessException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
@@ -22,6 +23,7 @@ public class ResetPassword extends javax.swing.JFrame {
 
     /**
      * Creates new form ResetPassword
+     * @param email
      */
     
         public ResetPassword(String email) {
@@ -203,9 +205,8 @@ public class ResetPassword extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to send email. Please check your email configuration.");
             }
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             System.err.println("Error sending OTP: " + e.getMessage());
-            e.printStackTrace();
             JOptionPane.showMessageDialog(this, 
                 "An error occurred: " + e.getMessage(), 
                 "Error", 
@@ -246,4 +247,14 @@ public class ResetPassword extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
+
+    private static class Login {
+
+        public Login() {
+        }
+
+        private void setVisible(boolean b) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    }
 }
