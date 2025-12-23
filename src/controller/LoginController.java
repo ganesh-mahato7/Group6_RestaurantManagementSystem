@@ -13,6 +13,7 @@ import view.Login;
 import view.Registration;
 import view.ResetPassword;
 
+
 /**
  *
  * @author ACER
@@ -24,7 +25,7 @@ public class LoginController {
     public LoginController(Login login) {
         this.login = login;
 
-        login.AddLoginListner(new LoginListner());
+        login.AddLoginListner(new LoginListener());
         login.AddRegisterListner(new RegisterListener());
         login.AddForgotPasswordListener(new ForgotPasswordListener());
     }
@@ -37,31 +38,41 @@ public class LoginController {
         this.login.dispose();
     }
 
-    class LoginListner implements ActionListener {
-
+    // Listener for login button
+    class LoginListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-           try {
-                String email = login.getEmailText().getText();
-                String password = login.getPasswordText().getText();
-                userdata userdata = new userdata(email, password);
-                boolean check = logindao.login(userdata);
+            try {
+                String email = login.getEmailText().getText().trim();
+                String password = login.getPasswordText().getText().trim();
+
+                if (email.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(login, "Please enter email and password.");
+                    return;
+                }
+
+                userdata user = new userdata(email, password);
+                boolean check = logindao.login(user);
 
                 if (check) {
                     JOptionPane.showMessageDialog(login, "Login successful");
+                    // You can redirect to dashboard here
                 } else {
                     JOptionPane.showMessageDialog(login, "Invalid credentials");
                 }
 
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(login, "An error occurred: " + ex.getMessage());
             }
         }
     }
 
+    // Listener for register button
     class RegisterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+
             Registration registration = new Registration();
             RegistrationController signUpController = new RegistrationController(registration);
 
@@ -69,11 +80,16 @@ public class LoginController {
 
 
 
+            Registration registrationView = new Registration();
+            RegistrationController registrationController = new RegistrationController(registrationView);
+
+
             close();
             registrationController.open();
         }
     }
 
+    // Listener for forgot password
     class ForgotPasswordListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -87,6 +103,7 @@ public class LoginController {
 
             ResetPassword resetView = new ResetPassword(email);
             resetView.setVisible(true);
+
             view.ResetPassword resetPasswordView = new view.ResetPassword();
             resetPasswordView.setVisible(true);
             close();

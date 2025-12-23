@@ -11,92 +11,66 @@ import java.sql.*;
  * @author ACER
  */
 
-public class MySqlConnection implements Database{
+public class MySqlConnection implements Database {
 
     @Override
     public Connection openConnection() {
-        try{
+        try {
             String username = "root";
             String password = "king@123";
             String database = "hello";
-            Connection connection;
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+database,username,password);
-            if(connection == null){
-                System.out.println("Database connection fail");
-            }
-            else{
-                System.out.println("Database connection success");
+
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/" + database, username, password);
+
+            if (connection == null) {
+                System.out.println("Database connection failed");
+            } else {
+                System.out.println("Database connection successful");
             }
             return connection;
-        }
-        catch(Exception e){
-            System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println("Database connection error: " + e.getMessage());
             return null;
         }
-   
     }
 
     @Override
     public void closeConnection(Connection conn) {
-        try{
-            if(conn != null && !conn.isClosed()){
+        try {
+            if (conn != null && !conn.isClosed()) {
                 conn.close();
-                System.out.println("Connection close");
+                System.out.println("Connection closed");
             }
-        }
-        catch(Exception e){
-            System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println("Error closing connection: " + e.getMessage());
         }
     }
 
     @Override
     public ResultSet runQuery(Connection conn, String query) {
-        try{
-            Statement stmp = conn.createStatement();
-            ResultSet result = stmp.executeQuery(query);
-            return result;
-        }
-        catch(Exception e){
-            System.out.println(e);
+        try {
+            Statement stmt = conn.createStatement();
+            return stmt.executeQuery(query);
+        } catch (SQLException e) {
+            System.out.println("Query execution error: " + e.getMessage());
             return null;
         }
     }
 
     @Override
     public int executeUpdate(Connection conn, String query) {
-        try{
-            Statement stmp = conn.createStatement();
-            int result = stmp.executeUpdate(query);
-            return result; 
-        }
-        catch(Exception e){
-            System.out.println(e);
+        try {
+            Statement stmt = conn.createStatement();
+            return stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("Update execution error: " + e.getMessage());
             return -1;
         }
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
-=======
-    
-    // Alias for backward compatibility with PasswordResetDao
+
+    // Alias for backward compatibility
     public Connection openconnection() {
         return openConnection();
     }
->>>>>>> Stashed changes
-    
-    // Alias for backward compatibility with PasswordResetDao
-    public Connection openconnection() {
-        return openConnection();
-    }
->>>>>>> Stashed changes
-    
-    // Alias for backward compatibility with PasswordResetDao
-    public Connection openconnection() {
-        return openConnection();
-    }
-    
->>>>>>> Stashed changes
 }
