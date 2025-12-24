@@ -130,19 +130,10 @@ public class NewPassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
-    private void btnResetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPasswordActionPerformed
-        String newPassword = new String(jPasswordField1.getPassword()).trim();
-        String confirmPassword = new String(jPasswordField2.getPassword()).trim();
-
-        
-        // Validation
-=======
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String newPassword = new String(jPasswordField1.getPassword()).trim();
         String confirmPassword = new String(jPasswordField2.getPassword()).trim();
 
->>>>>>> 5ceac9c8654cb1e252898d410416f65546271fcf
         if(newPassword.isEmpty() || confirmPassword.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please fill in all fields.");
             return;
@@ -177,7 +168,7 @@ public class NewPassword extends javax.swing.JFrame {
                 OTPStore.email = null;
 
                 // Navigate to login
-                new SignIN().setVisible(true);
+                new Login().setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to reset password. Please try again.");
@@ -190,31 +181,6 @@ public class NewPassword extends javax.swing.JFrame {
                 "Error", 
                 JOptionPane.ERROR_MESSAGE);
         }
-<<<<<<< HEAD
-    }//GEN-LAST:event_btnResetPasswordActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        int confirm = JOptionPane.showConfirmDialog(this, 
-            "Are you sure you want to cancel password reset?", 
-            "Confirm Cancel", 
-            JOptionPane.YES_NO_OPTION);
-        
-        if(confirm == JOptionPane.YES_OPTION){
-            // Clear any stored OTP/session state
-            if (OTPStore.email != null) {
-                OTPStore.clearOTP(OTPStore.email);
-            }
-            OTPStore.currentOTP = 0;
-            OTPStore.email = null;
-            new SignIN().setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-=======
->>>>>>> 5ceac9c8654cb1e252898d410416f65546271fcf
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

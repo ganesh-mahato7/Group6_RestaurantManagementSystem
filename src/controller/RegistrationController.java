@@ -20,6 +20,7 @@ public class RegistrationController {
 
     public RegistrationController(SignUpForm registrationView) {
         this.registrationView = registrationView;
+        attachListeners();
     }
 
     public void open() {
@@ -30,12 +31,11 @@ public class RegistrationController {
      * Validate and register a new user.
      * Called by the view when the registration button is clicked.
      */
-    public boolean registerUser(String fullName, String email, String password, String confirmPassword, String mobileNumber) {
+    public boolean registerUser(String fullName, String email, String password, String confirmPassword, String role, String mobileNumber) {
         // Validation
         if (fullName == null || fullName.trim().isEmpty() ||
             email == null || email.trim().isEmpty() ||
-            password == null || password.trim().isEmpty() ||
-            mobileNumber == null || mobileNumber.trim().isEmpty()) {
+            password == null || password.trim().isEmpty()) {
             JOptionPane.showMessageDialog(registrationView, 
                 "Please fill in all required fields.", 
                 "Validation Error", 
@@ -67,8 +67,11 @@ public class RegistrationController {
             return false;
         }
 
+        // Default role when not supplied
+        String normalizedRole = (role == null || role.trim().isEmpty()) ? "user" : role.trim();
+
         // Check if user already exists
-        userdata tempUser = new userdata(fullName, fullName, email, password, "user", mobileNumber);
+        userdata tempUser = new userdata(fullName, fullName, email, password, normalizedRole, mobileNumber);
         if (userDao.checkUser(tempUser)) {
             JOptionPane.showMessageDialog(registrationView, 
                 "An account with this email or mobile number already exists.", 
@@ -81,7 +84,7 @@ public class RegistrationController {
         String hashedPassword = PasswordService.hashPassword(password);
 
         // Create user object
-        userdata newUser = new userdata(fullName, fullName, email, hashedPassword, "user", mobileNumber);
+        userdata newUser = new userdata(fullName, fullName, email, hashedPassword, normalizedRole, mobileNumber);
 
         // Save user
         userDao.signUp(newUser);
@@ -98,5 +101,26 @@ public class RegistrationController {
         loginController.open();
 
         return true;
+    }
+
+    private void attachListeners() {
+        // Register button
+        registrationView.AddRegistrationListner(evt -> {
+            String fullName = registrationView.getFullNameInput();
+            String email = registrationView.getEmailInput();
+            String password = registrationView.getPasswordInput();
+            String confirmPassword = registrationView.getConfirmPasswordInput();
+            String role = registrationView.getSelectedRole();
+            String mobile = registrationView.getMobileInput();
+            registerUser(fullName, email, password, confirmPassword, role, mobile);
+        });
+
+        // "Log in here" button
+        registrationView.AddLoginNavigationListener(evt -> {
+            Login loginView = new Login();
+            LoginController loginController = new LoginController(loginView);
+            registrationView.dispose();
+            loginController.open();
+        });
     }
 }

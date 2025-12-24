@@ -13,15 +13,27 @@ import java.sql.*;
 
 public class MySqlConnection implements Database {
 
+    private static final String DB_NAME = System.getProperty("DB_NAME", "restaurant_management");
+    private static final String DB_USER = System.getProperty("DB_USER", "root");
+    private static final String DB_PASSWORD = System.getProperty("DB_PASSWORD", "");
+    private static final String DB_HOST = System.getProperty("DB_HOST", "localhost");
+    private static final String DB_PORT = System.getProperty("DB_PORT", "3306");
+
     @Override
     public Connection openConnection() {
         try {
-            String username = "root";
-            String password = "king@123";
-            String database = "hello";
+            try {
+                // Ensure MySQL JDBC driver is loaded when present
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException ignore) {
+                // Driver not found on classpath; DriverManager may still resolve if using Java SPI
+            }
 
-            Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/" + database, username, password);
+            String url = String.format(
+                "jdbc:mysql://%s:%s/%s?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC",
+                DB_HOST, DB_PORT, DB_NAME);
+
+            Connection connection = DriverManager.getConnection(url, DB_USER, DB_PASSWORD);
 
             if (connection == null) {
                 System.out.println("Database connection failed");

@@ -4,9 +4,7 @@
  */
 package view;
 
-import java.awt.Image;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -289,5 +287,37 @@ public class SignUpForm extends javax.swing.JFrame {
     }
     public javax.swing.JTextField getUsernameText(){
         return email;
+    }
+
+    // Convenience getters for controller use
+    public String getFullNameInput() {
+        return fullname.getText().trim();
+    }
+
+    public String getEmailInput() {
+        return email.getText().trim();
+    }
+
+    public String getPasswordInput() {
+        return new String(password.getPassword()).trim();
+    }
+
+    public String getConfirmPasswordInput() {
+        return new String(confirm_password_field.getPassword()).trim();
+    }
+
+    public String getSelectedRole() {
+        Object sel = selectrole.getSelectedItem();
+        return sel == null ? "user" : sel.toString();
+    }
+
+    // Form has no dedicated mobile field; return empty string to keep DAO happy
+    public String getMobileInput() {
+        return "";
+    }
+
+    // Hook for "Log in here" navigation
+    public void AddLoginNavigationListener(ActionListener listener) {
+        login_button.addActionListener(listener);
     }
 }

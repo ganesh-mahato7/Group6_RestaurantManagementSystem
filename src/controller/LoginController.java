@@ -56,7 +56,9 @@ public class LoginController {
 
                 if (check) {
                     JOptionPane.showMessageDialog(login, "Login successful");
-                    // You can redirect to dashboard here
+                    view.Dashboard dashboard = new view.Dashboard();
+                    close();
+                    dashboard.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(login, "Invalid credentials");
                 }
@@ -72,18 +74,7 @@ public class LoginController {
     class RegisterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
-            SignUpForm registration = new SignUpForm();
-            RegistrationController signUpController = new RegistrationController(registration);
-
-            RegistrationController registrationController = new RegistrationController(registration);
-
-
-
             SignUpForm registrationView = new SignUpForm();
-
-            Registration registrationView = new Registration();
-
             RegistrationController registrationController = new RegistrationController(registrationView);
             close();
             registrationController.open();

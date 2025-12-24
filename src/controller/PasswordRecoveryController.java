@@ -5,9 +5,7 @@ import dao.userDao;
 import java.security.SecureRandom;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import javax.swing.JOptionPane;
 import utils.EmailService;
-import utils.PasswordService;
 import view.ResetPassword;
 
 /**

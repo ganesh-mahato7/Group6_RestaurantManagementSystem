@@ -20,13 +20,14 @@ public class RegistrationDao {
             System.out.println("SgnUpDao: Failed to open DB connection");
             return;
         }
-        String sql = "Insert into users(mobileNumber,email,fullName,password) Values (?,?,?,?)";        
+        String sql = "Insert into users(username, mobileNumber, email, fullName, password) Values (?,?,?,?,?)";        
         try
             (PreparedStatement pstm = conn.prepareStatement(sql)){            
-            pstm.setString(1, user.getMobileNumber());
-            pstm.setString(2, user.getEmail());
-            pstm.setString(3, user.getFullName());
-            pstm.setString(4, user.getPassword());
+            pstm.setString(1, user.getUsername());
+            pstm.setString(2, user.getMobileNumber());
+            pstm.setString(3, user.getEmail());
+            pstm.setString(4, user.getFullName());
+            pstm.setString(5, user.getPassword());
            pstm.executeUpdate();            
         }catch(SQLException e){
             System.out.println(e);

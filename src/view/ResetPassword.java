@@ -6,7 +6,6 @@ package view;
 
 import dao.PasswordResetDao;
 import dao.userDao;
-import java.awt.HeadlessException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
@@ -171,8 +170,8 @@ public class ResetPassword extends javax.swing.JFrame {
 
         try {
             // Check if email exists in database
-            userDao userDao = new userDao();
-            if (!userDao.existsByEmail(email)) {
+            userDao userDaoInstance = new userDao();
+            if (!userDaoInstance.existsByEmail(email)) {
                 JOptionPane.showMessageDialog(this, "No account found with this email address.");
                 return;
             }
@@ -200,7 +199,7 @@ public class ResetPassword extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to send email. Please check your email configuration.");
             }
-        } catch (HeadlessException e) {
+        } catch (Exception e) {
             System.err.println("Error sending OTP: " + e.getMessage());
             JOptionPane.showMessageDialog(this, 
                 "An error occurred: " + e.getMessage(), 
@@ -242,14 +241,4 @@ public class ResetPassword extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
-
-    private static class Login {
-
-        public Login() {
-        }
-
-        private void setVisible(boolean b) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-    }
 }

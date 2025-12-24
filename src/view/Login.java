@@ -1,8 +1,6 @@
 package view;
 
-
 import view.OrderPage;
-import view.MainPageForAuthority;
 import javax.swing.JFrame;
 import java.sql.*;
 import java.util.logging.Level;
@@ -301,9 +299,8 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpActionPerformed
-        SignUpFrom sgnup = new SignUpFrom();
-        sgnup.setVisible(true);
-
+        // Navigation is handled by LoginController. Do nothing here to avoid
+        // opening multiple SignUp windows from duplicate listeners.
     }//GEN-LAST:event_signUpActionPerformed
 
 
@@ -314,12 +311,15 @@ public class Login extends javax.swing.JFrame {
 
         Statement stmt = con.createStatement();
 
-        String querry = "select Id from Authority where Id = '" + userId.getText() + "' and password = '" + passwordField.getText() + "'";
+        String querry = "select Id from Authority where Id = '" + userId.getText() + "' and password = '" + new String(passwordField.getPassword()) + "'";
 
         ResultSet rs = stmt.executeQuery(querry);
 
         if (rs.next()) {
-            __gotoOrderPage();
+            // Navigate to OrderPage
+            OrderPage orderPage = new OrderPage(email.getText(), phoneNumber.getText(), addressField.getText());
+            orderPage.setVisible(true);
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Username or password doesnot match", "Status", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -442,7 +442,8 @@ public class Login extends javax.swing.JFrame {
     
     // Getter methods for controller access
     public javax.swing.JTextField getEmailText() {
-        return userId;
+        // Use the email field for user login via controller
+        return email;
     }
     
     public javax.swing.JPasswordField getPasswordText() {
@@ -450,10 +451,18 @@ public class Login extends javax.swing.JFrame {
     }
     
     public void AddLoginListner(java.awt.event.ActionListener listener) {
+        // Remove existing listeners to prevent duplicate actions
+        for (java.awt.event.ActionListener l : logIN.getActionListeners()) {
+            logIN.removeActionListener(l);
+        }
         logIN.addActionListener(listener);
     }
     
     public void AddRegisterListner(java.awt.event.ActionListener listener) {
+        // Remove existing listeners to prevent duplicate actions
+        for (java.awt.event.ActionListener l : signUp.getActionListeners()) {
+            signUp.removeActionListener(l);
+        }
         signUp.addActionListener(listener);
     }
     
