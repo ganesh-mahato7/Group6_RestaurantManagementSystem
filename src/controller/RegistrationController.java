@@ -3,83 +3,124 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+
 import dao.RegistrationDao;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.userdata;
-import view.Registration;
+import utils.PasswordService;
 import view.Login;
+import view.SignUpForm;
 
 /**
- *
- * @author ACER
+ * Controller for handling user registration
  */
 public class RegistrationController {
-    private final RegistrationDao userdao = new RegistrationDao();
-    private final Registration userView;
-    
-    public RegistrationController(Registration userView) {
-        this.userView =  userView;
+    private final RegistrationDao userDao = new RegistrationDao();
+    private final SignUpForm registrationView;
 
-        userView.AddConfirmListener(new ConfirmActionListener());
-
-        userView.AddLoginListener(new SignInActionListener());
-
-        userView.AddCancelListener(e -> close());
+    public RegistrationController(SignUpForm registrationView) {
+        this.registrationView = registrationView;
+        attachListeners();
     }
 
     public void open() {
-        this.userView.setVisible(true);
+        registrationView.setVisible(true);
     }
 
-    public void close() {
-        this.userView.dispose();
-    }
-
-    class ConfirmActionListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent ex) {
-            try {
-                String mobileNumber = userView.getMobileNumber().getText();
-                String email = userView.getEmail().getText();
-                String fullName = userView.getFullName().getText();
-                String password = userView.getassword().getText();
-
-                userdata UserData = new userdata( email, password);
-
-                boolean exists = userdao.checkUser(UserData);
-                if (exists) {
-                    JOptionPane.showMessageDialog(userView,
-                            "User already exists with this email or mobile number.");
-                } else {
-                    userdao.signUp(UserData);
-                    JOptionPane.showMessageDialog(userView,
-                            "Registration successful! Please log in.");
-
-                    Login loginView = new Login();
-                    LoginController loginController = new LoginController(loginView);
-
-                    close();             
-                    loginController.open();
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(userView, "Error: " + e.getMessage());
-            }
+    /**
+     * Validate and register a new user.
+     * Called by the view when the registration button is clicked.
+     */
+    public boolean registerUser(String fullName, String email, String password, String confirmPassword, String role, String mobileNumber) {
+        // Validation
+        if (fullName == null || fullName.trim().isEmpty() ||
+            email == null || email.trim().isEmpty() ||
+            password == null || password.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(registrationView, 
+                "Please fill in all required fields.", 
+                "Validation Error", 
+                JOptionPane.WARNING_MESSAGE);
+            return false;
         }
+
+        if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            JOptionPane.showMessageDialog(registrationView, 
+                "Please enter a valid email address.", 
+                "Validation Error", 
+                JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        if (password.length() < 6) {
+            JOptionPane.showMessageDialog(registrationView, 
+                "Password must be at least 6 characters long.", 
+                "Validation Error", 
+                JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        if (!password.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(registrationView, 
+                "Passwords do not match.", 
+                "Validation Error", 
+                JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        // Default role when not supplied
+        String normalizedRole = (role == null || role.trim().isEmpty()) ? "user" : role.trim();
+
+        // Check if user already exists
+        userdata tempUser = new userdata(fullName, fullName, email, password, normalizedRole, mobileNumber);
+        if (userDao.checkUser(tempUser)) {
+            JOptionPane.showMessageDialog(registrationView, 
+                "An account with this email or mobile number already exists.", 
+                "Registration Error", 
+                JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        // Hash the password before storing
+        String hashedPassword = PasswordService.hashPassword(password);
+
+        // Create user object
+        userdata newUser = new userdata(fullName, fullName, email, hashedPassword, normalizedRole, mobileNumber);
+
+        // Save user
+        userDao.signUp(newUser);
+
+        JOptionPane.showMessageDialog(registrationView, 
+            "Registration successful! You can now log in.", 
+            "Success", 
+            JOptionPane.INFORMATION_MESSAGE);
+
+        // Open login view
+        Login loginView = new Login();
+        LoginController loginController = new LoginController(loginView);
+        registrationView.dispose();
+        loginController.open();
+
+        return true;
     }
 
-    class SignInActionListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
+    private void attachListeners() {
+        // Register button
+        registrationView.AddRegistrationListner(evt -> {
+            String fullName = registrationView.getFullNameInput();
+            String email = registrationView.getEmailInput();
+            String password = registrationView.getPasswordInput();
+            String confirmPassword = registrationView.getConfirmPasswordInput();
+            String role = registrationView.getSelectedRole();
+            String mobile = registrationView.getMobileInput();
+            registerUser(fullName, email, password, confirmPassword, role, mobile);
+        });
+
+        // "Log in here" button
+        registrationView.AddLoginNavigationListener(evt -> {
             Login loginView = new Login();
             LoginController loginController = new LoginController(loginView);
-
-            close();
+            registrationView.dispose();
             loginController.open();
-        }
+        });
     }
- 
 }

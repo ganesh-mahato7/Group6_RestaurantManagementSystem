@@ -4,22 +4,20 @@
  */
 package view;
 
-import java.awt.Image;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 
 /**
  *
  * @author सफर
  */
-public class Registration extends javax.swing.JFrame {
+public class SignUpForm extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Registration.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SignUpForm.class.getName());
 
     /**
      * Creates new form Registration
      */
-    public Registration() {
+    public SignUpForm() {
         initComponents();
     }
 
@@ -53,7 +51,6 @@ public class Registration extends javax.swing.JFrame {
         logo_image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(720, 1280));
 
@@ -208,7 +205,7 @@ public class Registration extends javax.swing.JFrame {
                     .addComponent(logo_image))
                 .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(643, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -257,7 +254,7 @@ public class Registration extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Registration().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new SignUpForm().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -290,5 +287,37 @@ public class Registration extends javax.swing.JFrame {
     }
     public javax.swing.JTextField getUsernameText(){
         return email;
+    }
+
+    // Convenience getters for controller use
+    public String getFullNameInput() {
+        return fullname.getText().trim();
+    }
+
+    public String getEmailInput() {
+        return email.getText().trim();
+    }
+
+    public String getPasswordInput() {
+        return new String(password.getPassword()).trim();
+    }
+
+    public String getConfirmPasswordInput() {
+        return new String(confirm_password_field.getPassword()).trim();
+    }
+
+    public String getSelectedRole() {
+        Object sel = selectrole.getSelectedItem();
+        return sel == null ? "user" : sel.toString();
+    }
+
+    // Form has no dedicated mobile field; return empty string to keep DAO happy
+    public String getMobileInput() {
+        return "";
+    }
+
+    // Hook for "Log in here" navigation
+    public void AddLoginNavigationListener(ActionListener listener) {
+        login_button.addActionListener(listener);
     }
 }

@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package group6_restaurantmanagementsystem;
+
 import controller.LoginController;
 import database.Database;
 import database.MySqlConnection;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import view.Login;
 
 /**
@@ -14,20 +13,32 @@ import view.Login;
  */
 public class Group6_RestaurantManagementSystem {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        // Set Nimbus Look and Feel
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException |
+                 IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            ex.printStackTrace();
+        }
+
+        // Test database connection
         Database db = new MySqlConnection();
         if (db.openConnection() != null) {
-            System.out.println("Connection successful");
+            System.out.println("Database connection success");
+        } else {
+            System.out.println("Database connection failed");
         }
-        else {
-            System.out.println("Not successful");
-        }
-        Login loginview = new Login();
-        LoginController controller = new LoginController(loginview);
+
+        // Open Login UI
+        Login loginView = new Login();
+        LoginController controller = new LoginController(loginView);
         controller.open();
     }
 }

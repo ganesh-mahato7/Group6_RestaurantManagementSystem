@@ -4,14 +4,15 @@
  */
 package controller;
 
-import DAO.loginDao;
+import dao.loginDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.userdata;
 import view.Login;
-import view.Registration;
+import view.SignUpForm;
 import view.ResetPassword;
+
 
 /**
  *
@@ -24,7 +25,7 @@ public class LoginController {
     public LoginController(Login login) {
         this.login = login;
 
-        login.AddLoginListner(new LoginListner());
+        login.AddLoginListner(new LoginListener());
         login.AddRegisterListner(new RegisterListener());
         login.AddForgotPasswordListener(new ForgotPasswordListener());
     }
@@ -37,39 +38,50 @@ public class LoginController {
         this.login.dispose();
     }
 
-    class LoginListner implements ActionListener {
-
+    // Listener for login button
+    class LoginListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-           try {
-                String email = login.getEmailText().getText();
-                String password = login.getPasswordText().getText();
-                userdata userdata = new userdata(email, password);
-                boolean check = logindao.login(userdata);
+            try {
+                String email = login.getEmailText().getText().trim();
+                String password = new String(login.getPasswordText().getPassword()).trim();
+
+                if (email.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(login, "Please enter email and password.");
+                    return;
+                }
+
+                userdata user = new userdata(email, password);
+                boolean check = logindao.login(user);
 
                 if (check) {
                     JOptionPane.showMessageDialog(login, "Login successful");
+                    view.Dashboard dashboard = new view.Dashboard();
+                    close();
+                    dashboard.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(login, "Invalid credentials");
                 }
 
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(login, "An error occurred: " + ex.getMessage());
             }
         }
     }
 
+    // Listener for register button
     class RegisterListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Registration registration = new Registration();
-            RegistrationController signUpController = new RegistrationController(registration);
-
+            SignUpForm registrationView = new SignUpForm();
+            RegistrationController registrationController = new RegistrationController(registrationView);
             close();
-            signUpController.open();
+            registrationController.open();
         }
     }
 
+    // Listener for forgot password
     class ForgotPasswordListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -80,8 +92,9 @@ public class LoginController {
                 return;
             }
 
-            ResetPassword resetView = new ResetPassword(email);
-            resetView.setVisible(true);
+            ResetPassword resetPasswordView = new ResetPassword(email);
+            resetPasswordView.setVisible(true);
+            close();
         }
     }
 }

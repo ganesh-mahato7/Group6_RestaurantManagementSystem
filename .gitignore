@@ -6,6 +6,7 @@ nbproject/private/
 build/
 dist/
 out/
+build/classes/
 
 # Java class files
 *.class
@@ -13,3 +14,11 @@ out/
 # Logs
 *.log
 
+src/controller/LoginController.java
+src/controller/RegistrationController.java
+src/database/MySqlConnection.java
+src/model/userdata.java
+src/controller/LoginController.java
+src/controller/RegistrationController.java
+src/database/MySqlConnection.java
+src/model/userdata.java
