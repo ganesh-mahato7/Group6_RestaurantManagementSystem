@@ -3,11 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/A%20S%20U%20S/Desktop/Group6_RestaurantManagementSystem/src/controller/LoginController.java</file>
-            <file>file:/C:/Users/A%20S%20U%20S/Desktop/Group6_RestaurantManagementSystem/src/utils/EmailSender.java</file>
-            <file>file:/C:/Users/A%20S%20U%20S/Desktop/Group6_RestaurantManagementSystem/src/database/MySqlConnection.java</file>
-            <file>file:/C:/Users/A%20S%20U%20S/Desktop/Group6_RestaurantManagementSystem/src/group6_restaurantmanagementsystem/Group6_RestaurantManagementSystem.java</file>
-            <file>file:/C:/Users/A%20S%20U%20S/Desktop/Group6_RestaurantManagementSystem/src/view/ResetPassword.java</file>
+            <file>file:/D:/Group6_RestaurantManagementSystem/src/view/Login.java</file>
+            <file>file:/D:/Group6_RestaurantManagementSystem/src/view/NewPassword.java</file>
+            <file>file:/D:/Group6_RestaurantManagementSystem/src/view/Dashboard.java</file>
+            <file>file:/D:/Group6_RestaurantManagementSystem/src/view/Verification.java</file>
+            <file>file:/D:/Group6_RestaurantManagementSystem/src/view/StafDetails.java</file>
+            <file>file:/D:/Group6_RestaurantManagementSystem/src/view/ResetPassword.java</file>
+            <file>file:/D:/Group6_RestaurantManagementSystem/src/view/OrderPage.java</file>
+            <file>file:/D:/Group6_RestaurantManagementSystem/src/view/OwnerOnly.java</file>
+            <file>file:/D:/Group6_RestaurantManagementSystem/src/model/Staff.java</file>
+            <file>file:/D:/Group6_RestaurantManagementSystem/src/controller/LoginController.java</file>
         </group>
     </open-files>
 </project-private>
