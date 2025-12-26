@@ -59,10 +59,12 @@ public class Login extends javax.swing.JFrame {
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jTabbedPane1.setToolTipText("");
+        jTabbedPane1.setName("tabPane"); // NOI18N
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        jLabel1.setForeground(null);
         jLabel1.setText("Email Address");
 
         email.setToolTipText("Type Here");
@@ -76,6 +78,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        jLabel2.setForeground(null);
         jLabel2.setText("Phone Number:");
 
         phoneNumber.setToolTipText("Type Here");
@@ -89,6 +92,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        jLabel6.setForeground(null);
         jLabel6.setText("Address:");
 
         addressField.setToolTipText("Type Here");
@@ -137,6 +141,7 @@ public class Login extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel3.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        jLabel3.setForeground(null);
         jLabel3.setText("email");
 
         userId.setToolTipText("Type Here");
@@ -152,6 +157,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
+        jLabel4.setForeground(null);
         jLabel4.setText("Password");
 
         logIN.setBackground(new java.awt.Color(0, 153, 51));
