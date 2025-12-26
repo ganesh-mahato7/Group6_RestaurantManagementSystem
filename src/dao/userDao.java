@@ -77,6 +77,10 @@ public class userDao {
     // CHECK IF EMAIL EXISTS
     public boolean existsByEmail(String email) {
         Connection conn = mysql.openConnection();
+        if (conn == null) {
+            System.out.println("Error: Cannot connect to database. Check MySQL connection.");
+            return false;
+        }
         String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
         
         try (PreparedStatement pstm = conn.prepareStatement(sql)) {

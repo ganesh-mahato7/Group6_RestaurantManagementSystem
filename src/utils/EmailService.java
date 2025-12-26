@@ -15,8 +15,8 @@ import java.util.Properties;
 public class EmailService {
     private static final String SMTP_HOST = "smtp.gmail.com";
     private static final String SMTP_PORT = "587";
-    private static final String EMAIL_USERNAME = "saffer@duck.com";
-    private static final String EMAIL_PASSWORD = "yzvm efgz heel ftbk";   
+    private static final String EMAIL_USERNAME = "ganeshmahato1412@gmail.com";
+    private static final String EMAIL_PASSWORD = "kxgd otls zodx hrhd";   
     
     public static boolean sendOTPEmail(String recipientEmail, String otpCode) {
         Properties props = new Properties();

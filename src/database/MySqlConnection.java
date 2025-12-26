@@ -14,7 +14,7 @@ public class MySqlConnection implements Database {
     private static final String DB_USER =
             System.getProperty("DB_USER", "root");
     private static final String DB_PASSWORD =
-            System.getProperty("DB_PASSWORD", "wang123");
+            System.getProperty("DB_PASSWORD", "");
     private static final String DB_HOST =
             System.getProperty("DB_HOST", "localhost");
     private static final String DB_PORT =

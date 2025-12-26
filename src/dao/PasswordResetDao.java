@@ -29,8 +29,13 @@ public class PasswordResetDao {
     }
 
     public boolean createToken(String email, String otp, Instant expiresAt) {
+        Connection conn = mysql.openconnection();
+        if (conn == null) {
+            System.out.println("Error: Cannot connect to database. Check MySQL connection.");
+            return false;
+        }
         String sql = "INSERT INTO password_reset_tokens (email, otp, expires_at, used, attempts) VALUES (?, ?, ?, 0, 0)";
-        try (Connection conn = mysql.openconnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
             ps.setString(2, otp);
             ps.setTimestamp(3, Timestamp.from(expiresAt));

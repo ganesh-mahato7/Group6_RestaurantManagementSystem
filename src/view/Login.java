@@ -411,7 +411,9 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                Login loginView = new Login();
+                controller.LoginController controller = new controller.LoginController(loginView);
+                controller.open();
             }
         });
     }
@@ -442,8 +444,8 @@ public class Login extends javax.swing.JFrame {
     
     // Getter methods for controller access
     public javax.swing.JTextField getEmailText() {
-        // Use the email field for user login via controller
-        return email;
+        // Use the admin login email field (userId) for controller-driven flows
+        return userId;
     }
     
     public javax.swing.JPasswordField getPasswordText() {
@@ -467,7 +469,10 @@ public class Login extends javax.swing.JFrame {
     }
     
     public void AddForgotPasswordListener(java.awt.event.ActionListener listener) {
-        // Note: If you add a "Forgot Password" button to your form, wire it here
-        // For now, this is a placeholder
+        // Remove existing listeners to prevent duplicate actions
+        for (java.awt.event.ActionListener l : jButton1.getActionListeners()) {
+            jButton1.removeActionListener(l);
+        }
+        jButton1.addActionListener(listener);
     }
 }
