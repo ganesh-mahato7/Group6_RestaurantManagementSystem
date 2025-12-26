@@ -56,20 +56,18 @@ public class ResetPassword extends javax.swing.JFrame {
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        txtEmail.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtEmail.setText("Email");
         txtEmail.addActionListener(this::txtEmailActionPerformed);
 
         Cancel.setBackground(new java.awt.Color(255, 153, 0));
         Cancel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        Cancel.setForeground(new java.awt.Color(0, 0, 0));
         Cancel.setText("Cancel");
         Cancel.setToolTipText("");
         Cancel.addActionListener(this::CancelActionPerformed);
 
         btnSendCode.setBackground(new java.awt.Color(0, 204, 102));
         btnSendCode.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        btnSendCode.setForeground(new java.awt.Color(0, 0, 0));
         btnSendCode.setText("Reset Password");
         btnSendCode.addActionListener(this::btnSendCodeActionPerformed);
 
