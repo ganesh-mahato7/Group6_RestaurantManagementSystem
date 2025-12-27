@@ -4,21 +4,63 @@
  */
 package view;
 
-/**
- *
- * @author Kafle
- */
-public class Dashboard extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dashboard.class.getName());
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
-    /**
-     * Creates new form Dashboard
-     */
+public class Dashboard extends JFrame {
+
+    private static final Logger logger = Logger.getLogger(Dashboard.class.getName());
+
+    // ===== CONSTRUCTOR =====
     public Dashboard() {
         initComponents();
     }
 
+    // ===== ROLE BASED ACCESS =====
+public void setScrumMasterAccess() { // ADMIN / SCRUM MASTER
+    PlaceOrder.setEnabled(true);
+    BillAndOrderPlaced.setEnabled(true);
+    ViewEditDeleteProduct.setEnabled(true);
+    NewProduct.setEnabled(true);
+    ManageCategory.setEnabled(true);
+    VerifyUser.setEnabled(true);
+    ChangePassword.setEnabled(true);
+
+    // Make buttons visible
+    ViewEditDeleteProduct.setVisible(true);
+    NewProduct.setVisible(true);
+    ManageCategory.setVisible(true);
+    VerifyUser.setVisible(true);
+}
+
+
+public void setStaffAccess() {
+    PlaceOrder.setEnabled(true);
+    BillAndOrderPlaced.setEnabled(true);
+    ChangePassword.setEnabled(true);
+
+    // Hide restricted buttons
+    ViewEditDeleteProduct.setVisible(false);
+    NewProduct.setVisible(false);
+    ManageCategory.setVisible(false);
+    VerifyUser.setVisible(false);
+}
+public void setWaiterAccess() {
+    PlaceOrder.setEnabled(true);
+    BillAndOrderPlaced.setEnabled(true);
+    ChangePassword.setEnabled(true);
+
+    // Hide restricted buttons
+    ViewEditDeleteProduct.setVisible(false);
+    NewProduct.setVisible(false);
+    ManageCategory.setVisible(false);
+    VerifyUser.setVisible(false);
+}
+
+    public void addLogoutListener(ActionListener listener) {
+        Logout.addActionListener(listener);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,26 +72,16 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        PlaceOrder = new javax.swing.JButton();
+        BillAndOrderPlaced = new javax.swing.JButton();
+        ViewEditDeleteProduct = new javax.swing.JButton();
+        NewProduct = new javax.swing.JButton();
+        ManageCategory = new javax.swing.JButton();
+        VerifyUser = new javax.swing.JButton();
+        ChangePassword = new javax.swing.JButton();
+        Logout = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nepal Restaurant Management System");
@@ -64,62 +96,77 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(270, 700));
         jPanel2.setLayout(new java.awt.GridLayout(8, 1, 0, 10));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 165, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("NEPAL RESTAURANT MANAGEMENT SYSTEM"); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(30, 50));
-        jPanel2.add(jLabel1);
+        PlaceOrder.setBackground(new java.awt.Color(52, 58, 64));
+        PlaceOrder.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        PlaceOrder.setForeground(new java.awt.Color(255, 255, 255));
+        PlaceOrder.setText("Place Order ");
+        PlaceOrder.setBorderPainted(false);
+        PlaceOrder.setFocusPainted(false);
+        PlaceOrder.setMaximumSize(new java.awt.Dimension(20, 10));
+        PlaceOrder.setMinimumSize(new java.awt.Dimension(20, 10));
+        PlaceOrder.addActionListener(this::PlaceOrderActionPerformed);
+        jPanel2.add(PlaceOrder);
 
-        jButton1.setBackground(new java.awt.Color(52, 58, 64));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Dashboard");
-        jButton1.setBorderPainted(false);
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-        jPanel2.add(jButton1);
+        BillAndOrderPlaced.setBackground(new java.awt.Color(52, 58, 64));
+        BillAndOrderPlaced.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        BillAndOrderPlaced.setForeground(new java.awt.Color(255, 255, 255));
+        BillAndOrderPlaced.setText("Bill and Order Placed");
+        BillAndOrderPlaced.setBorderPainted(false);
+        BillAndOrderPlaced.setFocusPainted(false);
+        BillAndOrderPlaced.addActionListener(this::BillAndOrderPlacedActionPerformed);
+        jPanel2.add(BillAndOrderPlaced);
 
-        jButton2.setBackground(new java.awt.Color(52, 58, 64));
-        jButton2.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Order Management");
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusPainted(false);
-        jPanel2.add(jButton2);
+        ViewEditDeleteProduct.setBackground(new java.awt.Color(52, 58, 64));
+        ViewEditDeleteProduct.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        ViewEditDeleteProduct.setForeground(new java.awt.Color(255, 255, 255));
+        ViewEditDeleteProduct.setText("View, Edit and Delete Product");
+        ViewEditDeleteProduct.setBorderPainted(false);
+        ViewEditDeleteProduct.setFocusPainted(false);
+        ViewEditDeleteProduct.addActionListener(this::ViewEditDeleteProductActionPerformed);
+        jPanel2.add(ViewEditDeleteProduct);
 
-        jButton3.setBackground(new java.awt.Color(52, 58, 64));
-        jButton3.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Employee Management");
-        jButton3.setBorderPainted(false);
-        jButton3.setFocusPainted(false);
-        jButton3.addActionListener(this::jButton3ActionPerformed);
-        jPanel2.add(jButton3);
+        NewProduct.setBackground(new java.awt.Color(52, 58, 64));
+        NewProduct.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        NewProduct.setForeground(new java.awt.Color(255, 255, 255));
+        NewProduct.setText("New Produuct");
+        NewProduct.setBorderPainted(false);
+        NewProduct.setFocusPainted(false);
+        NewProduct.addActionListener(this::NewProductActionPerformed);
+        jPanel2.add(NewProduct);
 
-        jButton4.setBackground(new java.awt.Color(52, 58, 64));
-        jButton4.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Sales Reports");
-        jButton4.setBorderPainted(false);
-        jButton4.setFocusPainted(false);
-        jPanel2.add(jButton4);
+        ManageCategory.setBackground(new java.awt.Color(52, 58, 64));
+        ManageCategory.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        ManageCategory.setForeground(new java.awt.Color(255, 255, 255));
+        ManageCategory.setText("Manage Category");
+        ManageCategory.setBorderPainted(false);
+        ManageCategory.setFocusPainted(false);
+        jPanel2.add(ManageCategory);
 
-        jButton5.setBackground(new java.awt.Color(52, 58, 64));
-        jButton5.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Billing");
-        jButton5.setBorderPainted(false);
-        jButton5.setFocusPainted(false);
-        jPanel2.add(jButton5);
+        VerifyUser.setBackground(new java.awt.Color(52, 58, 64));
+        VerifyUser.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        VerifyUser.setForeground(new java.awt.Color(255, 255, 255));
+        VerifyUser.setText("Verify Users");
+        VerifyUser.setBorderPainted(false);
+        VerifyUser.setFocusPainted(false);
+        VerifyUser.addActionListener(this::VerifyUserActionPerformed);
+        jPanel2.add(VerifyUser);
 
-        jButton6.setBackground(new java.awt.Color(52, 58, 64));
-        jButton6.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Menu Management");
-        jButton6.setBorderPainted(false);
-        jButton6.setFocusPainted(false);
-        jPanel2.add(jButton6);
+        ChangePassword.setBackground(new java.awt.Color(52, 58, 64));
+        ChangePassword.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        ChangePassword.setForeground(new java.awt.Color(255, 255, 255));
+        ChangePassword.setText("Change Password");
+        ChangePassword.setBorderPainted(false);
+        ChangePassword.setFocusPainted(false);
+        ChangePassword.addActionListener(this::ChangePasswordActionPerformed);
+        jPanel2.add(ChangePassword);
+
+        Logout.setBackground(new java.awt.Color(52, 58, 64));
+        Logout.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Logout.setForeground(new java.awt.Color(255, 255, 255));
+        Logout.setText("Logout");
+        Logout.setBorderPainted(false);
+        Logout.setFocusPainted(false);
+        jPanel2.add(Logout);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.LINE_START);
 
@@ -132,72 +179,8 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.setName("cardsPanel"); // NOI18N
         jPanel4.setLayout(new java.awt.GridLayout(1, 3, 15, 15));
-
-        jPanel5.setBackground(new java.awt.Color(173, 216, 230));
-        jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 10, 15, 10));
-        jPanel5.setLayout(new java.awt.BorderLayout());
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("NO. of Orders Today");
-        jLabel2.setFocusCycleRoot(true);
-        jPanel5.add(jLabel2, java.awt.BorderLayout.CENTER);
-        jLabel2.getAccessibleContext().setAccessibleName("No of Orders Today");
-        jLabel2.getAccessibleContext().setAccessibleDescription("");
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel3.setText("12");
-        jPanel5.add(jLabel3, java.awt.BorderLayout.PAGE_END);
-
-        jPanel4.add(jPanel5);
-
-        jPanel6.setBackground(new java.awt.Color(255, 182, 193));
-        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 10, 15, 10));
-        jPanel6.setLayout(new java.awt.BorderLayout());
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Today Sales");
-        jLabel4.setFocusCycleRoot(true);
-        jPanel6.add(jLabel4, java.awt.BorderLayout.CENTER);
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel5.setText("12");
-        jPanel6.add(jLabel5, java.awt.BorderLayout.PAGE_END);
-
-        jPanel4.add(jPanel6);
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 153));
-        jPanel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 10, 15, 10));
-        jPanel7.setLayout(new java.awt.BorderLayout());
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("NO. of Table Booked");
-        jLabel6.setFocusCycleRoot(true);
-        jPanel7.add(jLabel6, java.awt.BorderLayout.CENTER);
-
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel7.setText("12");
-        jPanel7.add(jLabel7, java.awt.BorderLayout.PAGE_END);
-
-        jPanel4.add(jPanel7);
-
         jPanel3.add(jPanel4, java.awt.BorderLayout.NORTH);
         jPanel4.getAccessibleContext().setAccessibleName("");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Table No.1", "Reserved", "2", "Burger , Momo", "Yes", null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Table Number", "Status", "No of Items", "Item Names", "Paid?", "Food Status"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
@@ -223,13 +206,29 @@ public class Dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ChangePasswordActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void VerifyUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerifyUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_VerifyUserActionPerformed
+
+    private void NewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewProductActionPerformed
+
+    private void ViewEditDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewEditDeleteProductActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ViewEditDeleteProductActionPerformed
+
+    private void BillAndOrderPlacedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BillAndOrderPlacedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BillAndOrderPlacedActionPerformed
+
+    private void PlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PlaceOrderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,27 +256,18 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton BillAndOrderPlaced;
+    private javax.swing.JButton ChangePassword;
+    private javax.swing.JButton Logout;
+    private javax.swing.JButton ManageCategory;
+    private javax.swing.JButton NewProduct;
+    private javax.swing.JButton PlaceOrder;
+    private javax.swing.JButton VerifyUser;
+    private javax.swing.JButton ViewEditDeleteProduct;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
+

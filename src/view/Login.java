@@ -1,37 +1,23 @@
 package view;
 
-import view.OrderPage;
-import javax.swing.JFrame;
-import java.sql.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
-    private final String username = "root";
-    private final String password = "";
-    private final String url = "jdbc:mysql://localhost:3306/ratulTest";
-
     public Login() {
         initComponents();
-        error.setVisible(false);
+        setLocationRelativeTo(null); // center the frame
     }
-
-    @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        phoneNumber = new javax.swing.JTextField();
-        Done = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        addressField = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -61,87 +47,9 @@ public class Login extends javax.swing.JFrame {
         jTabbedPane1.setToolTipText("");
         jTabbedPane1.setName("tabPane"); // NOI18N
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        jLabel1.setForeground(null);
-        jLabel1.setText("Email Address");
-
-        email.setToolTipText("Type Here");
-        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        email.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        email.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        jLabel2.setForeground(null);
-        jLabel2.setText("Phone Number:");
-
-        phoneNumber.setToolTipText("Type Here");
-
-        Done.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        Done.setText("Done");
-        Done.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DoneActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        jLabel6.setForeground(null);
-        jLabel6.setText("Address:");
-
-        addressField.setToolTipText("Type Here");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel2))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(phoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Done)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(phoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Done, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Order Now", jPanel2);
-
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel3.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        jLabel3.setForeground(null);
         jLabel3.setText("email");
 
         userId.setToolTipText("Type Here");
@@ -157,7 +65,6 @@ public class Login extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
-        jLabel4.setForeground(null);
         jLabel4.setText("Password");
 
         logIN.setBackground(new java.awt.Color(0, 153, 51));
@@ -331,74 +238,13 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpActionPerformed
-        // Navigation is handled by LoginController. Do nothing here to avoid
-        // opening multiple SignUp windows from duplicate listeners.
+        // do nothing, controller handles registration
     }//GEN-LAST:event_signUpActionPerformed
 
-
-    private void login() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-
-        Connection con = DriverManager.getConnection(url, username, password);
-
-        Statement stmt = con.createStatement();
-
-        String querry = "select Id from Authority where Id = '" + userId.getText() + "' and password = '" + new String(passwordField.getPassword()) + "'";
-
-        ResultSet rs = stmt.executeQuery(querry);
-
-        if (rs.next()) {
-            // Navigate to OrderPage
-            OrderPage orderPage = new OrderPage(email.getText(), phoneNumber.getText(), addressField.getText());
-            orderPage.setVisible(true);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Username or password doesnot match", "Status", JOptionPane.INFORMATION_MESSAGE);
-        }
-
-        rs.close();
-        stmt.close();
-        con.close();
-
-    }
     private void logINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logINActionPerformed
-
-        try {
-            login();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+// do nothing, controller handles login
 
     }//GEN-LAST:event_logINActionPerformed
-
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
-
-    private void DoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneActionPerformed
-
-        
-
-        String s1 = email.getText();
-        String s2 = phoneNumber.getText();
-
-        System.out.println(s1 + " " + s2);
-        if (s1.length() == 0 ) {
-            error.setVisible(true);
-            return;
-        }
-        if (s2.length() ==0 ) {
-            error.setVisible(true);
-            return;
-        }  
-        if(s1.length()>0){
-            OrderPage order = new OrderPage(email.getText(), phoneNumber.getText(),addressField.getText());
-            order.setVisible(true);
-            order.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        }
-    }//GEN-LAST:event_DoneActionPerformed
 
     private void userIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIdActionPerformed
         // TODO add your handling code here:
@@ -412,100 +258,51 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Login loginView = new Login();
-                controller.LoginController controller = new controller.LoginController(loginView);
-                controller.open();
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Done;
-    private javax.swing.JTextField addressField;
-    private javax.swing.JTextField email;
     private javax.swing.JLabel error;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton logIN;
     private javax.swing.JPasswordField passwordField;
-    private javax.swing.JTextField phoneNumber;
     private javax.swing.JButton signUp;
     private javax.swing.JTextField userId;
     // End of variables declaration//GEN-END:variables
     
-    // Getter methods for controller access
-    public javax.swing.JTextField getEmailText() {
-        // Use the admin login email field (userId) for controller-driven flows
-        return userId;
+ 
+    // ---------------- Getter Methods ----------------
+    public String getEmailInput() {
+        return userId.getText().trim();
     }
-    
-    public javax.swing.JPasswordField getPasswordText() {
-        return passwordField;
+
+    public char[] getPasswordInput() {
+        return passwordField.getPassword();
     }
-    
-    public void AddLoginListner(java.awt.event.ActionListener listener) {
-        // Remove existing listeners to prevent duplicate actions
-        for (java.awt.event.ActionListener l : logIN.getActionListeners()) {
-            logIN.removeActionListener(l);
-        }
+
+    // ---------------- Listener Methods ----------------
+    public void addLoginListener(ActionListener listener) {
+        for (ActionListener l : logIN.getActionListeners()) logIN.removeActionListener(l);
         logIN.addActionListener(listener);
     }
-    
-    public void AddRegisterListner(java.awt.event.ActionListener listener) {
-        // Remove existing listeners to prevent duplicate actions
-        for (java.awt.event.ActionListener l : signUp.getActionListeners()) {
-            signUp.removeActionListener(l);
-        }
+
+    public void addRegisterListener(ActionListener listener) {
+        for (ActionListener l : signUp.getActionListeners()) signUp.removeActionListener(l);
         signUp.addActionListener(listener);
     }
-    
-    public void AddForgotPasswordListener(java.awt.event.ActionListener listener) {
-        // Remove existing listeners to prevent duplicate actions
-        for (java.awt.event.ActionListener l : jButton1.getActionListeners()) {
-            jButton1.removeActionListener(l);
-        }
+
+    public void addForgotPasswordListener(ActionListener listener) {
+        for (ActionListener l : jButton1.getActionListeners()) jButton1.removeActionListener(l);
         jButton1.addActionListener(listener);
+    }
+
+    public void setErrorMessage(String message) {
+        error.setText(message);
     }
 }

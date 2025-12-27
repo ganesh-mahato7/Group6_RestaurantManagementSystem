@@ -1,18 +1,13 @@
 package group6_restaurantmanagementsystem;
 
 import controller.LoginController;
-import database.Database;
 import database.MySqlConnection;
+import database.Database;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import view.Login;
 
-/**
- *
- * @author ACER
- */
 public class Group6_RestaurantManagementSystem {
-
     public static void main(String[] args) {
 
         // Set Nimbus Look and Feel
@@ -28,17 +23,12 @@ public class Group6_RestaurantManagementSystem {
             ex.printStackTrace();
         }
 
-        // Test database connection
+        // Test DB
         Database db = new MySqlConnection();
-        if (db.openConnection() != null) {
-            System.out.println("Database connection success");
-        } else {
-            System.out.println("Database connection failed");
-        }
+        if (db.openConnection() != null) System.out.println("DB connected");
 
-        // Open Login UI
+        // Launch Login
         Login loginView = new Login();
-        LoginController controller = new LoginController(loginView);
-        controller.open();
+        new LoginController(loginView).open();
     }
 }

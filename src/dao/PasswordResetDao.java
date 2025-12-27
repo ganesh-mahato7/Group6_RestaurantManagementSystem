@@ -1,98 +1,46 @@
 package dao;
 
 import database.MySqlConnection;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.time.Instant;
 
 public class PasswordResetDao {
-    private final MySqlConnection mysql = new MySqlConnection() {};
+    private final MySqlConnection db = new MySqlConnection();
 
-    public PasswordResetDao() {
-        ensureTable();
-    }
-
-    private void ensureTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS password_reset_tokens (" +
-                "id INT AUTO_INCREMENT PRIMARY KEY, " +
-                "email VARCHAR(100) NOT NULL, " +
-                "otp VARCHAR(10) NOT NULL, " +
-                "expires_at DATETIME NOT NULL, " +
-                "used TINYINT(1) DEFAULT 0, " +
-                "attempts INT DEFAULT 0, " +
-                "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
-                "INDEX idx_email_created (email, created_at)" +
-                ")";
-        try (Connection conn = mysql.openconnection(); Statement st = conn.createStatement()) {
-            st.executeUpdate(sql);
-        } catch (SQLException ignored) {
-        }
-    }
-
-    public boolean createToken(String email, String otp, Instant expiresAt) {
-        Connection conn = mysql.openconnection();
-        if (conn == null) {
-            System.out.println("Error: Cannot connect to database. Check MySQL connection.");
-            return false;
-        }
-        String sql = "INSERT INTO password_reset_tokens (email, otp, expires_at, used, attempts) VALUES (?, ?, ?, 0, 0)";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+    // Create password reset token
+    public boolean createToken(String email, String token, Instant expiresAt) throws Exception {
+        String query = "INSERT INTO password_resets(email, token, expires_at) VALUES(?,?,?)";
+        
+        try (Connection conn = db.openConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+            
             ps.setString(1, email);
-            ps.setString(2, otp);
+            ps.setString(2, token);
+            
+            // Convert Instant to SQL Timestamp
             ps.setTimestamp(3, Timestamp.from(expiresAt));
-            return ps.executeUpdate() == 1;
-        } catch (SQLException e) {
-            System.out.println(e);
-            return false;
+            
+            int result = ps.executeUpdate();
+            return result > 0;
         }
     }
 
-    public boolean verifyToken(String email, String otp) {
-        String select = "SELECT id, expires_at, used, attempts FROM password_reset_tokens WHERE email = ? AND otp = ? ORDER BY created_at DESC LIMIT 1";
-        try (Connection conn = mysql.openconnection(); PreparedStatement ps = conn.prepareStatement(select)) {
+    // Verify password reset token
+    public boolean verifyToken(String email, String token) throws Exception {
+        String query = "SELECT * FROM password_resets WHERE email=? AND token=?";
+        
+        try (Connection conn = db.openConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+            
             ps.setString(1, email);
-            ps.setString(2, otp);
+            ps.setString(2, token);
+            
             try (ResultSet rs = ps.executeQuery()) {
-                if (!rs.next()) {
-                    incrementLatestAttempts(conn, email);
-                    return false;
-                }
-                int id = rs.getInt("id");
-                Timestamp expiresAt = rs.getTimestamp("expires_at");
-                boolean used = rs.getInt("used") == 1;
-                if (used || expiresAt.toInstant().isBefore(Instant.now())) {
-                    incrementAttempts(conn, id);
-                    return false;
-                }
-                try (PreparedStatement upd = conn.prepareStatement("UPDATE password_reset_tokens SET used = 1 WHERE id = ?")) {
-                    upd.setInt(1, id);
-                    upd.executeUpdate();
-                }
-                return true;
+                return rs.next();
             }
-        } catch (SQLException e) {
-            System.out.println(e);
-            return false;
         }
-    }
-
-    private void incrementAttempts(Connection conn, int id) {
-        try (PreparedStatement ps = conn.prepareStatement("UPDATE password_reset_tokens SET attempts = attempts + 1 WHERE id = ?")) {
-            ps.setInt(1, id);
-            ps.executeUpdate();
-        } catch (SQLException ignored) {}
-    }
-
-    private void incrementLatestAttempts(Connection conn, String email) {
-        try (PreparedStatement ps = conn.prepareStatement("UPDATE password_reset_tokens SET attempts = attempts + 1 WHERE id = (SELECT id FROM password_reset_tokens WHERE email = ? ORDER BY created_at DESC LIMIT 1)")) {
-            ps.setString(1, email);
-            ps.executeUpdate();
-        } catch (SQLException ignored) {}
-    }
-
-    public void deleteExpired() {
-        String sql = "DELETE FROM password_reset_tokens WHERE used = 1 OR expires_at < NOW()";
-        try (Connection conn = mysql.openconnection(); Statement st = conn.createStatement()) {
-            st.executeUpdate(sql);
-        } catch (SQLException ignored) {}
     }
 }

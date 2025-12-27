@@ -1,62 +1,76 @@
 package model;
 
 /**
- * Singleton class to store current logged-in user session
+ * Singleton class to store the current logged-in user session
  */
 public class UserSession {
+
     private static UserSession instance;
-    private String username;
+
+    private String fullName;
     private String email;
     private String role;
-    private int userId;
-    
+
+    // Private constructor to prevent instantiation
     private UserSession() {}
-    
+
+    // Get the singleton instance
     public static UserSession getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new UserSession();
         }
         return instance;
     }
-    
-    public void setUserData(userdata user) {
-        this.username = user.getUsername();
+
+    // Set session data from a User object
+    public void setUser(User user) {
+        if (user == null) return;
+
+        this.fullName = user.getFullName();
         this.email = user.getEmail();
         this.role = user.getRole();
-        this.userId = user.getId();
-        
-        System.out.println("=== UserSession.setUserData() ===");
-        System.out.println("Set username: " + this.username);
-        System.out.println("Set email: " + this.email);
-        System.out.println("Set role: " + this.role);
-        System.out.println("Set userId: " + this.userId);
+
+        System.out.println("=== UserSession initialized ===");
+        System.out.println("Full Name: " + fullName);
+        System.out.println("Email: " + email);
+        System.out.println("Role: " + role);
     }
-    
+
+    // Clear session
     public void clearSession() {
-        this.username = null;
+        this.fullName = null;
         this.email = null;
         this.role = null;
-        this.userId = 0;
     }
-    
-    public String getUsername() {
-        return username;
+
+    // Getters
+    public String getFullName() {
+        return fullName;
     }
-    
+
     public String getEmail() {
-        System.out.println("=== UserSession.getEmail() called === Returning: " + email);
         return email;
     }
-    
+
     public String getRole() {
         return role;
     }
-    
-    public int getUserId() {
-        return userId;
-    }
-    
+
+    // Check if a user is logged in
     public boolean isLoggedIn() {
-        return username != null && !username.isEmpty();
+        return email != null && !email.isEmpty();
+    }
+
+    // Role helpers
+    public boolean isAdmin() {
+        return "SCRUM MASTER".equalsIgnoreCase(role) || "ADMIN".equalsIgnoreCase(role);
+    }
+
+    public boolean isStaff() {
+        return "STAFF".equalsIgnoreCase(role);
+    }
+
+    public boolean isWaiter() {
+        return "WAITER".equalsIgnoreCase(role);
     }
 }

@@ -5,7 +5,7 @@
 
 package view;
 
-import dao.userDao;
+import dao.UserDao;
 import javax.swing.JOptionPane;
 import model.OTPStore;
 import utils.PasswordService;
@@ -154,7 +154,7 @@ public class NewPassword extends javax.swing.JFrame {
             String hashedPassword = PasswordService.hashPassword(newPassword);
 
             // Update password in database
-            userDao userDao = new userDao();
+            UserDao userDao = new UserDao();
             boolean updated = userDao.updatePasswordByEmail(OTPStore.email, hashedPassword);
 
             if(updated){

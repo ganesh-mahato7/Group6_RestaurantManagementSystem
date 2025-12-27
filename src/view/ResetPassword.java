@@ -5,7 +5,7 @@
 package view;
 
 import dao.PasswordResetDao;
-import dao.userDao;
+import dao.UserDao;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
@@ -168,7 +168,7 @@ public class ResetPassword extends javax.swing.JFrame {
 
         try {
             // Check if email exists in database
-            userDao userDaoInstance = new userDao();
+            UserDao userDaoInstance = new UserDao();
             if (!userDaoInstance.existsByEmail(email)) {
                 JOptionPane.showMessageDialog(this, "No account found with this email address.");
                 return;

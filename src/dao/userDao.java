@@ -1,120 +1,119 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import database.MySqlConnection;
-import model.userdata;
-import java.sql.*;
+import model.User;
 
-public class userDao {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-    MySqlConnection mysql = new MySqlConnection();
+public class UserDao {
 
-    // SIGN UP
-    public void signUp(userdata user){
-        Connection conn = mysql.openConnection();
-        String sql = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+    private final MySqlConnection db = new MySqlConnection();
 
-        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
-            pstm.setString(1, user.getUsername());
-            pstm.setString(2, user.getEmail());
-            pstm.setString(3, user.getPassword());
-            pstm.executeUpdate();
-        } 
-        catch (SQLException e) {
-            System.out.println(e);
-        } 
-        finally {
-            mysql.closeConnection(conn);
-        }
+    // Check if a user exists by email
+    public boolean existsByEmail(String email) throws Exception {
+        Connection conn = db.openConnection();
+        String sql = "SELECT 1 FROM users WHERE email=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, email);
+
+        ResultSet rs = ps.executeQuery();
+        boolean exists = rs.next();
+
+        rs.close();
+        ps.close();
+        db.closeConnection(conn);
+        return exists;
     }
 
-    // CHECK IF USER ALREADY EXISTS
-    public boolean check(userdata user){
-        Connection conn = mysql.openConnection();
-        String sql = "SELECT * FROM users WHERE username = ? OR email = ?";
+    // Fetch user by email (used for reset password / profile)
+    public User getUserByEmail(String email) throws Exception {
+        Connection conn = db.openConnection();
+        String sql = "SELECT fullname, email, password, role FROM users WHERE email=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, email);
 
-        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
-            pstm.setString(1, user.getUsername());
-            pstm.setString(2, user.getEmail());
-            ResultSet result = pstm.executeQuery();
-            return result.next();
-        } 
-        catch (SQLException e) {
-            System.out.println(e);
-        } 
-        finally {
-            mysql.closeConnection(conn);
+        ResultSet rs = ps.executeQuery();
+        User user = null;
+
+        if (rs.next()) {
+            user = new User(
+                    rs.getString("fullname"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getString("role")
+            );
         }
-        return false;
+
+        rs.close();
+        ps.close();
+        db.closeConnection(conn);
+        return user;
     }
 
-    // RESET PASSWORD
-    public boolean updatePassword(String email, String newPassword) {
+    // ✅ PROPER LOGIN METHOD (IMPORTANT)
+    public User login(String email, String hashedPassword) throws Exception {
+        Connection conn = db.openConnection();
+        String sql = """
+            SELECT fullname, email, password, role
+            FROM users
+            WHERE email=? AND password=?
+        """;
 
-        Connection conn = mysql.openConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, email);
+        ps.setString(2, hashedPassword);
+
+        ResultSet rs = ps.executeQuery();
+        User user = null;
+
+        if (rs.next()) {
+            user = new User(
+                    rs.getString("fullname"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getString("role")
+            );
+        }
+
+        rs.close();
+        ps.close();
+        db.closeConnection(conn);
+        return user;
+    }
+
+    // Register a new user
+    public boolean registerUser(User user) throws Exception {
+        Connection conn = db.openConnection();
+        String sql = "INSERT INTO users(fullname, email, password, role) VALUES (?,?,?,?)";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, user.getFullName());
+        ps.setString(2, user.getEmail());
+        ps.setString(3, user.getPassword());
+        ps.setString(4, user.getRole());
+
+        int result = ps.executeUpdate();
+
+        ps.close();
+        db.closeConnection(conn);
+        return result > 0;
+    }
+
+    // Update password by email
+    public boolean updatePasswordByEmail(String email, String hashedPassword) throws Exception {
+        Connection conn = db.openConnection();
         String sql = "UPDATE users SET password=? WHERE email=?";
 
-        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, hashedPassword);
+        ps.setString(2, email);
 
-            pst.setString(1, newPassword);
-            pst.setString(2, email);
+        int updated = ps.executeUpdate();
 
-            return pst.executeUpdate() > 0;
-
-        } 
-        catch (SQLException e) {
-            System.out.println(e);
-            return false;
-        }
-        finally {
-            mysql.closeConnection(conn);
-        }
-    }
-
-    // CHECK IF EMAIL EXISTS
-    public boolean existsByEmail(String email) {
-        Connection conn = mysql.openConnection();
-        if (conn == null) {
-            System.out.println("Error: Cannot connect to database. Check MySQL connection.");
-            return false;
-        }
-        String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
-        
-        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
-            pstm.setString(1, email);
-            ResultSet result = pstm.executeQuery();
-            if (result.next()) {
-                return result.getInt(1) > 0;
-            }
-        } 
-        catch (SQLException e) {
-            System.out.println(e);
-        } 
-        finally {
-            mysql.closeConnection(conn);
-        }
-        return false;
-    }
-
-    // UPDATE PASSWORD BY EMAIL (for password recovery)
-    public boolean updatePasswordByEmail(String email, String newPassword) {
-        Connection conn = mysql.openConnection();
-        String sql = "UPDATE users SET password=? WHERE email=?";
-
-        try (PreparedStatement pst = conn.prepareStatement(sql)) {
-            pst.setString(1, newPassword);
-            pst.setString(2, email);
-            return pst.executeUpdate() > 0;
-        } 
-        catch (SQLException e) {
-            System.out.println(e);
-            return false;
-        }
-        finally {
-            mysql.closeConnection(conn);
-        }
+        ps.close();
+        db.closeConnection(conn);
+        return updated > 0;
     }
 }
