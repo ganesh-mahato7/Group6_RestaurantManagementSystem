@@ -6,7 +6,6 @@ import view.ManageCategory;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.sql.SQLException;
 import java.util.List;
 
 public class ManageCategoryController {
@@ -27,22 +26,18 @@ public class ManageCategoryController {
 
     // Load all categories into table
     private void loadCategories() {
-        try {
-            List<Category> categories = dao.getAllCategories();
-            DefaultTableModel model = (DefaultTableModel) view.getViewCategoryTable().getModel();
-            model.setRowCount(0); // Clear table
-            for (Category c : categories) {
-                model.addRow(new Object[]{c.getId(), c.getName()});
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(view, "Error loading categories: " + e.getMessage());
+        List<Category> categories = dao.getAllCategories();
+        DefaultTableModel model = (DefaultTableModel) view.getViewCategoryTable().getModel();
+        model.setRowCount(0); // Clear table
+        for (Category c : categories) {
+            model.addRow(new Object[]{c.getId(), c.getName()});
         }
     }
 
     // Attach button and table listeners
     private void attachListeners() {
         // Save button
-        view.getSaveButton().addActionListener(e -> addCategory());
+        view.getSaveButton().addActionListener(e -> saveCategory());
 
         // Clear button
         view.getClearButton().addActionListener(e -> view.getAddCategoryField().setText(""));
@@ -64,57 +59,32 @@ public class ManageCategoryController {
         });
     }
 
-    // Add new category
-    private void addCategory() {
+    // Add/save new category
+    public void saveCategory() {
         String name = view.getAddCategoryField().getText().trim();
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(view, "Please enter a category name!");
             return;
         }
 
-        try {
-            boolean success = dao.addCategory(name); // returns true if inserted
-            if (success) {
-                JOptionPane.showMessageDialog(view, "Category added successfully!");
-                view.getAddCategoryField().setText("");
-                loadCategories();
-            } else {
-                JOptionPane.showMessageDialog(view, "Category already exists or could not be added.");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(view, "Error adding category: " + e.getMessage());
+        boolean success = dao.addCategory(name);
+        if (success) {
+            JOptionPane.showMessageDialog(view, "Category added successfully!");
+            view.getAddCategoryField().setText("");
+            loadCategories();
+        } else {
+            JOptionPane.showMessageDialog(view, "Category already exists or could not be added.");
         }
     }
 
     // Delete category by ID
-    private void deleteCategory(int id) {
-        try {
-            boolean success = dao.deleteCategory(id);
-            if (success) {
-                JOptionPane.showMessageDialog(view, "Category deleted successfully!");
-                loadCategories();
-            } else {
-                JOptionPane.showMessageDialog(view, "Error deleting category!");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(view, "Error deleting category: " + e.getMessage());
-        }
-    }
-
-    // Optional helper method for UI to call save directly
-    public boolean saveCategory(String categoryName) {
-        if (categoryName == null || categoryName.trim().isEmpty()) {
-            return false;
-        }
-        try {
-            boolean success = dao.addCategory(categoryName.trim());
-            if (success) {
-                loadCategories();
-            }
-            return success;
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(view, "Error saving category: " + e.getMessage());
-            return false;
+    public void deleteCategory(int id) {
+        boolean success = dao.deleteCategory(id);
+        if (success) {
+            JOptionPane.showMessageDialog(view, "Category deleted successfully!");
+            loadCategories();
+        } else {
+            JOptionPane.showMessageDialog(view, "Error deleting category!");
         }
     }
 }

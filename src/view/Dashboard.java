@@ -14,6 +14,10 @@ public class Dashboard extends JFrame {
 
     public Dashboard() {
         initComponents();
+        setTitle("Nepal Restaurant Management System");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Dashboard stays open
+        setVisible(true);
     }
 
     // ===== ROLE BASED ACCESS =====
@@ -54,7 +58,7 @@ public class Dashboard extends JFrame {
         VerifyUser.setVisible(false);
     }
 
-    // ===== METHODS TO ATTACH LISTENERS =====
+    // ===== MVC LISTENER HOOKS =====
     public void addPlaceOrderListener(ActionListener listener) {
         PlaceOrder.addActionListener(listener);
     }
@@ -238,7 +242,11 @@ public class Dashboard extends JFrame {
     }//GEN-LAST:event_VerifyUserActionPerformed
 
     private void NewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductActionPerformed
-        JOptionPane.showMessageDialog(this, "New Product clicked!");
+        // Open AddNewProduct as a new window without closing Dashboard
+    AddNewProduct addProductView = new AddNewProduct();
+    addProductView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Only this window closes
+    addProductView.setVisible(true);
+    addProductView.setLocationRelativeTo(this); // Center relative to Dashboard
     }//GEN-LAST:event_NewProductActionPerformed
 
     private void ViewEditDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewEditDeleteProductActionPerformed
@@ -254,14 +262,11 @@ public class Dashboard extends JFrame {
     }//GEN-LAST:event_PlaceOrderActionPerformed
 
     private void ManageCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCategoryActionPerformed
-        try {
-            ManageCategory manageCategoryView = new ManageCategory();
-            manageCategoryView.setVisible(true);
-            manageCategoryView.setLocationRelativeTo(null); // Center the window
-            dispose(); // close Dashboard if needed
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error opening Manage Category: " + e.getMessage());
-        }
+        // Open ManageCategory as a new window without closing Dashboard
+    ManageCategory manageCategoryView = new ManageCategory();
+    manageCategoryView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Only this window closes
+    manageCategoryView.setVisible(true);
+    manageCategoryView.setLocationRelativeTo(this); // Center relative to Dashboard
     }//GEN-LAST:event_ManageCategoryActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
@@ -277,24 +282,18 @@ public class Dashboard extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info :
+                    javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
+            logger.severe(ex.getMessage());
         }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Dashboard().setVisible(true));
     }
 

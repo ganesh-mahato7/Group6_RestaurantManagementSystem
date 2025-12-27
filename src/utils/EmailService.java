@@ -45,7 +45,7 @@ public class EmailService {
                 "<p>Your OTP for password reset is: <strong>" + otpCode + "</strong></p>" +
                 "<p>This OTP is valid for 10 minutes.</p>" +
                 "<p>If you didn't request this, please ignore this email.</p>" +
-                "<br><p>Thank you,<br>Your App Team</p>";
+                "<br><p>Thank you,<br>Group6 Restaurant Management System</p>";
             
             message.setContent(emailBody, "text/html");
             

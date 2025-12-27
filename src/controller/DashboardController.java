@@ -1,6 +1,7 @@
 package controller;
 
 import model.UserSession;
+import view.AddNewProduct;
 import view.Dashboard;
 import view.Login;
 
@@ -13,7 +14,7 @@ public class DashboardController {
 
     public DashboardController(Dashboard dashboard) {
         this.dashboard = dashboard;
-        this.session = UserSession.getInstance(); // use singleton session
+        this.session = UserSession.getInstance();
     }
 
     public void open() {
@@ -35,27 +36,33 @@ public class DashboardController {
             case "STAFF" -> dashboard.setStaffAccess();
             case "WAITER" -> dashboard.setWaiterAccess();
             default -> {
-                JOptionPane.showMessageDialog(
-                        dashboard,
-                        "Unauthorized role: " + role
-                );
+                JOptionPane.showMessageDialog(dashboard, "Unauthorized role: " + role);
                 System.exit(0);
             }
         }
     }
 
     private void attachListeners() {
+
+        // ✅ NEW PRODUCT navigation
+        dashboard.addNewProductListener(e -> openAddNewProduct());
+
+        // Logout
         dashboard.addLogoutListener(e -> logout());
     }
 
-    private void logout() {
-        // Clear session on logout
-        session.clearSession();
+    private void openAddNewProduct() {
+        AddNewProduct addNewProduct = new AddNewProduct();
+        addNewProduct.setLocationRelativeTo(null);
+        addNewProduct.setVisible(true);
 
-        // Close dashboard
+        dashboard.dispose(); // optional (remove if you want dashboard to stay open)
+    }
+
+    private void logout() {
+        session.clearSession();
         dashboard.dispose();
 
-        // Open login view
         Login login = new Login();
         new LoginController(login).open();
     }

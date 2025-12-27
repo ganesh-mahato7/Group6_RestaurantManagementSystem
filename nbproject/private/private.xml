@@ -3,27 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/utils/EmailSender.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/OTPStore.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/NewPassword.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/ResetPassword.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Login.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/controller/LoginController.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/group6_restaurantmanagementsystem/Group6_RestaurantManagementSystem.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/controller/PasswordRecoveryController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Dashboard.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/UserDao.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/User.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/UserSession.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/controller/SignUpController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/LoginDao.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/ManageCategory.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/controller/ManageCategoryController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/CategoryDao.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/Category.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/database/MySqlConnection.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/SignUpForm.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/Verification.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/OTPStore.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/Staff.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/userdata.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/utils/OTPService.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/utils/PasswordService.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/utils/EmailService.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/controller/PasswordRecoveryController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/view/AddNewProduct.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/PasswordResetDao.java</file>
             <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/RegistrationDao.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/StaffDao.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/loginDao.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/UserDao.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/database/Database.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/User.java</file>
-            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/utils/PasswordService.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/model/Product.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/dao/ProductDao.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/controller/AddProductController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/controller/DashboardController.java</file>
+            <file>file:/C:/Users/Asus/OneDrive/Documents/NetBeansProjects/Group6_RestaurantManagementSystem/src/group6_restaurantmanagementsystem/Group6_RestaurantManagementSystem.java</file>
         </group>
     </open-files>
 </project-private>
