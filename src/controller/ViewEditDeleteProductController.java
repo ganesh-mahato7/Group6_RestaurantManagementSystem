@@ -46,15 +46,18 @@ public class ViewEditDeleteProductController {
 
         List<Product> products = productDao.getAllProducts();
         for (Product p : products) {
+            // Ensure categoryName is never null
+            String catName = p.getCategoryName() != null ? p.getCategoryName() : "N/A";
             model.addRow(new Object[]{
                     p.getId(),
                     p.getName(),
-                    p.getCategoryName(), // display category name
+                    catName,
                     p.getPrice()
             });
         }
     }
 
+    // Attach listeners for table and buttons
     private void attachListeners() {
         view.getTable().addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -76,12 +79,12 @@ public class ViewEditDeleteProductController {
 
     private void updateProduct() {
         try {
-            int id = Integer.parseInt(view.getTxtId().getText());
+            int id = Integer.parseInt(view.getTxtId().getText().trim());
             String name = view.getTxtName().getText().trim();
             String categoryName = (String) view.getCmbCategory().getSelectedItem();
             double price = Double.parseDouble(view.getTxtPrice().getText().trim());
 
-            if (name.isEmpty() || categoryName == null) {
+            if (name.isEmpty() || categoryName == null || categoryName.isEmpty()) {
                 JOptionPane.showMessageDialog(view, "Please fill all fields!");
                 return;
             }
@@ -92,7 +95,8 @@ public class ViewEditDeleteProductController {
                 return;
             }
 
-            Product p = new Product(id, name, category.getId(), price);
+            // Use constructor including categoryName for correct table display
+            Product p = new Product(id, name, category.getId(), category.getName(), price);
 
             if (productDao.updateProduct(p)) {
                 JOptionPane.showMessageDialog(view, "Product updated successfully!");
@@ -109,8 +113,8 @@ public class ViewEditDeleteProductController {
 
     private void deleteProduct() {
         try {
-            int id = Integer.parseInt(view.getTxtId().getText());
-            int confirm = JOptionPane.showConfirmDialog(view, "Delete this product?");
+            int id = Integer.parseInt(view.getTxtId().getText().trim());
+            int confirm = JOptionPane.showConfirmDialog(view, "Are you sure you want to delete this product?");
             if (confirm == JOptionPane.YES_OPTION) {
                 if (productDao.deleteProduct(id)) {
                     JOptionPane.showMessageDialog(view, "Product deleted successfully!");

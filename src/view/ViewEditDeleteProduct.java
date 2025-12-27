@@ -5,17 +5,26 @@
 package view;
 
 import controller.ViewEditDeleteProductController;
+import dao.CategoryDao;
+import dao.ProductDao;
+import model.Category;
+import model.Product;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class ViewEditDeleteProduct extends JFrame {
 
+    private final ProductDao productDao = new ProductDao();
+    private final CategoryDao categoryDao = new CategoryDao();
+
     public ViewEditDeleteProduct() {
         initComponents();
-        setTitle("View, Edit and Delete Product");
+        loadCategories();
+        loadProducts();
+        attachListeners();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -37,6 +46,11 @@ public class ViewEditDeleteProduct extends JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jLabel1.setText("View, Edit and Delete Product");
 
@@ -48,14 +62,17 @@ public class ViewEditDeleteProduct extends JFrame {
 
         jLabel5.setText("Price");
 
-        ID.setText("00");
-        ID.addActionListener(this::IDActionPerformed);
+        Name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                NameKeyReleased(evt);
+            }
+        });
 
-        Name.addActionListener(this::NameActionPerformed);
-
-        Category.addActionListener(this::CategoryActionPerformed);
-
-        Price.addActionListener(this::PriceActionPerformed);
+        Category.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CategoryKeyReleased(evt);
+            }
+        });
 
         Update.setText("Update");
         Update.addActionListener(this::UpdateActionPerformed);
@@ -64,7 +81,6 @@ public class ViewEditDeleteProduct extends JFrame {
         Delete.addActionListener(this::DeleteActionPerformed);
 
         Clear.setText("Clear");
-        Clear.addActionListener(this::ClearActionPerformed);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,13 +90,9 @@ public class ViewEditDeleteProduct extends JFrame {
                 "ID", "Name", "Category", "Price"
             }
         ));
-        jTable1.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jTable1AncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -135,14 +147,14 @@ public class ViewEditDeleteProduct extends JFrame {
                             .addComponent(jLabel3)
                             .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(Category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5))
                     .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Update)
                     .addComponent(Delete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -157,38 +169,119 @@ public class ViewEditDeleteProduct extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
+    private void NameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NameKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_IDActionPerformed
+        ValidateField();
+    }//GEN-LAST:event_NameKeyReleased
 
-    private void NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameActionPerformed
+    private void CategoryKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CategoryKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_NameActionPerformed
-
-    private void CategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CategoryActionPerformed
-
-    private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PriceActionPerformed
+         ValidateField();
+    }//GEN-LAST:event_CategoryKeyReleased
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-        // TODO add your handling code here:
+        try {
+            int id = Integer.parseInt(ID.getText().trim());
+            String name = Name.getText().trim();
+            String categoryName = (String) Category.getSelectedItem();
+            double price = Double.parseDouble(Price.getText().trim());
+
+            if (name.isEmpty() || categoryName == null) {
+                JOptionPane.showMessageDialog(this, "Please fill all fields!");
+                return;
+            }
+
+            Category category = categoryDao.getCategoryByName(categoryName);
+            if (category == null) {
+                JOptionPane.showMessageDialog(this, "Category not found!");
+                return;
+            }
+
+            Product p = new Product(id, name, category.getId(), category.getName(), price);
+
+            if (productDao.updateProduct(p)) {
+                JOptionPane.showMessageDialog(this, "Product updated successfully!");
+                loadProducts();
+                clearFields();
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to update product!");
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid ID or price!");
+        }
     }//GEN-LAST:event_UpdateActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        loadCategories();
+        loadProducts();   // fill table with products
+    }//GEN-LAST:event_formComponentShown
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int row = jTable1.getSelectedRow();
+        if (row >= 0) {
+            ID.setText(jTable1.getValueAt(row, 0).toString());
+            Name.setText(jTable1.getValueAt(row, 1).toString());
+            Category.setSelectedItem(jTable1.getValueAt(row, 2).toString());
+            Price.setText(jTable1.getValueAt(row, 3).toString());
+            ValidateField();
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-        // TODO add your handling code here:
+        try {
+            int id = Integer.parseInt(ID.getText().trim());
+            int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this product?");
+            if (confirm == JOptionPane.YES_OPTION) {
+                if (productDao.deleteProduct(id)) {
+                    JOptionPane.showMessageDialog(this, "Product deleted successfully!");
+                    loadProducts();
+                    clearFields();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Failed to delete product!");
+                }
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Select a valid product to delete!");
+        }
     }//GEN-LAST:event_DeleteActionPerformed
 
-    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ClearActionPerformed
+        // ======== Utility Methods ========
+    public void loadCategories() {
+        Category.removeAllItems();
+        for (Category c : categoryDao.getAllCategories()) {
+            Category.addItem(c.getName());
+        }
+        if (Category.getItemCount() > 0) Category.setSelectedIndex(0);
+    }
 
-    private void jTable1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable1AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable1AncestorAdded
+    public void loadProducts() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (Product p : productDao.getAllProducts()) {
+            model.addRow(new Object[]{p.getId(), p.getName(), p.getCategoryName(), p.getPrice()});
+        }
+    }
 
+    public void clearFields() {
+        ID.setText("");
+        Name.setText("");
+        if (Category.getItemCount() > 0) Category.setSelectedIndex(0);
+        Price.setText("");
+    }
+
+    private void attachListeners() {
+        // No additional listeners needed as handled above
+    }
+
+    private void ValidateField() {
+        boolean enable = !Name.getText().trim().isEmpty()
+                && Category.getSelectedItem() != null
+                && !Price.getText().trim().isEmpty();
+        Update.setEnabled(enable);
+        Delete.setEnabled(!ID.getText().trim().isEmpty());
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -201,39 +294,15 @@ public class ViewEditDeleteProduct extends JFrame {
 
     }
  
-// ========= MVC GETTERS (FIXED) =========
-
-public JTable getTable() {
-    return jTable1;
-}
-
-public JTextField getTxtId() {
-    return ID;
-}
-
-public JTextField getTxtName() {
-    return Name;
-}
-
-public JComboBox<String> getCmbCategory() {
-    return Category;
-}
-
-public JTextField getTxtPrice() {
-    return Price;
-}
-
-public JButton getUpdateButton() {
-    return Update;
-}
-
-public JButton getDeleteButton() {
-    return Delete;
-}
-
-public JButton getClearButton() {
-    return Clear;
-}
+   // ======== MVC Getters ========
+    public JTable getTable() { return jTable1; }
+    public JTextField getTxtId() { return ID; }
+    public JTextField getTxtName() { return Name; }
+    public JComboBox<String> getCmbCategory() { return Category; }
+    public JTextField getTxtPrice() { return Price; }
+    public JButton getUpdateButton() { return Update; }
+    public JButton getDeleteButton() { return Delete; }
+    public JButton getClearButton() { return Clear; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Category;
@@ -251,4 +320,5 @@ public JButton getClearButton() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
 }

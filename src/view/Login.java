@@ -168,7 +168,7 @@ public class Login extends javax.swing.JFrame {
                     .addContainerGap()))
         );
 
-        jTabbedPane1.addTab("Admin", jPanel4);
+        jTabbedPane1.addTab("Login", jPanel4);
 
         error.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         error.setForeground(new java.awt.Color(204, 0, 0));
