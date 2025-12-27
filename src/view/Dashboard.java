@@ -7,7 +7,6 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
-import controller.ManageCategoryController;
 
 public class Dashboard extends JFrame {
 
@@ -53,6 +52,39 @@ public class Dashboard extends JFrame {
         NewProduct.setVisible(false);
         ManageCategory.setVisible(false);
         VerifyUser.setVisible(false);
+    }
+
+    // ===== METHODS TO ATTACH LISTENERS =====
+    public void addPlaceOrderListener(ActionListener listener) {
+        PlaceOrder.addActionListener(listener);
+    }
+
+    public void addBillAndOrderPlacedListener(ActionListener listener) {
+        BillAndOrderPlaced.addActionListener(listener);
+    }
+
+    public void addViewEditDeleteProductListener(ActionListener listener) {
+        ViewEditDeleteProduct.addActionListener(listener);
+    }
+
+    public void addNewProductListener(ActionListener listener) {
+        NewProduct.addActionListener(listener);
+    }
+
+    public void addManageCategoryListener(ActionListener listener) {
+        ManageCategory.addActionListener(listener);
+    }
+
+    public void addVerifyUserListener(ActionListener listener) {
+        VerifyUser.addActionListener(listener);
+    }
+
+    public void addChangePasswordListener(ActionListener listener) {
+        ChangePassword.addActionListener(listener);
+    }
+
+    public void addLogoutListener(ActionListener listener) {
+        Logout.addActionListener(listener);
     }
 
     @SuppressWarnings("unchecked")
