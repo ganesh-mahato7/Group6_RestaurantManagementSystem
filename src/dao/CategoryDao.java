@@ -3,7 +3,10 @@ package dao;
 import database.MySqlConnection;
 import model.Category;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +14,37 @@ public class CategoryDao {
 
     private final MySqlConnection mysql = new MySqlConnection();
 
-    // ===== Get all categories (full objects) =====
+    // 1️⃣ Add new category
+    public boolean addCategory(String name) {
+        String sql = "INSERT INTO categories (name) VALUES (?)";
+        try (Connection conn = mysql.openConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, name);
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace(); // show error for debugging
+            return false;
+        }
+    }
+
+    // 2️⃣ Delete category by ID
+    public boolean deleteCategory(int id) {
+        String sql = "DELETE FROM categories WHERE id=?";
+        try (Connection conn = mysql.openConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // 3️⃣ Fetch all categories
     public List<Category> getAllCategories() {
         List<Category> categories = new ArrayList<>();
         String sql = "SELECT id, name FROM categories";
@@ -25,65 +58,49 @@ public class CategoryDao {
             }
 
         } catch (SQLException e) {
-            System.err.println("Error fetching categories: " + e.getMessage());
             e.printStackTrace();
         }
 
         return categories;
     }
 
-    // ===== Get all category names (for combo boxes) =====
-    public List<String> getAllCategoryNames() {
-        List<String> categoryNames = new ArrayList<>();
-        String sql = "SELECT name FROM categories";
-
-        try (Connection conn = mysql.openConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-
-            while (rs.next()) {
-                categoryNames.add(rs.getString("name"));
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Error fetching category names: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        return categoryNames;
-    }
-
-    // ===== Add a new category =====
-    public boolean addCategory(String name) {
-        String sql = "INSERT INTO categories(name) VALUES(?)";
-
+    // 4️⃣ Fetch category by name
+    public Category getCategoryByName(String categoryName) {
+        String sql = "SELECT id, name FROM categories WHERE name = ?";
         try (Connection conn = mysql.openConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setString(1, name);
-            return ps.executeUpdate() > 0;
+            ps.setString(1, categoryName);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new Category(rs.getInt("id"), rs.getString("name"));
+                }
+            }
 
         } catch (SQLException e) {
-            System.err.println("Error adding category: " + e.getMessage());
             e.printStackTrace();
-            return false;
         }
+
+        return null; // not found
     }
 
-    // ===== Delete a category by ID =====
-    public boolean deleteCategory(int id) {
-        String sql = "DELETE FROM categories WHERE id=?";
-
+    // 5️⃣ Optional: Fetch category by ID
+    public Category getCategoryById(int id) {
+        String sql = "SELECT id, name FROM categories WHERE id = ?";
         try (Connection conn = mysql.openConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
-            return ps.executeUpdate() > 0;
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new Category(rs.getInt("id"), rs.getString("name"));
+                }
+            }
 
         } catch (SQLException e) {
-            System.err.println("Error deleting category: " + e.getMessage());
             e.printStackTrace();
-            return false;
         }
+
+        return null; // not found
     }
 }

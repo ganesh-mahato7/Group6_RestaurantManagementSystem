@@ -250,7 +250,9 @@ public class Dashboard extends JFrame {
     }//GEN-LAST:event_NewProductActionPerformed
 
     private void ViewEditDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewEditDeleteProductActionPerformed
-        JOptionPane.showMessageDialog(this, "View/Edit/Delete Product clicked!");
+        // Open the View/Edit/Delete Product window
+    ViewEditDeleteProduct viewEditDeleteProduct = new ViewEditDeleteProduct();
+    viewEditDeleteProduct.setVisible(true);
     }//GEN-LAST:event_ViewEditDeleteProductActionPerformed
 
     private void BillAndOrderPlacedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BillAndOrderPlacedActionPerformed

@@ -20,7 +20,6 @@ public class Group6_RestaurantManagementSystem {
             }
         } catch (ClassNotFoundException | InstantiationException |
                  IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            ex.printStackTrace();
         }
 
         // Test DB

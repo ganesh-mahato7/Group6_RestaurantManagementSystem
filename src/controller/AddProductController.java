@@ -7,10 +7,9 @@ import model.Product;
 import view.AddNewProduct;
 
 import javax.swing.*;
-import java.sql.SQLException;
 import java.util.List;
 
-public class AddProductController {
+public final class AddProductController {
 
     private final AddNewProduct view;
     private final CategoryDao categoryDao;
@@ -20,6 +19,9 @@ public class AddProductController {
         this.view = view;
         this.categoryDao = new CategoryDao();
         this.productDao = new ProductDao();
+
+        loadCategories();
+        attachListeners();
     }
 
     // Load categories into combo box
@@ -29,16 +31,19 @@ public class AddProductController {
         for (Category c : categories) {
             view.getCategoryBox().addItem(c.getName());
         }
+        if (!categories.isEmpty()) {
+            view.getCategoryBox().setSelectedIndex(0);
+        }
     }
 
-    // Save product to database
+    // Save product
     public void saveProduct() {
         String name = view.getNameField().getText().trim();
-        String category = (String) view.getCategoryBox().getSelectedItem();
+        String categoryName = (String) view.getCategoryBox().getSelectedItem();
         String priceText = view.getPriceField().getText().trim();
 
-        if (name.isEmpty() || priceText.isEmpty() || category == null) {
-            JOptionPane.showMessageDialog(view, "Please enter all fields!");
+        if (name.isEmpty() || categoryName == null || priceText.isEmpty()) {
+            JOptionPane.showMessageDialog(view, "Please fill all fields!");
             return;
         }
 
@@ -50,16 +55,35 @@ public class AddProductController {
             return;
         }
 
-        Product product = new Product(name, category, price);
-        boolean success = productDao.addProduct(product); // assumes you update ProductDao.addProduct(Product)
+        // Get category ID from name
+        Category category = categoryDao.getCategoryByName(categoryName);
+        if (category == null) {
+            JOptionPane.showMessageDialog(view, "Selected category not found!");
+            return;
+        }
 
-        if (success) {
+        Product product = new Product(name, category.getId(), price);
+
+        if (productDao.save(product)) {
             JOptionPane.showMessageDialog(view, "Product saved successfully!");
-            view.getNameField().setText("");
-            view.getPriceField().setText("");
-            view.getCategoryBox().setSelectedIndex(0);
+            clearForm();
         } else {
             JOptionPane.showMessageDialog(view, "Failed to save product!");
         }
+    }
+
+    // Clear form (public so the view can call it)
+    public void clearForm() {
+        view.getNameField().setText("");
+        view.getPriceField().setText("");
+        if (view.getCategoryBox().getItemCount() > 0) {
+            view.getCategoryBox().setSelectedIndex(0);
+        }
+    }
+
+    // Attach button listeners
+    private void attachListeners() {
+        view.getSaveButton().addActionListener(e -> saveProduct());
+        view.getClearButton().addActionListener(e -> clearForm());
     }
 }

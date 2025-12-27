@@ -7,23 +7,23 @@ package view;
 import controller.ManageCategoryController;
 import javax.swing.*;
 
-public class ManageCategory extends JFrame {
+public final class ManageCategory extends JFrame {
 
     private final ManageCategoryController controller;
+
 
     public ManageCategory() {
         initComponents();
 
         // Initialize controller
         controller = new ManageCategoryController(this);
-        controller.open(); // Load categories and attach listeners
 
         setTitle("Manage Category");
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Dispose only this window
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Only close this window
     }
 
-    // ===== GETTER METHODS FOR CONTROLLER =====
+    // ===== Getters for Controller =====
     public JTable getViewCategoryTable() {
         return ViewCategoryTable;
     }
@@ -39,6 +39,7 @@ public class ManageCategory extends JFrame {
     public JButton getClearButton() {
         return Clear;
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
