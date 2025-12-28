@@ -39,23 +39,33 @@ public JButton getClearButton() { return Clear; }
         Clear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
+        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 24)); // NOI18N
         jLabel1.setText("New Product");
 
+        Name.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         Name.setText("Name");
 
+        Category.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         Category.setText("Category");
 
+        price.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         price.setText("Price");
-
-        Item.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         txtPrice.addActionListener(this::txtPriceActionPerformed);
 
+        Save.setBackground(new java.awt.Color(0, 153, 102));
+        Save.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        Save.setForeground(new java.awt.Color(255, 255, 255));
         Save.setText("Save");
         Save.addActionListener(this::SaveActionPerformed);
 
+        Clear.setBackground(new java.awt.Color(204, 0, 0));
+        Clear.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        Clear.setForeground(new java.awt.Color(255, 255, 255));
         Clear.setText("Clear");
+        Clear.addActionListener(this::ClearActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,16 +89,16 @@ public JButton getClearButton() { return Clear; }
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                                 .addComponent(Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(14, 14, 14)
                         .addComponent(jLabel1)))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(85, 85, 85)
+                .addGap(96, 96, 96)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Name)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -104,7 +114,7 @@ public JButton getClearButton() { return Clear; }
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Save)
                     .addComponent(Clear))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,6 +129,10 @@ public JButton getClearButton() { return Clear; }
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         controller.saveProduct();
     }//GEN-LAST:event_SaveActionPerformed
+
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ClearActionPerformed
 
     /**
      * @param args the command line arguments

@@ -154,22 +154,29 @@ public class PlaceOrder extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 24)); // NOI18N
         jLabel1.setText("Place Order");
 
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel2.setText("Bill ID:");
 
         jLabel3.setText("--");
 
+        jLabel4.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel4.setText("Customer Detail");
 
+        jLabel5.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel5.setText("Customer Name");
 
+        jLabel6.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel6.setText("Phone Number");
 
+        jLabel7.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel7.setText("Email");
 
+        jLabel8.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel8.setText("Category");
 
         Category.addActionListener(this::CategoryActionPerformed);
 
+        jLabel9.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel9.setText("Search");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -182,19 +189,25 @@ public class PlaceOrder extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel10.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel10.setText("Name");
 
+        jLabel11.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel11.setText("Price");
 
+        jLabel12.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel12.setText("Quantity");
 
+        jLabel13.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel13.setText("Total");
 
         Clear.setBackground(new java.awt.Color(204, 0, 0));
+        Clear.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         Clear.setForeground(new java.awt.Color(255, 255, 255));
         Clear.setText("Clear");
 
         AddToCart.setBackground(new java.awt.Color(0, 153, 102));
+        AddToCart.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         AddToCart.setForeground(new java.awt.Color(255, 255, 255));
         AddToCart.setText("Add To Cart");
         AddToCart.addActionListener(this::AddToCartActionPerformed);
@@ -209,11 +222,13 @@ public class PlaceOrder extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        GrandTotal.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         GrandTotal.setText("Grand Total");
 
         grandtotalnumber.setText("000");
 
         GenerateBill.setBackground(new java.awt.Color(0, 153, 102));
+        GenerateBill.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         GenerateBill.setForeground(new java.awt.Color(255, 255, 255));
         GenerateBill.setText("Generate Bill");
         GenerateBill.addActionListener(this::GenerateBillActionPerformed);
@@ -285,11 +300,11 @@ public class PlaceOrder extends javax.swing.JFrame {
                                             .addComponent(ProductPrice)
                                             .addComponent(Total, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,7 +365,7 @@ public class PlaceOrder extends javax.swing.JFrame {
                     .addComponent(GrandTotal)
                     .addComponent(grandtotalnumber)
                     .addComponent(GenerateBill))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();

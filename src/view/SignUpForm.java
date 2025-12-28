@@ -48,14 +48,12 @@ public class SignUpForm extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         login_button = new javax.swing.JButton();
         create_new_account_text = new javax.swing.JLabel();
-        logo_image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(720, 1280));
 
         register_main.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 36)); // NOI18N
-        register_main.setForeground(new java.awt.Color(255, 179, 71));
         register_main.setText("Register And Join With Us To Explore!");
         register_main.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -78,6 +76,7 @@ public class SignUpForm extends javax.swing.JFrame {
         select_role_field.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
         select_role_field.setText("Select Role");
 
+        selectrole.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         selectrole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Waiter", "Scrum Master" }));
         selectrole.setAutoscrolls(true);
         selectrole.addActionListener(this::selectroleActionPerformed);
@@ -86,7 +85,7 @@ public class SignUpForm extends javax.swing.JFrame {
         agree_terms.setText("I agree with the Terms and Conditions");
         agree_terms.addActionListener(this::agree_termsActionPerformed);
 
-        register_btn.setBackground(new java.awt.Color(139, 0, 0));
+        register_btn.setBackground(new java.awt.Color(204, 0, 0));
         register_btn.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
         register_btn.setForeground(new java.awt.Color(255, 255, 255));
         register_btn.setText("Create Account");
@@ -94,8 +93,6 @@ public class SignUpForm extends javax.swing.JFrame {
 
         already_text.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 15)); // NOI18N
         already_text.setText("Already Have An Account? ");
-
-        password.setText("jPasswordField2");
 
         login_button.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         login_button.setForeground(new java.awt.Color(255, 204, 51));
@@ -171,18 +168,15 @@ public class SignUpForm extends javax.swing.JFrame {
         );
 
         create_new_account_text.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        create_new_account_text.setForeground(new java.awt.Color(204, 0, 0));
         create_new_account_text.setText("Create New Account");
-
-        logo_image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(logo_image)
-                .addGap(127, 127, 127)
+                .addGap(236, 236, 236)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(register_main, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -197,15 +191,12 @@ public class SignUpForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(register_main, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(create_new_account_text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(logo_image))
+                .addComponent(register_main, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(create_new_account_text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -270,7 +261,6 @@ public class SignUpForm extends javax.swing.JFrame {
     private javax.swing.JTextField fullname;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton login_button;
-    private javax.swing.JLabel logo_image;
     private javax.swing.JPasswordField password;
     private javax.swing.JLabel password_field;
     private javax.swing.JButton register_btn;

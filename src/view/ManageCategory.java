@@ -55,9 +55,12 @@ public final class ManageCategory extends JFrame {
         Clear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
+        ManageCategory.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 24)); // NOI18N
         ManageCategory.setText("Manage Category");
 
+        ViewCategory.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
         ViewCategory.setText("View Category");
 
         ViewCategoryTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -72,13 +75,18 @@ public final class ManageCategory extends JFrame {
 
         Instruction.setText("*Click on row to delete category");
 
+        AddNewCategory.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
         AddNewCategory.setText("Add new category");
 
         AddCategory.addActionListener(this::AddCategoryActionPerformed);
 
+        Save.setBackground(new java.awt.Color(0, 153, 102));
+        Save.setForeground(new java.awt.Color(255, 255, 255));
         Save.setText("Save");
         Save.addActionListener(this::SaveActionPerformed);
 
+        Clear.setBackground(new java.awt.Color(204, 0, 0));
+        Clear.setForeground(new java.awt.Color(255, 255, 255));
         Clear.setText("Clear");
         Clear.addActionListener(this::ClearActionPerformed);
 
@@ -104,23 +112,24 @@ public final class ManageCategory extends JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ManageCategory)
-                            .addComponent(AddNewCategory))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ViewCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(145, 145, 145))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(AddNewCategory)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ViewCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(109, 109, 109))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ManageCategory)
-                .addGap(53, 53, 53)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ViewCategory)
                     .addComponent(AddNewCategory))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -131,7 +140,7 @@ public final class ManageCategory extends JFrame {
                             .addComponent(Clear))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Instruction)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
