@@ -21,7 +21,7 @@ public class LoginDao {
      */
     public boolean login(String email, String passwordInput) {
         Connection conn = mysql.openConnection();
-        String sql = "SELECT id, fullname, email, password, role FROM users WHERE email=?";
+        String sql = "SELECT * FROM users WHERE email=?";
 
         try (PreparedStatement pstm = conn.prepareStatement(sql)) {
             pstm.setString(1, email);
@@ -30,19 +30,21 @@ public class LoginDao {
             if (result.next()) {
                 String storedPassword = result.getString("password");
 
-                // Verify password
+                // Verify password using PasswordService
                 boolean passwordMatch = PasswordService.verifyPassword(passwordInput, storedPassword);
 
                 if (passwordMatch) {
-                    // Set user session using the User model
+                    // Create User object using constructor without phone/address
                     User loggedInUser = new User(
-                        result.getString("fullname"),
-                        result.getString("email"),
-                        result.getString("password"),
-                        result.getString("role")
+                            result.getInt("id"),
+                            result.getString("fullname"),
+                            result.getString("email"),
+                            result.getString("password"),
+                            result.getString("role"),
+                            result.getString("status")
                     );
 
-                    // ✅ Fixed: use the correct method
+                    // Set the logged-in user in session
                     UserSession.getInstance().setUser(loggedInUser);
 
                     return true;

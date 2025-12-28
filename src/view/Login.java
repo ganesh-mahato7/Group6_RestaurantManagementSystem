@@ -172,7 +172,7 @@ public class Login extends javax.swing.JFrame {
 
         error.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         error.setForeground(new java.awt.Color(204, 0, 0));
-        error.setText("***Email Address or Phone Number Can not be Empty");
+        error.setText("***Email Address Can not be Empty");
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(44, 62, 80));

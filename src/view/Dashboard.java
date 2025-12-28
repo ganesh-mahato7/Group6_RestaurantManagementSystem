@@ -238,7 +238,11 @@ public class Dashboard extends JFrame {
     }//GEN-LAST:event_ChangePasswordActionPerformed
 
     private void VerifyUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerifyUserActionPerformed
-        JOptionPane.showMessageDialog(this, "Verify Users clicked!");
+        // Open the VerifyUsers window
+    java.awt.EventQueue.invokeLater(() -> {
+        VerifyUsers verifyUsers = new VerifyUsers();
+        verifyUsers.setVisible(true);
+    });
     }//GEN-LAST:event_VerifyUserActionPerformed
 
     private void NewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductActionPerformed

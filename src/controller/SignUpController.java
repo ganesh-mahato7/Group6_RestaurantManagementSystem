@@ -47,7 +47,16 @@ public class SignUpController {
 
             // Hash password before saving
             String hashedPassword = PasswordService.hashPassword(password);
-            User user = new User(fullName, email, hashedPassword, role);
+
+            // ✅ Use updated User constructor (without phone/address)
+            User user = new User(
+                    0,               // id (auto-generated)
+                    fullName,
+                    email,
+                    hashedPassword,  // password
+                    role,
+                    "Pending"        // default status
+            );
 
             if (userDao.registerUser(user)) {
                 JOptionPane.showMessageDialog(signUpForm, "Registration successful!");

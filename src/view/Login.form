@@ -335,7 +335,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="***Email Address or Phone Number Can not be Empty"/>
+            <Property name="text" type="java.lang.String" value="***Email Address Can not be Empty"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
