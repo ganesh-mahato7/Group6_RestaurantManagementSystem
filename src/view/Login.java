@@ -46,6 +46,7 @@ public class Login extends javax.swing.JFrame {
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jTabbedPane1.setToolTipText("");
+        jTabbedPane1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jTabbedPane1.setName("tabPane"); // NOI18N
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));

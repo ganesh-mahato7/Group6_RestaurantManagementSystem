@@ -73,6 +73,7 @@ public final class ManageCategory extends JFrame {
         ));
         jScrollPane1.setViewportView(ViewCategoryTable);
 
+        Instruction.setForeground(new java.awt.Color(204, 0, 0));
         Instruction.setText("*Click on row to delete category");
 
         AddNewCategory.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 14)); // NOI18N
@@ -81,11 +82,13 @@ public final class ManageCategory extends JFrame {
         AddCategory.addActionListener(this::AddCategoryActionPerformed);
 
         Save.setBackground(new java.awt.Color(0, 153, 102));
+        Save.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         Save.setForeground(new java.awt.Color(255, 255, 255));
         Save.setText("Save");
         Save.addActionListener(this::SaveActionPerformed);
 
         Clear.setBackground(new java.awt.Color(204, 0, 0));
+        Clear.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         Clear.setForeground(new java.awt.Color(255, 255, 255));
         Clear.setText("Clear");
         Clear.addActionListener(this::ClearActionPerformed);

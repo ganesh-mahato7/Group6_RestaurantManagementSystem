@@ -123,7 +123,7 @@ public class Dashboard extends JFrame {
         jPanel2.setLayout(new java.awt.GridLayout(8, 1, 0, 10));
 
         PlaceOrder.setBackground(new java.awt.Color(52, 58, 64));
-        PlaceOrder.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        PlaceOrder.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 13)); // NOI18N
         PlaceOrder.setForeground(new java.awt.Color(255, 255, 255));
         PlaceOrder.setText("Place Order ");
         PlaceOrder.setBorderPainted(false);
@@ -134,7 +134,7 @@ public class Dashboard extends JFrame {
         jPanel2.add(PlaceOrder);
 
         BillAndOrderPlaced.setBackground(new java.awt.Color(52, 58, 64));
-        BillAndOrderPlaced.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        BillAndOrderPlaced.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 13)); // NOI18N
         BillAndOrderPlaced.setForeground(new java.awt.Color(255, 255, 255));
         BillAndOrderPlaced.setText("Bill and Order Placed");
         BillAndOrderPlaced.setBorderPainted(false);
@@ -143,7 +143,7 @@ public class Dashboard extends JFrame {
         jPanel2.add(BillAndOrderPlaced);
 
         ViewEditDeleteProduct.setBackground(new java.awt.Color(52, 58, 64));
-        ViewEditDeleteProduct.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        ViewEditDeleteProduct.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 13)); // NOI18N
         ViewEditDeleteProduct.setForeground(new java.awt.Color(255, 255, 255));
         ViewEditDeleteProduct.setText("View, Edit and Delete Product");
         ViewEditDeleteProduct.setBorderPainted(false);
@@ -152,7 +152,7 @@ public class Dashboard extends JFrame {
         jPanel2.add(ViewEditDeleteProduct);
 
         NewProduct.setBackground(new java.awt.Color(52, 58, 64));
-        NewProduct.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        NewProduct.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 13)); // NOI18N
         NewProduct.setForeground(new java.awt.Color(255, 255, 255));
         NewProduct.setText("New Produuct");
         NewProduct.setBorderPainted(false);
@@ -161,7 +161,7 @@ public class Dashboard extends JFrame {
         jPanel2.add(NewProduct);
 
         ManageCategory.setBackground(new java.awt.Color(52, 58, 64));
-        ManageCategory.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        ManageCategory.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 13)); // NOI18N
         ManageCategory.setForeground(new java.awt.Color(255, 255, 255));
         ManageCategory.setText("Manage Category");
         ManageCategory.setBorderPainted(false);
@@ -170,7 +170,7 @@ public class Dashboard extends JFrame {
         jPanel2.add(ManageCategory);
 
         VerifyUser.setBackground(new java.awt.Color(52, 58, 64));
-        VerifyUser.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        VerifyUser.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 13)); // NOI18N
         VerifyUser.setForeground(new java.awt.Color(255, 255, 255));
         VerifyUser.setText("Verify Users");
         VerifyUser.setBorderPainted(false);
@@ -179,7 +179,7 @@ public class Dashboard extends JFrame {
         jPanel2.add(VerifyUser);
 
         ChangePassword.setBackground(new java.awt.Color(52, 58, 64));
-        ChangePassword.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        ChangePassword.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 13)); // NOI18N
         ChangePassword.setForeground(new java.awt.Color(255, 255, 255));
         ChangePassword.setText("Change Password");
         ChangePassword.setBorderPainted(false);
@@ -188,7 +188,7 @@ public class Dashboard extends JFrame {
         jPanel2.add(ChangePassword);
 
         Logout.setBackground(new java.awt.Color(52, 58, 64));
-        Logout.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        Logout.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 13)); // NOI18N
         Logout.setForeground(new java.awt.Color(255, 255, 255));
         Logout.setText("Logout");
         Logout.setBorderPainted(false);
