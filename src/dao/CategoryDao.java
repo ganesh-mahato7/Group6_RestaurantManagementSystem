@@ -14,7 +14,7 @@ public class CategoryDao {
 
     private final MySqlConnection mysql = new MySqlConnection();
 
-    // 1️⃣ Add new category
+    // Add new Category
     public boolean addCategory(String name) {
         String sql = "INSERT INTO categories (name) VALUES (?)";
         try (Connection conn = mysql.openConnection();
@@ -29,7 +29,7 @@ public class CategoryDao {
         }
     }
 
-    // 2️⃣ Delete category by ID
+    // Delete Category By ID
     public boolean deleteCategory(int id) {
         String sql = "DELETE FROM categories WHERE id=?";
         try (Connection conn = mysql.openConnection();
@@ -44,7 +44,7 @@ public class CategoryDao {
         }
     }
 
-    // 3️⃣ Fetch all categories
+    // Fetch all Category
     public List<Category> getAllCategories() {
         List<Category> categories = new ArrayList<>();
         String sql = "SELECT id, name FROM categories";
@@ -64,7 +64,7 @@ public class CategoryDao {
         return categories;
     }
 
-    // 4️⃣ Fetch category by name
+    // Fetch Category By Name
     public Category getCategoryByName(String categoryName) {
         String sql = "SELECT id, name FROM categories WHERE name = ?";
         try (Connection conn = mysql.openConnection();
@@ -84,7 +84,7 @@ public class CategoryDao {
         return null; // not found
     }
 
-    // 5️⃣ Optional: Fetch category by ID
+    // Fetch Category By ID
     public Category getCategoryById(int id) {
         String sql = "SELECT id, name FROM categories WHERE id = ?";
         try (Connection conn = mysql.openConnection();

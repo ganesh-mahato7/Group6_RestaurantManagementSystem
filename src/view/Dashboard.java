@@ -264,7 +264,9 @@ public class Dashboard extends JFrame {
     }//GEN-LAST:event_BillAndOrderPlacedActionPerformed
 
     private void PlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceOrderActionPerformed
-        JOptionPane.showMessageDialog(this, "Place Order clicked!");
+        PlaceOrder placeOrder = new PlaceOrder();
+        placeOrder.setLocationRelativeTo(this); // center on screen
+        placeOrder.setVisible(true);
     }//GEN-LAST:event_PlaceOrderActionPerformed
 
     private void ManageCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCategoryActionPerformed
