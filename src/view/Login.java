@@ -28,7 +28,7 @@ public class Login extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         error = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ResetPassword = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -163,13 +163,13 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setText("Resturant Management System");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jButton1.setBackground(new java.awt.Color(204, 0, 0));
-        jButton1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Reset password");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ResetPassword.setBackground(new java.awt.Color(204, 0, 0));
+        ResetPassword.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        ResetPassword.setForeground(new java.awt.Color(255, 255, 255));
+        ResetPassword.setText("Reset password");
+        ResetPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ResetPasswordActionPerformed(evt);
             }
         });
 
@@ -190,7 +190,7 @@ public class Login extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addGap(30, 30, 30)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
@@ -209,7 +209,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1))
+                    .addComponent(ResetPassword))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -260,14 +260,14 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_logINStateChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ResetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ResetPasswordActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ResetPassword;
     private javax.swing.JLabel error;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -305,8 +305,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     public void addForgotPasswordListener(ActionListener listener) {
-        for (ActionListener l : jButton1.getActionListeners()) jButton1.removeActionListener(l);
-        jButton1.addActionListener(listener);
+        for (ActionListener l : ResetPassword.getActionListeners()) ResetPassword.removeActionListener(l);
+        ResetPassword.addActionListener(listener);
     }
 
     public void setErrorMessage(String message) {

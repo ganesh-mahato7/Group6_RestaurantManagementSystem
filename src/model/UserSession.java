@@ -11,10 +11,12 @@ public class UserSession {
     private String email;
     private String role;
 
-    // Private constructor to prevent instantiation
+    // Private constructor to prevent external instantiation
     private UserSession() {}
 
-    // Get the singleton instance
+    /**
+     * Get the singleton instance of UserSession
+     */
     public static UserSession getInstance() {
         if (instance == null) {
             instance = new UserSession();
@@ -22,7 +24,9 @@ public class UserSession {
         return instance;
     }
 
-    // Set session data from a User object
+    /**
+     * Initialize session from a User object
+     */
     public void setUser(User user) {
         if (user == null) return;
 
@@ -36,14 +40,16 @@ public class UserSession {
         System.out.println("Role: " + role);
     }
 
-    // Clear session
+    /**
+     * Clear session data (used internally and on logout)
+     */
     public void clearSession() {
         this.fullName = null;
         this.email = null;
         this.role = null;
     }
 
-    // Getters
+    // ------------------ Getters ------------------
     public String getFullName() {
         return fullName;
     }
@@ -56,12 +62,11 @@ public class UserSession {
         return role;
     }
 
-    // Check if a user is logged in
+    // ------------------ Session checks ------------------
     public boolean isLoggedIn() {
         return email != null && !email.isEmpty();
     }
 
-    // Role helpers
     public boolean isAdmin() {
         return "SCRUM MASTER".equalsIgnoreCase(role) || "ADMIN".equalsIgnoreCase(role);
     }
@@ -72,5 +77,15 @@ public class UserSession {
 
     public boolean isWaiter() {
         return "WAITER".equalsIgnoreCase(role);
+    }
+
+    /**
+     * Log out the current user and clear the session
+     */
+    public void logout() {
+        if (isLoggedIn()) {
+            System.out.println("=== Logging out user: " + email + " ===");
+        }
+        clearSession();
     }
 }

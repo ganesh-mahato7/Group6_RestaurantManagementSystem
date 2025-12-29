@@ -82,17 +82,17 @@ public class UserDao {
 
     // Update password
     public boolean updatePasswordByEmail(String email, String hashedPassword) {
-        boolean success = false;
-        try (Connection conn = db.openConnection();
-             PreparedStatement ps = conn.prepareStatement("UPDATE users SET password=? WHERE email=?")) {
-            ps.setString(1, hashedPassword);
-            ps.setString(2, email);
-            success = ps.executeUpdate() > 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return success;
+    String sql = "UPDATE users SET password=? WHERE email=?";
+    try (Connection conn = db.openConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setString(1, hashedPassword);
+        ps.setString(2, email);
+        return ps.executeUpdate() > 0;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
     }
+}
 
     // ================= VERIFY USERS =================
 
