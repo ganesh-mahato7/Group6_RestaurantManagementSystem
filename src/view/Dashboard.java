@@ -235,7 +235,12 @@ public class Dashboard extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordActionPerformed
-        JOptionPane.showMessageDialog(this, "Change Password clicked!");
+        java.awt.EventQueue.invokeLater(() -> {
+        // Open ChangePassword view through its Controller
+            view.ChangePassword changePasswordView = new view.ChangePassword();
+            controller.ChangePasswordController controller = new controller.ChangePasswordController(changePasswordView);
+            controller.open();
+        });
     }//GEN-LAST:event_ChangePasswordActionPerformed
 
     private void VerifyUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerifyUserActionPerformed
