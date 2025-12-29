@@ -110,7 +110,7 @@ public class Dashboard extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nepal Restaurant Management System");
-        setPreferredSize(new java.awt.Dimension(1200, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 760));
         setResizable(false);
 
         jPanel1.setName("mainPanel"); // NOI18N
