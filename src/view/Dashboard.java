@@ -283,11 +283,17 @@ public class Dashboard extends JFrame {
     }//GEN-LAST:event_PlaceOrderActionPerformed
 
     private void ManageCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCategoryActionPerformed
-        // Open ManageCategory as a new window without closing Dashboard
-    ManageCategory manageCategoryView = new ManageCategory();
-    manageCategoryView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Only this window closes
-    manageCategoryView.setVisible(true);
-    manageCategoryView.setLocationRelativeTo(this); // Center relative to Dashboard
+        // Open the PlaceOrder window
+    PlaceOrder placeOrder = new PlaceOrder();
+    
+    // Center it relative to dashboard
+    placeOrder.setLocationRelativeTo(this);
+    
+    // Ensure closing this window does not close the dashboard
+    placeOrder.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+    
+    // Show the PlaceOrder window
+    placeOrder.setVisible(true);
     }//GEN-LAST:event_ManageCategoryActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
