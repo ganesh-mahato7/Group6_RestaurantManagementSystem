@@ -7,7 +7,8 @@ import model.BillItem;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BillDao {
 
@@ -18,10 +19,10 @@ public class BillDao {
         try (Connection conn = db.openConnection()) {
             conn.setAutoCommit(false);
 
-            // Save Bill 
             String sqlBill = "INSERT INTO bills (bill_number, customer_name, phone, email, sub_total, discount, tax, grand_total, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             int billId;
-            try (PreparedStatement ps = conn.prepareStatement(sqlBill, Statement.RETURN_GENERATED_KEYS)) {
+
+            try (PreparedStatement ps = conn.prepareStatement(sqlBill, PreparedStatement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, bill.getBillNumber());
                 ps.setString(2, bill.getCustomerName());
                 ps.setString(3, bill.getPhone());
@@ -48,7 +49,6 @@ public class BillDao {
                 }
             }
 
-            // Save Bill Items
             String sqlItem = "INSERT INTO bill_items (bill_id, product_name, price, quantity, total) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement psItem = conn.prepareStatement(sqlItem)) {
                 for (BillItem item : bill.getItems()) {
@@ -69,5 +69,35 @@ public class BillDao {
             e.printStackTrace();
             return false;
         }
+    }
+
+    // Fetch bills for JTable (without sub_total)
+    public List<Bill> getAllBillsForTable() {
+        List<Bill> bills = new ArrayList<>();
+        String sql = "SELECT bill_number, customer_name, phone, email, created_at, grand_total, created_by FROM bills ORDER BY id DESC";
+
+        try (Connection conn = db.openConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Bill bill = new Bill();
+                bill.setBillNumber(rs.getString("bill_number")); // fixed
+                bill.setCustomerName(rs.getString("customer_name"));
+                bill.setPhone(rs.getString("phone"));
+                bill.setEmail(rs.getString("email"));
+                bill.setGrandTotal(rs.getDouble("grand_total"));
+                bill.setCreatedBy(rs.getInt("created_by"));
+                // Optional: add a createdAt field in Bill if you want to display it
+                // bill.setCreatedAt(rs.getTimestamp("created_at"));
+
+                bills.add(bill);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return bills;
     }
 }

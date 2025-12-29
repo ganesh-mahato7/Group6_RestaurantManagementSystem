@@ -257,11 +257,23 @@ public class Dashboard extends JFrame {
     private void ViewEditDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewEditDeleteProductActionPerformed
         // Open the View/Edit/Delete Product window
     ViewEditDeleteProduct viewEditDeleteProduct = new ViewEditDeleteProduct();
-    viewEditDeleteProduct.setVisible(true);
+
+    // Make sure closing this window only disposes it, not the dashboard
+    viewEditDeleteProduct.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+
+    // Show the product management window
+    viewEditDeleteProduct.setVisible(true); 
     }//GEN-LAST:event_ViewEditDeleteProductActionPerformed
 
     private void BillAndOrderPlacedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BillAndOrderPlacedActionPerformed
-        JOptionPane.showMessageDialog(this, "Bill and Order Placed clicked!");
+        // Open the ViewBillOrderPlacedDetails window
+    ViewBillOrderPlacedDetails viewBillFrame = new ViewBillOrderPlacedDetails();
+
+    // Ensure closing this window does not close the dashboard
+    viewBillFrame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+
+    // Show the bill/order details window
+    viewBillFrame.setVisible(true);
     }//GEN-LAST:event_BillAndOrderPlacedActionPerformed
 
     private void PlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceOrderActionPerformed
