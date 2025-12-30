@@ -282,12 +282,6 @@ public class Dashboard extends JFrame {
     }//GEN-LAST:event_BillAndOrderPlacedActionPerformed
 
     private void PlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceOrderActionPerformed
-        PlaceOrder placeOrder = new PlaceOrder();
-        placeOrder.setLocationRelativeTo(this); // center on screen
-        placeOrder.setVisible(true);
-    }//GEN-LAST:event_PlaceOrderActionPerformed
-
-    private void ManageCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCategoryActionPerformed
         // Open the PlaceOrder window
     PlaceOrder placeOrder = new PlaceOrder();
     
@@ -299,6 +293,20 @@ public class Dashboard extends JFrame {
     
     // Show the PlaceOrder window
     placeOrder.setVisible(true);
+    }//GEN-LAST:event_PlaceOrderActionPerformed
+
+    private void ManageCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCategoryActionPerformed
+        // Open the ManageCategory window
+    ManageCategory manageCategory = new ManageCategory();
+    
+    // Center it relative to dashboard
+    manageCategory.setLocationRelativeTo(this);
+    
+    // Ensure closing this window does not close the dashboard
+    manageCategory.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+    
+    // Show the ManageCategory window
+    manageCategory.setVisible(true);
     }//GEN-LAST:event_ManageCategoryActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
