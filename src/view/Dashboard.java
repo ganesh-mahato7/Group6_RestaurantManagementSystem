@@ -246,11 +246,15 @@ public class Dashboard extends JFrame {
     }//GEN-LAST:event_ChangePasswordActionPerformed
 
     private void VerifyUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerifyUserActionPerformed
-        // Open the VerifyUsers window
-    java.awt.EventQueue.invokeLater(() -> {
         VerifyUsers verifyUsers = new VerifyUsers();
-        verifyUsers.setVisible(true);
-    });
+
+    // Center window relative to Dashboard
+    verifyUsers.setLocationRelativeTo(this);
+
+    // Do NOT close Dashboard when VerifyUsers closes
+    verifyUsers.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+    verifyUsers.setVisible(true);
     }//GEN-LAST:event_VerifyUserActionPerformed
 
     private void NewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductActionPerformed

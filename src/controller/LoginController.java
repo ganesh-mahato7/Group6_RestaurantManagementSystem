@@ -50,64 +50,74 @@ public class LoginController {
 
     // ----------------- Authentication -----------------
 
-    private void authenticateUser() {
-        try {
-            String email = loginView.getEmailInput();
-            String password = new String(loginView.getPasswordInput());
+   private void authenticateUser() {
+    try {
+        String email = loginView.getEmailInput();
+        String password = new String(loginView.getPasswordInput());
 
-            if (email.isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(loginView, "Please enter email and password!");
-                return;
-            }
-
-            if (!userDao.existsByEmail(email)) {
-                JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
-                return;
-            }
-
-            User user = userDao.getUserByEmail(email);
-            if (user == null) {
-                JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
-                return;
-            }
-
-            boolean verified;
-            String storedPassword = user.getPassword();
-
-            if (storedPassword.startsWith("$2")) {
-                verified = PasswordService.verifyPassword(password, storedPassword);
-            } else {
-                verified = password.equals(storedPassword);
-            }
-
-            if (!verified) {
-                JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
-                return;
-            }
-
-            // ✅ Login success
-            UserSession.getInstance().setUser(user);
-
-            Dashboard dashboard = new Dashboard();
-            switch (user.getRole().toUpperCase()) {
-                case "SCRUM MASTER":
-                    dashboard.setScrumMasterAccess();
-                    break;
-                case "STAFF":
-                    dashboard.setStaffAccess();
-                    break;
-                case "WAITER":
-                default:
-                    dashboard.setWaiterAccess();
-                    break;
-            }
-
-            dashboard.setLocationRelativeTo(null);
-            dashboard.setVisible(true);
-            loginView.dispose();
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(loginView, "Login error: " + ex.getMessage());
+        if (email.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(loginView, "Please enter email and password!");
+            return;
         }
+
+        if (!userDao.existsByEmail(email)) {
+            JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
+            return;
+        }
+
+        User user = userDao.getUserByEmail(email);
+        if (user == null) {
+            JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
+            return;
+        }
+
+        // 🔒 ✅ APPROVAL CHECK (THIS IS THE FIX)
+        if (!"APPROVED".equalsIgnoreCase(user.getStatus())) {
+            JOptionPane.showMessageDialog(
+                    loginView,
+                    "Your account is not approved yet.\nPlease wait for admin approval."
+            );
+            return;
+        }
+
+        // 🔐 Password verification
+        boolean verified;
+        String storedPassword = user.getPassword();
+
+        if (storedPassword.startsWith("$2")) {
+            verified = PasswordService.verifyPassword(password, storedPassword);
+        } else {
+            verified = password.equals(storedPassword);
+        }
+
+        if (!verified) {
+            JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
+            return;
+        }
+
+        // ✅ Login success
+        UserSession.getInstance().setUser(user);
+
+        Dashboard dashboard = new Dashboard();
+        switch (user.getRole().toUpperCase()) {
+            case "SCRUM MASTER":
+                dashboard.setScrumMasterAccess();
+                break;
+            case "STAFF":
+                dashboard.setStaffAccess();
+                break;
+            case "WAITER":
+            default:
+                dashboard.setWaiterAccess();
+                break;
+        }
+
+        dashboard.setLocationRelativeTo(null);
+        dashboard.setVisible(true);
+        loginView.dispose();
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(loginView, "Login error: " + ex.getMessage());
     }
+}
 }
