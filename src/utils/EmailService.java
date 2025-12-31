@@ -38,7 +38,7 @@ public class EmailService {
             message.setFrom(new InternetAddress(EMAIL_USERNAME));
             message.setRecipients(Message.RecipientType.TO, 
                 InternetAddress.parse(recipientEmail));
-            message.setSubject("Password Reset OTP - Your App Name");
+            message.setSubject("Password Reset OTP - Nepal Restaurant Management System");
             
             String emailBody = 
                 "<h3>Password Reset Request</h3>" +
