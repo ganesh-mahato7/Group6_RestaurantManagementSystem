@@ -12,6 +12,7 @@ import view.SignUpForm;
 import javax.swing.JOptionPane;
 
 public class LoginController {
+
     private final Login loginView;
     private final UserDao userDao;
 
@@ -19,105 +20,94 @@ public class LoginController {
         this.loginView = loginView;
         this.userDao = new UserDao();
 
-        // Attach Sign Up navigation listener
+        // ✅ Attach ALL listeners here
+        this.loginView.addLoginListener(e -> authenticateUser());
         this.loginView.addRegisterListener(e -> openSignUpForm());
-
-        // Attach Reset Password listener
         this.loginView.addForgotPasswordListener(e -> openResetPassword());
     }
 
+    // Optional helper
     public void open() {
+        loginView.setLocationRelativeTo(null);
         loginView.setVisible(true);
-        loginView.addLoginListener(e -> authenticateUser());
     }
 
-    // Open Sign Up form
+    // ----------------- Navigation -----------------
+
     private void openSignUpForm() {
         SignUpForm signUpForm = new SignUpForm();
-        SignUpController signUpController = new SignUpController(signUpForm);
-        signUpController.open();
+        new SignUpController(signUpForm).open();
         loginView.dispose();
     }
 
-    // Open Reset Password form
     private void openResetPassword() {
-        String email = loginView.getEmailInput(); // optional: prefill email
+        String email = loginView.getEmailInput();
         ResetPassword resetForm = new ResetPassword(email);
+        resetForm.setLocationRelativeTo(null);
         resetForm.setVisible(true);
-        loginView.dispose(); // close login window
+        loginView.dispose();
     }
 
-    // Authenticate user and open Dashboard on success
+    // ----------------- Authentication -----------------
+
     private void authenticateUser() {
         try {
             String email = loginView.getEmailInput();
             String password = new String(loginView.getPasswordInput());
 
-            // Validate input
             if (email.isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(loginView, "Please enter both email and password!");
+                JOptionPane.showMessageDialog(loginView, "Please enter email and password!");
                 return;
             }
 
-            // Check if user exists
             if (!userDao.existsByEmail(email)) {
                 JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
                 return;
             }
 
-            // Fetch user data
             User user = userDao.getUserByEmail(email);
             if (user == null) {
-                JOptionPane.showMessageDialog(loginView, "User not found!");
+                JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
                 return;
             }
 
-            // Verify password
-            String storedPassword = user.getPassword();
             boolean verified;
-            if (storedPassword.startsWith("$2a$") || storedPassword.startsWith("$2b$")) {
+            String storedPassword = user.getPassword();
+
+            if (storedPassword.startsWith("$2")) {
                 verified = PasswordService.verifyPassword(password, storedPassword);
             } else {
                 verified = password.equals(storedPassword);
             }
 
-            if (verified) {
-                JOptionPane.showMessageDialog(loginView, "Login successful!");
-
-                // ===== Set session =====
-                UserSession session = UserSession.getInstance();
-                session.setUser(user);
-
-                // ===== Open Dashboard with role-based access =====
-                Dashboard dashboard = new Dashboard();
-
-                switch (session.getRole().toUpperCase()) {
-                    case "SCRUM MASTER":
-                        dashboard.setScrumMasterAccess();
-                        break;
-                    case "STAFF":
-                        dashboard.setStaffAccess();
-                        break;
-                    case "WAITER":
-                        dashboard.setWaiterAccess();
-                        break;
-                    default:
-                        // Default to minimal access if role unknown
-                        dashboard.setWaiterAccess();
-                        break;
-                }
-
-                dashboard.setVisible(true);
-
-                // Close login window
-                loginView.dispose();
-
-            } else {
+            if (!verified) {
                 JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
+                return;
             }
 
+            // ✅ Login success
+            UserSession.getInstance().setUser(user);
+
+            Dashboard dashboard = new Dashboard();
+            switch (user.getRole().toUpperCase()) {
+                case "SCRUM MASTER":
+                    dashboard.setScrumMasterAccess();
+                    break;
+                case "STAFF":
+                    dashboard.setStaffAccess();
+                    break;
+                case "WAITER":
+                default:
+                    dashboard.setWaiterAccess();
+                    break;
+            }
+
+            dashboard.setLocationRelativeTo(null);
+            dashboard.setVisible(true);
+            loginView.dispose();
+
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(loginView, "Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(loginView, "Login error: " + ex.getMessage());
         }
     }
 }

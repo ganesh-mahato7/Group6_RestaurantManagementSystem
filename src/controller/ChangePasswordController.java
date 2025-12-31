@@ -18,16 +18,9 @@ public class ChangePasswordController {
         this.view = view;
         this.userDao = new UserDao();
 
-        if (this.view != null) {
-            this.view.addUpdateListener(e -> handleUpdate());
-            this.view.addClearListener(e -> handleClear());
-        }
-    }
-
-    public void open() {
-        if (view != null) {
-            view.setVisible(true);
-        }
+        // Attach listeners here (GOOD)
+        this.view.addUpdateListener(e -> handleUpdate());
+        this.view.addClearListener(e -> handleClear());
     }
 
     // ================= UPDATE PASSWORD =================
@@ -94,7 +87,10 @@ public class ChangePasswordController {
 
             // 9. Logout & redirect
             session.logout();
-            JOptionPane.showMessageDialog(view, "Password changed successfully. Please login again.");
+            JOptionPane.showMessageDialog(
+                    view,
+                    "Password changed successfully. Please login again."
+            );
 
             view.dispose();
             openLogin();
@@ -107,14 +103,14 @@ public class ChangePasswordController {
 
     // ================= CLEAR =================
     private void handleClear() {
-        if (view != null) {
-            view.clearFields();
-        }
+        view.clearFields();
     }
 
     // ================= OPEN LOGIN =================
     private void openLogin() {
         Login loginView = new Login();
-        new LoginController(loginView).open();
+        new LoginController(loginView); // attach listeners
+        loginView.setLocationRelativeTo(null);
+        loginView.setVisible(true);
     }
 }

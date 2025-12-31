@@ -5,6 +5,7 @@
 
 package view;
 
+import controller.LoginController;
 import dao.UserDao;
 import javax.swing.JOptionPane;
 import model.OTPStore;
@@ -42,9 +43,9 @@ public class NewPassword extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        SetPassword = new javax.swing.JButton();
+        NewPassword = new javax.swing.JPasswordField();
+        confirmPassword = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,13 +59,13 @@ public class NewPassword extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
         jLabel1.setText("New Password:");
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 102));
-        jButton1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Set Password");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        SetPassword.setBackground(new java.awt.Color(0, 153, 102));
+        SetPassword.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        SetPassword.setForeground(new java.awt.Color(255, 255, 255));
+        SetPassword.setText("Set Password");
+        SetPassword.addActionListener(this::SetPasswordActionPerformed);
 
-        jPasswordField1.addActionListener(this::jPasswordField1ActionPerformed);
+        NewPassword.addActionListener(this::NewPasswordActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -77,9 +78,9 @@ public class NewPassword extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SetPassword)
+                    .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
         );
         jPanel1Layout.setVerticalGroup(
@@ -88,13 +89,13 @@ public class NewPassword extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(SetPassword)
                 .addGap(12, 12, 12))
         );
 
@@ -131,62 +132,76 @@ public class NewPassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String newPassword = new String(jPasswordField1.getPassword()).trim();
-        String confirmPassword = new String(jPasswordField2.getPassword()).trim();
+    private void SetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetPasswordActionPerformed
+        String newPassword = new String(NewPassword.getPassword()).trim();
+    String confirmPasswordText = new String(confirmPassword.getPassword()).trim();
 
-        if(newPassword.isEmpty() || confirmPassword.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+    // 1. Empty check
+    if (newPassword.isEmpty() || confirmPasswordText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+        return;
+    }
+
+    // 2. Length check
+    if (newPassword.length() < 6) {
+        JOptionPane.showMessageDialog(this, "Password must be at least 6 characters long.");
+        return;
+    }
+
+    // 3. Match check
+    if (!newPassword.equals(confirmPasswordText)) {
+        JOptionPane.showMessageDialog(this, "Passwords do not match!");
+        return;
+    }
+
+    try {
+        // 4. Hash password
+        String hashedPassword = PasswordService.hashPassword(newPassword);
+
+        // 5. Update database
+        UserDao userDao = new UserDao();
+        boolean updated = userDao.updatePasswordByEmail(OTPStore.email, hashedPassword);
+
+        if (!updated) {
+            JOptionPane.showMessageDialog(this, "Failed to reset password. Please try again.");
             return;
         }
 
-        if(newPassword.length() < 6){
-            JOptionPane.showMessageDialog(this, "Password must be at least 6 characters long.");
-            return;
+        // 6. Clear OTP data (SECURITY)
+        if (OTPStore.email != null) {
+            OTPStore.clearOTP(OTPStore.email);
         }
+        OTPStore.currentOTP = 0;
+        OTPStore.email = null;
 
-        if(!newPassword.equals(confirmPassword)){
-            JOptionPane.showMessageDialog(this, "Passwords do not match!");
-            return;
-        }
+        JOptionPane.showMessageDialog(
+                this,
+                "Password reset successfully!\nPlease login with your new password."
+        );
 
-        try {
-            // Hash the password before storing
-            String hashedPassword = PasswordService.hashPassword(newPassword);
+        // 7. Redirect to Login (WITH CONTROLLER)
+        Login loginView = new Login();
+            LoginController loginController = new LoginController(loginView);
+        loginView.setLocationRelativeTo(null);
+        loginView.setVisible(true);
 
-            // Update password in database
-            UserDao userDao = new UserDao();
-            boolean updated = userDao.updatePasswordByEmail(OTPStore.email, hashedPassword);
+        // 8. Close Set Password window
+        this.dispose();
 
-            if(updated){
-                JOptionPane.showMessageDialog(this, "Password reset successfully! You can now login with your new password.");
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(
+                this,
+                "An unexpected error occurred.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
+    }//GEN-LAST:event_SetPasswordActionPerformed
 
-                // Clear OTP store
-                if (OTPStore.email != null) {
-                    OTPStore.clearOTP(OTPStore.email);
-                }
-                OTPStore.currentOTP = 0;
-                OTPStore.email = null;
-
-                // Navigate to login
-                new Login().setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Failed to reset password. Please try again.");
-            }
-        } catch (Exception e) {
-            System.err.println("Error resetting password: " + e.getMessage());
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, 
-                "An error occurred: " + e.getMessage(), 
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void NewPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_NewPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,13 +229,13 @@ public class NewPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPasswordField NewPassword;
+    private javax.swing.JButton SetPassword;
+    private javax.swing.JPasswordField confirmPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     // End of variables declaration//GEN-END:variables
 
 }

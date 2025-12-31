@@ -4,9 +4,12 @@
  */
 package view;
 
+import controller.ChangePasswordController;
+import controller.LoginController;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
+import model.UserSession;
 
 public class Dashboard extends JFrame {
 
@@ -235,12 +238,11 @@ public class Dashboard extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordActionPerformed
-        java.awt.EventQueue.invokeLater(() -> {
-        // Open ChangePassword view through its Controller
-            view.ChangePassword changePasswordView = new view.ChangePassword();
-            controller.ChangePasswordController controller = new controller.ChangePasswordController(changePasswordView);
-            controller.open();
-        });
+        ChangePassword changePasswordView = new ChangePassword();
+        ChangePasswordController changePasswordController = new ChangePasswordController(changePasswordView);
+
+    changePasswordView.setLocationRelativeTo(null);
+    changePasswordView.setVisible(true);
     }//GEN-LAST:event_ChangePasswordActionPerformed
 
     private void VerifyUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerifyUserActionPerformed
@@ -310,12 +312,27 @@ public class Dashboard extends JFrame {
     }//GEN-LAST:event_ManageCategoryActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
-         int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", 
-                                                    "Logout", JOptionPane.YES_NO_OPTION);
-        if (confirm == JOptionPane.YES_OPTION) {
-            dispose(); // close current window
-            // Optional: redirect to login page
-        }
+        int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Are you sure you want to logout?",
+            "Logout",
+            JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm == JOptionPane.YES_OPTION) {
+
+        // ✅ Properly logout user
+        UserSession.getInstance().logout();
+
+        // Close Dashboard
+        this.dispose();
+
+        // Open Login with controller
+        Login login = new Login();
+            LoginController loginController = new LoginController(login); // attach listeners
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+    }
     }//GEN-LAST:event_LogoutActionPerformed
 
     /**
