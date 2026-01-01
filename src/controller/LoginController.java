@@ -20,19 +20,19 @@ public class LoginController {
         this.loginView = loginView;
         this.userDao = new UserDao();
 
-        // ✅ Attach ALL listeners here
+        // ✅ Attach listeners ONCE (IMPORTANT)
         this.loginView.addLoginListener(e -> authenticateUser());
         this.loginView.addRegisterListener(e -> openSignUpForm());
         this.loginView.addForgotPasswordListener(e -> openResetPassword());
     }
 
-    // Optional helper
+    // ================= OPEN LOGIN =================
     public void open() {
         loginView.setLocationRelativeTo(null);
         loginView.setVisible(true);
     }
 
-    // ----------------- Navigation -----------------
+    // ================= NAVIGATION =================
 
     private void openSignUpForm() {
         SignUpForm signUpForm = new SignUpForm();
@@ -48,76 +48,81 @@ public class LoginController {
         loginView.dispose();
     }
 
-    // ----------------- Authentication -----------------
+    // ================= AUTHENTICATION =================
 
-   private void authenticateUser() {
-    try {
-        String email = loginView.getEmailInput();
-        String password = new String(loginView.getPasswordInput());
+    private void authenticateUser() {
+        try {
+            String email = loginView.getEmailInput().trim();
+            String password = new String(loginView.getPasswordInput()).trim();
 
-        if (email.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(loginView, "Please enter email and password!");
-            return;
-        }
+            // 1️⃣ Input validation
+            if (email.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(loginView, "Please enter email and password!");
+                return;
+            }
 
-        if (!userDao.existsByEmail(email)) {
-            JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
-            return;
-        }
+            // 2️⃣ Fetch user
+            User user = userDao.getUserByEmail(email);
+            if (user == null) {
+                JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
+                return;
+            }
 
-        User user = userDao.getUserByEmail(email);
-        if (user == null) {
-            JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
-            return;
-        }
+            // 3️⃣ Approval check (SCRUM MASTER BYPASS)
+            if (!user.isAdmin() && !user.isApproved()) {
+                JOptionPane.showMessageDialog(
+                        loginView,
+                        "Your account is not approved yet.\nPlease wait for admin approval."
+                );
+                return;
+            }
 
-        // 🔒 ✅ APPROVAL CHECK (THIS IS THE FIX)
-        if (!"APPROVED".equalsIgnoreCase(user.getStatus())) {
+            // 4️⃣ Password verification
+            boolean verified;
+            String storedPassword = user.getPassword();
+
+            if (storedPassword != null && storedPassword.startsWith("$2")) {
+                verified = PasswordService.verifyPassword(password, storedPassword);
+            } else {
+                verified = password.equals(storedPassword);
+            }
+
+            if (!verified) {
+                JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
+                return;
+            }
+
+            // 5️⃣ Set session
+            UserSession.getInstance().setUser(user);
+
+            // 6️⃣ Open dashboard with role access
+            Dashboard dashboard = new Dashboard();
+
+            switch (user.getRole()) {
+                case User.ROLE_SCRUM_MASTER:
+                    dashboard.setScrumMasterAccess();
+                    break;
+                case User.ROLE_STAFF:
+                    dashboard.setStaffAccess();
+                    break;
+                case User.ROLE_WAITER:
+                default:
+                    dashboard.setWaiterAccess();
+                    break;
+            }
+
+            dashboard.setLocationRelativeTo(null);
+            dashboard.setVisible(true);
+            loginView.dispose();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(
                     loginView,
-                    "Your account is not approved yet.\nPlease wait for admin approval."
+                    "Login failed. Please try again.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
             );
-            return;
         }
-
-        // 🔐 Password verification
-        boolean verified;
-        String storedPassword = user.getPassword();
-
-        if (storedPassword.startsWith("$2")) {
-            verified = PasswordService.verifyPassword(password, storedPassword);
-        } else {
-            verified = password.equals(storedPassword);
-        }
-
-        if (!verified) {
-            JOptionPane.showMessageDialog(loginView, "Invalid credentials!");
-            return;
-        }
-
-        // ✅ Login success
-        UserSession.getInstance().setUser(user);
-
-        Dashboard dashboard = new Dashboard();
-        switch (user.getRole().toUpperCase()) {
-            case "SCRUM MASTER":
-                dashboard.setScrumMasterAccess();
-                break;
-            case "STAFF":
-                dashboard.setStaffAccess();
-                break;
-            case "WAITER":
-            default:
-                dashboard.setWaiterAccess();
-                break;
-        }
-
-        dashboard.setLocationRelativeTo(null);
-        dashboard.setVisible(true);
-        loginView.dispose();
-
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(loginView, "Login error: " + ex.getMessage());
     }
-}
 }

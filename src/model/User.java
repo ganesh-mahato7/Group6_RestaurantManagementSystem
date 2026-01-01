@@ -22,13 +22,11 @@ public class User {
 
     // ================== CONSTRUCTORS ==================
 
-    // Default constructor
     public User() {
         this.role = ROLE_WAITER;
         this.status = STATUS_PENDING;
     }
 
-    // Full constructor (login / DB fetch)
     public User(int id, String fullName, String email, String password, String role, String status) {
         this.id = id;
         this.fullName = fullName;
@@ -38,7 +36,6 @@ public class User {
         setStatus(status);
     }
 
-    // Constructor for Verify Users screen (no password)
     public User(int id, String fullName, String email, String role, String status) {
         this.id = id;
         this.fullName = fullName;
@@ -47,57 +44,28 @@ public class User {
         setStatus(status);
     }
 
-    // Constructor for registration
     public User(String fullName, String email, String password, String role) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
         setRole(role);
-        this.status = STATUS_PENDING; // default on signup
+
+        // 🔐 SCRUM MASTER auto-approved
+        if (ROLE_SCRUM_MASTER.equals(this.role)) {
+            this.status = STATUS_APPROVED;
+        } else {
+            this.status = STATUS_PENDING;
+        }
     }
 
     // ================== GETTERS & SETTERS ==================
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * ⚠ Password should always be hashed before setting
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    // ================== ROLE ==================
-
-    public String getRole() {
-        return role;
-    }
+    public int getId() { return id; }
+    public String getFullName() { return fullName; }
+    public String getEmail() { return email; }
+    public String getPassword() { return password; }
+    public String getRole() { return role; }
+    public String getStatus() { return status; }
 
     public void setRole(String role) {
         if (role == null || role.trim().isEmpty()) {
@@ -107,14 +75,11 @@ public class User {
         }
     }
 
-    // ================== STATUS ==================
-
-    public String getStatus() {
-        return status;
-    }
-
     public void setStatus(String status) {
-        if (status == null || status.trim().isEmpty()) {
+        // 🔐 SCRUM MASTER always approved
+        if (ROLE_SCRUM_MASTER.equals(this.role)) {
+            this.status = STATUS_APPROVED;
+        } else if (status == null || status.trim().isEmpty()) {
             this.status = STATUS_PENDING;
         } else {
             this.status = status.trim();
@@ -123,8 +88,12 @@ public class User {
 
     // ================== ROLE CHECKS ==================
 
+    public boolean isSuperAdmin() {
+        return ROLE_SCRUM_MASTER.equals(role);
+    }
+
     public boolean isAdmin() {
-        return ROLE_SCRUM_MASTER.equals(role) || ROLE_ADMIN.equals(role);
+        return isSuperAdmin() || ROLE_ADMIN.equals(role);
     }
 
     public boolean isStaff() {
@@ -138,14 +107,12 @@ public class User {
     // ================== STATUS CHECKS ==================
 
     public boolean isApproved() {
-        return STATUS_APPROVED.equalsIgnoreCase(status);
+        return isSuperAdmin() || STATUS_APPROVED.equalsIgnoreCase(status);
     }
 
     public boolean isPending() {
-        return STATUS_PENDING.equalsIgnoreCase(status);
+        return !isApproved();
     }
-
-    // ================== DEBUG ==================
 
     @Override
     public String toString() {
