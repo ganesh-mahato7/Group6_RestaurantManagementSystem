@@ -41,7 +41,7 @@ public class SignUpForm extends javax.swing.JFrame {
         select_role_field = new javax.swing.JLabel();
         selectrole = new javax.swing.JComboBox<>();
         agree_terms = new javax.swing.JCheckBox();
-        register_btn = new javax.swing.JButton();
+        CreateAccount = new javax.swing.JButton();
         already_text = new javax.swing.JLabel();
         fullname = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
@@ -85,11 +85,11 @@ public class SignUpForm extends javax.swing.JFrame {
         agree_terms.setText("I agree with the Terms and Conditions");
         agree_terms.addActionListener(this::agree_termsActionPerformed);
 
-        register_btn.setBackground(new java.awt.Color(204, 0, 0));
-        register_btn.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
-        register_btn.setForeground(new java.awt.Color(255, 255, 255));
-        register_btn.setText("Create Account");
-        register_btn.addActionListener(this::jButton1ActionPerformed);
+        CreateAccount.setBackground(new java.awt.Color(204, 0, 0));
+        CreateAccount.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
+        CreateAccount.setForeground(new java.awt.Color(255, 255, 255));
+        CreateAccount.setText("Create Account");
+        CreateAccount.addActionListener(this::CreateAccountActionPerformed);
 
         already_text.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 15)); // NOI18N
         already_text.setText("Already Have An Account? ");
@@ -125,7 +125,7 @@ public class SignUpForm extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(register_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CreateAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(already_text)
@@ -159,7 +159,7 @@ public class SignUpForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(agree_terms, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(register_btn)
+                .addComponent(CreateAccount)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(already_text)
@@ -215,13 +215,20 @@ public class SignUpForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_agree_termsActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // register button action handler (mapped by .form)
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void login_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_buttonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_login_buttonActionPerformed
+
+    private void CreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccountActionPerformed
+        // TODO add your handling code here:
+        // Close current Create Account window
+    this.dispose();
+
+    // Open Login page using controller
+    view.Login loginView = new view.Login();
+    controller.LoginController controller = new controller.LoginController(loginView);
+    controller.open();
+    }//GEN-LAST:event_CreateAccountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,6 +256,7 @@ public class SignUpForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CreateAccount;
     private javax.swing.JCheckBox agree_terms;
     private javax.swing.JLabel already_text;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -263,13 +271,12 @@ public class SignUpForm extends javax.swing.JFrame {
     private javax.swing.JButton login_button;
     private javax.swing.JPasswordField password;
     private javax.swing.JLabel password_field;
-    private javax.swing.JButton register_btn;
     private javax.swing.JLabel register_main;
     private javax.swing.JLabel select_role_field;
     private javax.swing.JComboBox<String> selectrole;
     // End of variables declaration//GEN-END:variables
     public void AddRegistrationListner(ActionListener listener){
-        register_btn.addActionListener(listener);
+        CreateAccount.addActionListener(listener);
         
     }
     public javax.swing.JPasswordField getPasswordText(){
