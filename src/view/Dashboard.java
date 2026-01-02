@@ -110,10 +110,10 @@ public class Dashboard extends JFrame {
         Logout = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nepal Restaurant Management System");
-        setPreferredSize(new java.awt.Dimension(1280, 760));
         setResizable(false);
 
         jPanel1.setName("mainPanel"); // NOI18N
@@ -213,6 +213,9 @@ public class Dashboard extends JFrame {
         jPanel3.add(jPanel4, java.awt.BorderLayout.NORTH);
         jPanel4.getAccessibleContext().setAccessibleName("");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/PictureOfRestaurant.jpg"))); // NOI18N
+        jPanel3.add(jLabel1, java.awt.BorderLayout.CENTER);
+
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,9 +230,8 @@ public class Dashboard extends JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("");
@@ -237,107 +239,107 @@ public class Dashboard extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordActionPerformed
-        ChangePassword changePasswordView = new ChangePassword();
-        ChangePasswordController changePasswordController = new ChangePasswordController(changePasswordView);
-
-    changePasswordView.setLocationRelativeTo(null);
-    changePasswordView.setVisible(true);
-    }//GEN-LAST:event_ChangePasswordActionPerformed
-
-    private void VerifyUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerifyUserActionPerformed
-        VerifyUsers verifyUsers = new VerifyUsers();
-
-    // Center window relative to Dashboard
-    verifyUsers.setLocationRelativeTo(this);
-
-    // Do NOT close Dashboard when VerifyUsers closes
-    verifyUsers.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-    verifyUsers.setVisible(true);
-    }//GEN-LAST:event_VerifyUserActionPerformed
-
-    private void NewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductActionPerformed
-        // Open AddNewProduct as a new window without closing Dashboard
-    AddNewProduct addProductView = new AddNewProduct();
-    addProductView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Only this window closes
-    addProductView.setVisible(true);
-    addProductView.setLocationRelativeTo(this); // Center relative to Dashboard
-    }//GEN-LAST:event_NewProductActionPerformed
-
-    private void ViewEditDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewEditDeleteProductActionPerformed
-        // Open the View/Edit/Delete Product window
-    ViewEditDeleteProduct viewEditDeleteProduct = new ViewEditDeleteProduct();
-
-    // Make sure closing this window only disposes it, not the dashboard
-    viewEditDeleteProduct.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
-
-    // Show the product management window
-    viewEditDeleteProduct.setVisible(true); 
-    }//GEN-LAST:event_ViewEditDeleteProductActionPerformed
-
-    private void BillAndOrderPlacedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BillAndOrderPlacedActionPerformed
-        // Open the ViewBillOrderPlacedDetails window
-    ViewBillOrderPlacedDetails viewBillFrame = new ViewBillOrderPlacedDetails();
-
-    // Ensure closing this window does not close the dashboard
-    viewBillFrame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
-
-    // Show the bill/order details window
-    viewBillFrame.setVisible(true);
-    }//GEN-LAST:event_BillAndOrderPlacedActionPerformed
-
-    private void PlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceOrderActionPerformed
-        // Open the PlaceOrder window
-    PlaceOrder placeOrder = new PlaceOrder();
-    
-    // Center it relative to dashboard
-    placeOrder.setLocationRelativeTo(this);
-    
-    // Ensure closing this window does not close the dashboard
-    placeOrder.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    
-    // Show the PlaceOrder window
-    placeOrder.setVisible(true);
-    }//GEN-LAST:event_PlaceOrderActionPerformed
-
-    private void ManageCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCategoryActionPerformed
-        // Open the ManageCategory window
-    ManageCategory manageCategory = new ManageCategory();
-    
-    // Center it relative to dashboard
-    manageCategory.setLocationRelativeTo(this);
-    
-    // Ensure closing this window does not close the dashboard
-    manageCategory.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    
-    // Show the ManageCategory window
-    manageCategory.setVisible(true);
-    }//GEN-LAST:event_ManageCategoryActionPerformed
-
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
         int confirm = JOptionPane.showConfirmDialog(
             this,
             "Are you sure you want to logout?",
             "Logout",
             JOptionPane.YES_NO_OPTION
-    );
+        );
 
-    if (confirm == JOptionPane.YES_OPTION) {
+        if (confirm == JOptionPane.YES_OPTION) {
 
-        // ✅ Properly logout user
-        UserSession.getInstance().logout();
+            // ✅ Properly logout user
+            UserSession.getInstance().logout();
 
-        // Close Dashboard
-        this.dispose();
+            // Close Dashboard
+            this.dispose();
 
-        // Open Login with controller
-        Login login = new Login();
+            // Open Login with controller
+            Login login = new Login();
             LoginController loginController = new LoginController(login); // attach listeners
-        login.setLocationRelativeTo(null);
-        login.setVisible(true);
-    }
+            login.setLocationRelativeTo(null);
+            login.setVisible(true);
+        }
     }//GEN-LAST:event_LogoutActionPerformed
+
+    private void ChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordActionPerformed
+        ChangePassword changePasswordView = new ChangePassword();
+        ChangePasswordController changePasswordController = new ChangePasswordController(changePasswordView);
+
+        changePasswordView.setLocationRelativeTo(null);
+        changePasswordView.setVisible(true);
+    }//GEN-LAST:event_ChangePasswordActionPerformed
+
+    private void VerifyUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerifyUserActionPerformed
+        VerifyUsers verifyUsers = new VerifyUsers();
+
+        // Center window relative to Dashboard
+        verifyUsers.setLocationRelativeTo(this);
+
+        // Do NOT close Dashboard when VerifyUsers closes
+        verifyUsers.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        verifyUsers.setVisible(true);
+    }//GEN-LAST:event_VerifyUserActionPerformed
+
+    private void ManageCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCategoryActionPerformed
+        // Open the ManageCategory window
+        ManageCategory manageCategory = new ManageCategory();
+
+        // Center it relative to dashboard
+        manageCategory.setLocationRelativeTo(this);
+
+        // Ensure closing this window does not close the dashboard
+        manageCategory.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        // Show the ManageCategory window
+        manageCategory.setVisible(true);
+    }//GEN-LAST:event_ManageCategoryActionPerformed
+
+    private void NewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductActionPerformed
+        // Open AddNewProduct as a new window without closing Dashboard
+        AddNewProduct addProductView = new AddNewProduct();
+        addProductView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Only this window closes
+        addProductView.setVisible(true);
+        addProductView.setLocationRelativeTo(this); // Center relative to Dashboard
+    }//GEN-LAST:event_NewProductActionPerformed
+
+    private void ViewEditDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewEditDeleteProductActionPerformed
+        // Open the View/Edit/Delete Product window
+        ViewEditDeleteProduct viewEditDeleteProduct = new ViewEditDeleteProduct();
+
+        // Make sure closing this window only disposes it, not the dashboard
+        viewEditDeleteProduct.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+
+        // Show the product management window
+        viewEditDeleteProduct.setVisible(true);
+    }//GEN-LAST:event_ViewEditDeleteProductActionPerformed
+
+    private void BillAndOrderPlacedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BillAndOrderPlacedActionPerformed
+        // Open the ViewBillOrderPlacedDetails window
+        ViewBillOrderPlacedDetails viewBillFrame = new ViewBillOrderPlacedDetails();
+
+        // Ensure closing this window does not close the dashboard
+        viewBillFrame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+
+        // Show the bill/order details window
+        viewBillFrame.setVisible(true);
+    }//GEN-LAST:event_BillAndOrderPlacedActionPerformed
+
+    private void PlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceOrderActionPerformed
+        // Open the PlaceOrder window
+        PlaceOrder placeOrder = new PlaceOrder();
+
+        // Center it relative to dashboard
+        placeOrder.setLocationRelativeTo(this);
+
+        // Ensure closing this window does not close the dashboard
+        placeOrder.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        // Show the PlaceOrder window
+        placeOrder.setVisible(true);
+    }//GEN-LAST:event_PlaceOrderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,6 +369,7 @@ public class Dashboard extends JFrame {
     private javax.swing.JButton PlaceOrder;
     private javax.swing.JButton VerifyUser;
     private javax.swing.JButton ViewEditDeleteProduct;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
